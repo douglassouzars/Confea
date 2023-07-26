@@ -27,15 +27,11 @@ class App():
         self.tela()
         self.variaveis()
         self.cabecalho()
-        #self.texto()
-        self.consulta()
-        #self.frames2()
+        self.caixas()
         self.funcoes()
-        self.botoes()
+        #self.botoes()
         self.logo()
-        self.conteudo()
-
-
+        #self.conteudo()
     def tela(self):
         """Definição da tela e sua cor total"""
         self.root.title("Sistema Confea")
@@ -44,23 +40,8 @@ class App():
         self.root.resizable(True, True)
         self.root.minsize(1000, 600)
         #con = mysql.connect(host='localhost',user='root',password='', database='python-tkinter')
-
     def variaveis(self):
-        result="haha"
-        texto_original = """Trata-se de recurso interposto ao Confea contra a decisão do Plenário do Crea-"""+ result +"""pela pessoa , CNPJ nº , autuada mediante o Auto de Infração n° , lavrado em , por infração , ao . (fls.  e Recurso)
-
-        A Câmara Especializada de Modalidade analisou os autos e concluiu pela manutenção da autuação, expedindo a Decisão nº, de data. (fl. Decisão)
-
-        O recurso do(a) interessado(a) ao Plenário do Crea foi julgado mediante a Decisão nº PL-, de data, que decidiu manter a autuação. (fl. Decisão)
-
-        O(A) interessado(a) teve ciência da decisão do Plenário do Regional em data e protocolizou, em data, no Crea-UF, recurso ao Confea. (fls. AR e Recurso)
-
-        OU
-
-        Embora não conste do processo a informação da data em que o interessado(a) teve ciência da Decisão do Plenário do Regional, em data, foi protocolizado pelo interessado(a)/representante do interessado(a)/nome no Crea-UF recurso ao Confea. (fls. Recurso) 
-
-        As folhas_entry citadas neste parecer são relativas ao número da página eletrônica no SEI - XXXXX. """
-        return texto_original
+        pass
     def cabecalho(self, select=2):
         self.tela()
         self.variaveis()
@@ -80,9 +61,8 @@ class App():
         self.frame_2 = Frame(self.root)
         self.frame_2.configure(background='#01509b')
         self.frame_2.place(relx=0.0, rely=0.25, relwidth=0.055, relheight=1)
-        self.botoes()
-
-    def consulta(self):
+        #self.botoes()
+    def caixas(self):
         """Caixa AI"""
         self.caixaai = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
         self.caixaai.insert(tk.INSERT,"                           AUTO DE INFRAÇÃO\nNº do Processo:\nArtigo:\nAutuado(a):\nCNPJ:\nFolhas:\nNº do AI:\nMulta:\nData:\nMotivo:")
@@ -132,205 +112,9 @@ class App():
         self.caixaprocuracao = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
         self.caixaprocuracao.insert(tk.INSERT, "                           PROCURAÇÃO\nFolhas:\nNome:")
         self.caixaprocuracao.place(relx=0.77, rely=0.7, relwidth=0.22, relheight=0.07)
-
-        """Caixa Texto
-        self.caixatexto = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
-        self.caixatexto.insert(tk.INSERT, self.variaveis())
-        self.caixatexto.place(relx=0.065, rely=0.78, relwidth=0.925, relheight=0.2)
-        self.conteudo()"""
-
-    def botoes(self):
-        # self.frames.caixas()
-
-        """Barra de pesquisa"""
-        lb_pes = Entry(self.frame_1, text="Digite sua busca aqui")
-        lb_pes.configure(background='#fff', fg='black', font='Arial 10 ')
-        lb_pes.place(relx=0.60, rely=0.4, relwidth=0.25, relheight=0.25)
-
-        """Botao pesquisar"""
-        btn_pes = ctk.CTkButton(self.frame_1, text='Pesquisar', fg_color='#fff', text_color='#000', font=('Arial', 14))
-        btn_pes.place(relx=0.86, rely=0.4, relwidth=0.07, relheight=0.25)
-        def tela_menu():
-            self.pag59.place_forget()
-
-
-        """Botao Menu"""
-        btn_menu = ctk.CTkButton(self.frame_2, text='Menu', fg_color='#01509b', text_color='White',font=('Arial', 14), command=tela_menu)
-        btn_menu.place(relx=0, rely=0, relwidth=1, relheight=0.08)
-
-        """Botao Artigo 1"""
-        btn_art1 = ctk.CTkButton(self.frame_2, text='Art 1º', fg_color='#01509b', text_color='White',font=('Arial', 14))
-        btn_art1.place(relx=0, rely=0.08, relwidth=1, relheight=0.08)
-
-        """Botao Artigo 6 A"""
-        btn_art6a = ctk.CTkButton(self.frame_2, text='Art 6º a', fg_color='#01509b', text_color='White',font=('Arial', 14))
-        btn_art6a.place(relx=0, rely=0.16, relwidth=1, relheight=0.08)
-
-        """Botao Artigo 6 E"""
-        btn_art6e = ctk.CTkButton(self.frame_2, text='Art 6º e', fg_color='#01509b', text_color='White',font=('Arial', 14))
-        btn_art6e.place(relx=0, rely=0.24, relwidth=1, relheight=0.08)
-
-        """Botao Artigo 16"""
-        btn_art16 = ctk.CTkButton(self.frame_2, text='Art 16º', fg_color='#01509b', text_color='White',font=('Arial', 14))
-        btn_art16.place(relx=0, rely=0.32, relwidth=1, relheight=0.08)
-
-        """Botao Artigo 59"""
-
-        btn_art59 = ctk.CTkButton(self.frame_2, text='Art 59º', fg_color='#01509b', text_color='White',font=('Arial', 14))
-        btn_art59.place(relx=0, rely=0.4, relwidth=1, relheight=0.08)
-
-        def tela_texto():
-
-            self.caixaai.pack_forget()
-            self.caixace.pack_forget()
-            self.caixapl.pack_forget()
-            self.caixaar.pack_forget()
-            self.caixarecurso.pack_forget()
-            self.caixatempestividade.pack_forget()
-            self.caixaart.pack_forget()
-            self.caixareincidencia.pack_forget()
-            self.caixacnpj.pack_forget()
-            self.caixaprocuracao.pack_forget()
-            global crea_entry
-            global nsei_ai
-            global artigo_ai
-            global autuado_ai
-            global cnpj_cpf_ai
-            global folhas_ai
-            global nauto_ai
-            global multa_ai
-            global data_ai
-            global motivo_ai
-            global especialidade_ce
-            global folhas_ce
-            global ndecisao_ce
-            global data_ce
-            global folhas_pl
-            global ndecisao_pl
-            global data_pl
-            global multa_pl
-            global folhas_recurso
-            global data_recurso
-            global justifica_recurso
-            global folhas_aviso
-            global data_aviso
-            global prazo
-            global dias
-            global folhas_art
-            global n_art
-            global data_art
-            global folhas_cnpj
-            global data_cnpj
-            global cnae_primeiro
-            global cnae_segundo
-            global folhas_reincidencia
-            global data_reincidencia
-            global folhas_procuracao
-            global nome_procuracao
-            global folhas_alteracao
-            global n_alteracao
-            print("a data de aviso é?",folhas_aviso)
-
-            self.pag59 = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
-            self.pag59.tag_configure("red", foreground="red")
-            self.pag59.insert(tk.INSERT,"""Trata-se de recurso interposto ao Confea contra a decisão do Plenário do Crea-""" + str(crea_entry) + """ pela pessoa """ + str(autuado_ai) + """, CNPJ nº ***""" + str(cnpj_cpf_ai) + """***, autuada mediante o Auto de Infração n° """ + str(nauto_ai) + """, lavrado em """ + str(data_ai) + """, por infração """ + str(artigo_ai) + """, ao """ + str(motivo_ai) + """. (fls.""" + str(folhas_ai) + """  e """ + str(folhas_recurso) + """)
-            A Câmara Especializada de Modalidade analisou os autos e concluiu pela manutenção da autuação, expedindo a Decisão nº """ + str(ndecisao_ce) + """, de """ + str(data_ce) + """ (fl. Decisão)
-            O recurso do(a) interessado(a) ao Plenário do Crea foi julgado mediante a Decisão nº """ + str(ndecisao_pl) + """, de """ + str(data_pl) + """, que decidiu manter a autuação. (fl. Decisão)
-        
-            O(A) interessado(a) teve ciência da decisão do Plenário do Regional em """ + str(data_aviso) + """ e protocolizou, em """ + str(data_recurso) + """, no Crea-UF, recurso ao Confea. (fls. AR e Recurso)
-            Embora não conste do processo a informação da data em que o interessado(a) teve ciência da Decisão do Plenário do Regional, em """ + str(data_recurso) + """, foi protocolizado pelo interessado(a)/representante do interessado(a)/""" + str(nome_procuracao) + """ no Crea-UF recurso ao Confea. (fls. Recurso)
-
-            As folhas citadas neste parecer são relativas ao número da página eletrônica no SEI - XXXXX.""")
-
-            # Aplicar a formatação em vermelho às variáveis globais
-            start_index = "1.0"
-            while True:
-                start_index = self.pag59.search(str(crea_entry), start_index, stopindex="end", regexp=False)
-                if not start_index:
-                    break
-                end_index = self.pag59.index(f"{start_index}+{len(str(crea_entry))}c")
-                self.pag59.tag_add("red", start_index, end_index)
-                start_index = end_index
-
-            start_index = "1.0"
-            while True:
-                start_index = self.pag59.search(str(autuado_ai), start_index, stopindex="end", regexp=False)
-                if not start_index:
-                    break
-                end_index = self.pag59.index(f"{start_index}+{len(str(autuado_ai))}c")
-                self.pag59.tag_add("red", start_index, end_index)
-                start_index = end_index
-            start_index = "1.0"
-            while True:
-                start_index = self.pag59.search(str(cnpj_cpf_ai), start_index, stopindex="end", regexp=False)
-                if not start_index:
-                    break
-                end_index = self.pag59.index(f"{start_index}+{len(str(cnpj_cpf_ai))}c")
-                self.pag59.tag_add("red", start_index, end_index)
-                start_index = end_index
-            start_index = "1.0"
-            while True:
-                start_index = self.pag59.search(str(nauto_ai), start_index, stopindex="end", regexp=False)
-                if not start_index:
-                    break
-                end_index = self.pag59.index(f"{start_index}+{len(str(nauto_ai))}c")
-                self.pag59.tag_add("red", start_index, end_index)
-                start_index = end_index
-            start_index = "1.0"
-            while True:
-                start_index = self.pag59.search(str(data_ai), start_index, stopindex="end", regexp=False)
-                if not start_index:
-                    break
-                end_index = self.pag59.index(f"{start_index}+{len(str(data_ai))}c")
-                self.pag59.tag_add("red", start_index, end_index)
-                start_index = end_index
-            start_index = "1.0"
-            while True:
-                start_index = self.pag59.search(str(artigo_ai), start_index, stopindex="end", regexp=False)
-                if not start_index:
-                    break
-                end_index = self.pag59.index(f"{start_index}+{len(str(artigo_ai))}c")
-                self.pag59.tag_add("red", start_index, end_index)
-                start_index = end_index
-            start_index = "1.0"
-            while True:
-                start_index = self.pag59.search(str(motivo_ai), start_index, stopindex="end", regexp=False)
-                if not start_index:
-                    break
-                end_index = self.pag59.index(f"{start_index}+{len(str(motivo_ai))}c")
-                self.pag59.tag_add("red", start_index, end_index)
-                start_index = end_index
-            start_index = "1.0"
-            while True:
-                start_index = self.pag59.search(str(folhas_ai), start_index, stopindex="end", regexp=False)
-                if not start_index:
-                    break
-                end_index = self.pag59.index(f"{start_index}+{len(str(folhas_ai))}c")
-                self.pag59.tag_add("red", start_index, end_index)
-                start_index = end_index
-            start_index = "1.0"
-            while True:
-                start_index = self.pag59.search(str(folhas_recurso), start_index, stopindex="end", regexp=False)
-                if not start_index:
-                    break
-                end_index = self.pag59.index(f"{start_index}+{len(str(folhas_recurso))}c")
-                self.pag59.tag_add("red", start_index, end_index)
-                start_index = end_index
-
-            self.pag59.place(relx=0.065, rely=0.26, relwidth=0.925, relheight=0.72)
-            self.conteudo()
-            self.botoes()
-
-
-        """Botao Texto Padrao"""
-        btn_textopadrao = ctk.CTkButton(self.frame_2, text='Texto', fg_color='#01509b', text_color='White',
-                                        font=('Arial', 14), command=tela_texto)
-        btn_textopadrao.place(relx=0, rely=0.48, relwidth=1, relheight=0.08)
-
     def valBarra(self, progress):
         self.varBarra.set(progress)
         self.root.update()
-
     def funcoes(self):
         def valBarra(self, progress):
             self.varBarra.set(progress)
@@ -341,80 +125,26 @@ class App():
 
         self.barra = ttk.Progressbar(self.root, variable=self.varBarra, maximum=100)
         self.barra.place(relx=0.80, rely=0.98, relwidth=0.2, relheight=0.02)
-
-
-
     def logo(self):
+        self.frame_3 = Frame(self.root)
+        self.frame_3.configure(background='#adadad')
+        self.frame_3.place(relx=0.0, rely=0.2, relwidth=1, relheight=0.05)
+        self.frame_2 = Frame(self.root)
+        self.frame_2.configure(background='#01509b')
+        self.frame_2.place(relx=0.0, rely=0.25, relwidth=0.055, relheight=1)
         """definir a logo do projeto"""
         logoimg = Image.open("log.png")
         self.lg = ImageTk.PhotoImage(logoimg)
         self.lbl = tk.Label(self.frame_1, image=self.lg)
         self.lbl.place(relx=0.07, rely=0.1, relwidth=0.35, relheight=0.8)
         self.lbl.image = self.lg
-
         """consulta de acordo com crea_entrys TO/BA/PR"""
-        #def crea_entrys():
-
-    """def bancodedados(self):
-        nauto = self.nauto.get()
-        
-        mydb = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="senhateste",
-            database='python-tkinter'
-        )
-
-        print(mydb)"""
-    def conteudo(self):
         global con
         global crea_entry
         global nauto_entry
         crea_entry = ''
         nsei_entry = ''
         nauto_entry = ''
-
-        """artigo = ' '
-        autuado = ' '
-        cnpj_cpf = ' '
-
-        nauto = ' '
-        multa = ' '
-        data = ' '
-        motivo = ' '
-        folhas_entryce = ' '
-        ndecisaoce = ' '
-        especialidade = ' '
-        datace = ' '
-        multace = ' '
-        folhas_entrypl = ' '
-        ndecisaopl = ' '
-        datapl = ' '
-        multapl = ' '
-        folharecurso = ' '
-        datarecurso = ' '
-        justificativa = ' '
-        folhaaviso = ' '
-        dataaviso = ' '
-        prazo = ' '
-        dias = ' '
-        folhas_entryart = ' '
-        nart = ' '
-        dataart = ' '
-        folhas_entrycnpj = ' '
-        datacnpj = ' '
-        cnaeprimeiro = ' '
-        cnaesegundo = ' '
-        folhas_entryreincidencia = ' '
-        datareincidencia = ' '
-        folhas_entryprocuracao = ' '
-        nomeprocuracao = ' '
-        folhas_entryalteracao = ' '
-        nalteracao = ' '"""
-
-
-
-
         """limpar dados"""
         def limpar():
             """limpa o nome do arquivo"""
@@ -423,6 +153,7 @@ class App():
             lbl_selecionado.place(relx=0.25, rely=0.10, relwidth=0.3, relheight=0.80)
             """limpar barra"""
             self.varBarra.set(0)
+            self.variaveis()
             global nauto_ai
             global multa_ai
             global nsei_ai
@@ -461,10 +192,9 @@ class App():
             global folhas_alteracao
             global n_alteracao
 
-
-            nauto_ai = None
-            multa_ai = None
-            nsei_ai = None
+            nauto_ai = "numero do ai"
+            multa_ai = "multa do ai"
+            nsei_ai = "numero do processo"
             autuado_ai = None
             cnpj_cpf_ai = None
             artigo_ai = None
@@ -483,7 +213,7 @@ class App():
             data_recurso = None
             justifica_recurso = None
             folhas_aviso = None
-            data_aviso = None
+            data_aviso = "data do aviso"
             prazo = None
             dias = None
             folhas_art = None
@@ -546,7 +276,6 @@ class App():
             """limpar texto padrao
             self.caixatexto.delete("1.0", tk.END)  # Limpa o texto atual da caixa de texto
             self.caixatexto.insert(tk.INSERT, self.variaveis())"""
-
         """selecionar o arquivo"""
         def selecionar_arquivo():
             global con
@@ -665,8 +394,6 @@ class App():
 #                    self.caixatexto.tag_config("red", foreground="red")
                     pagedoauto(folhas_ai, pdf_file,num_pages,crea_entry)
                     break
-
-
         """EXTRAINDO DADOS DO AUTO DE INFRAÇÃO"""
         def pagedoauto(folhas_ai, pdf_file,num_pages,crea_entry):
             self.valBarra(20)
@@ -676,7 +403,8 @@ class App():
             global cnpj_cpf_ai
             global artigo_ai
             global motivo_ai
-            global data_ai
+
+            global data_aviso
             print("5 passo: Procura todos os dados do AUTO DE INFRAÇÃO")
             pdf_reader = PdfReader(pdf_file)
             page = pdf_reader.pages[folhas_ai - 1]
@@ -699,7 +427,7 @@ class App():
             cnpj2= re.search(r'(\d{2})\.(\d{3})\.(\d{3})/(\d{4})-(\d{2})',text)
             """Extrai o motivo do AUTO"""
             desc_pos = text.find("DESCRIÇÃO")
-            action_pos = text.find("Tipo de Ação Fiscalizatória")
+            action_pos = text.find("OBSERVAÇÃO")
             extracted_text = text[desc_pos + len("DESCRIÇÃO"):action_pos].strip()
             melhora_motivo = extracted_text.replace("\n", "")
             print("6 passo: Achei todos os dados do AUTO DE INFRAÇÃO")
@@ -742,8 +470,8 @@ class App():
             if artigo:
                 result_artigo = artigo.group(1)
                 if "LEIGA" in result_artigo:
-                    artigo_ai = 'a alinea "a" Art. 6º da Lei Federal 5.194, de 1966'
-                    self.caixaai.insert("3.8", str('a alinea "a" Art. 6º da Lei Federal 5.194, de 1966'),"red")  # Adiciona a tag "red" ao novo valor
+                    artigo_ai = 'a alínea "a" Art. 6º da Lei Federal 5.194, de 1966'
+                    self.caixaai.insert("3.8", str('a alínea "a" Art. 6º da Lei Federal 5.194, de 1966'),"red")  # Adiciona a tag "red" ao novo valor
                     self.caixaai.tag_config("red", foreground="red")
 #                    self.caixatexto.insert("1.275", str('a alinea "a" Art. 6º da Lei Federal 5.194, de 1966'), "red")
 #                    self.caixatexto.tag_config("red", foreground="red")
@@ -773,7 +501,6 @@ class App():
 #                self.caixatexto.insert("1.360", melhora_motivo_min, "red")
 #                self.caixatexto.tag_config("red", foreground="red")
             ce(pdf_reader,folhas_ai,crea_entry, pdf_file, num_pages)
-
 ##########################################################################################################
 #           TODOS AS PAGINAS DA CAMARA ESPECIALIZADA
 ##########################################################################################################
@@ -805,83 +532,85 @@ class App():
                     print("9.1 passo: Procura os dados da DECISAO DA CAMARA ESPECIALIZADA")
 
                     print("10.1 passo: Achei os dados da DECISAO DA CAMARA ESPECIALIZADA")
-                    result_pagdecisaocamara = pagdecisaocamarasp.group(1)
-                    self.caixace.insert("4.15", result_pagdecisaocamara, "red")  # Adiciona a tag "red" ao novo valor
+                    especialidade_ce = pagdecisaocamarasp.group(1)
+                    self.caixace.insert("4.15", especialidade_ce, "red")  # Adiciona a tag "red" ao novo valor
                     self.caixace.tag_config("red", foreground="red")  # Configura a cor vermelha para a tag "red"
-                    pag_ce = page_num + 1
+                    folhas_ce = page_num + 1
                     # Inserir o novo valor extraído do PDF no widget Text
-                    self.caixace.insert("2.8", str(pag_ce), "red")  # Adiciona a tag "red" ao novo valor
+                    self.caixace.insert("2.8", str(folhas_ce), "red")  # Adiciona a tag "red" ao novo valor
                     self.caixace.tag_config("red", foreground="red")  # Configura a cor vermelha para a tag "red"
                     page2 = pdf_reader.pages[page_num]
                     text3 = page2.extract_text()
                     ndecisaoce = re.search(r'CE\w+/SP n[O^°ººo]\s?(\d+/\s?\d+)', text2)
                     print("10.3 passo: Achei os dados da DECISAO DA CAMARA ESPECIALIZADA")
                     if ndecisaoce:
-                        result_ndecisaoce = ndecisaoce.group(1)
-                        self.caixace.insert("3.12", result_ndecisaoce, "red")  # Adiciona a tag "red" ao novo valor
+                        ndecisao_ce = ndecisaoce.group(1)
+                        self.caixace.insert("3.12", ndecisao_ce, "red")  # Adiciona a tag "red" ao novo valor
                         self.caixace.tag_config("red", foreground="red")  # Configura a cor vermelha para a tag "red"
                     if crea_entry == "SP":
-                        for page_num in range(pag_ce, len(pdf_reader.pages)):
+                        for page_num in range(folhas_ce, len(pdf_reader.pages)):
                             page = pdf_reader.pages[page_num-1]
                             text4 = page.extract_text()
                             datato = re.search(r',[ ^]/de [A-Z][a-z]+ de (\d{4})', text4)
                             if datato:
-                                result_datato = datato.group()
-                                self.caixace.insert("5.6", result_datato, "red")  # Adiciona a tag "red" ao novo valor
+                                data_ce = datato.group()
+                                self.caixace.insert("5.6", data_ce, "red")  # Adiciona a tag "red" ao novo valor
                                 self.caixace.tag_config("red", foreground="red")
                                 break
-                    multa(pdf_reader, pag_ce, crea_entry, pdf_file, num_pages)
+                    multa(pdf_reader, folhas_ce, crea_entry, pdf_file, num_pages)
                     break
                 if pagdecisaocamaraam:
                     print("8 passo: Achei a pagina da DECISAO DA CAMARA ESPECIALIZADA")
                     print("9.1 passo: Procura os dados da DECISAO DA CAMARA ESPECIALIZADA")
                     pagdecisaocamara = pagdecisaocamaraam
                     print("10.1 passo: Achei os dados da DECISAO DA CAMARA ESPECIALIZADA")
-                    result_pagdecisaocamara = pagdecisaocamara.group(1)
-                    self.caixace.insert("4.15", result_pagdecisaocamara, "red")  # Adiciona a tag "red" ao novo valor
+                    especialidade_ce = pagdecisaocamara.group(1)
+                    self.caixace.insert("4.15", especialidade_ce, "red")  # Adiciona a tag "red" ao novo valor
                     self.caixace.tag_config("red", foreground="red")  # Configura a cor vermelha para a tag "red"
-                    pag_ce = page_num + 1
+                    folhas_ce = page_num + 1
                     # Inserir o novo valor extraído do PDF no widget Text
-                    self.caixace.insert("2.8", str(pag_ce), "red")  # Adiciona a tag "red" ao novo valor
+                    self.caixace.insert("2.8", str(folhas_ce), "red")  # Adiciona a tag "red" ao novo valor
                     self.caixace.tag_config("red", foreground="red")  # Configura a cor vermelha para a tag "red"
                     page2 = pdf_reader.pages[page_num]
                     text3 = page2.extract_text()
                     ndecisaoce = re.search(r'Decisão:(.+)', text2)
                     print("10.3 passo: Achei os dados da DECISAO DA CAMARA ESPECIALIZADA")
                     if ndecisaoce:
-                        result_ndecisaoce = ndecisaoce.group(1)
-                        self.caixace.insert("3.12", result_ndecisaoce, "red")  # Adiciona a tag "red" ao novo valor
+                        ndecisao_ce = ndecisaoce.group(1)
+                        self.caixace.insert("3.12", ndecisao_ce, "red")  # Adiciona a tag "red" ao novo valor
                         self.caixace.tag_config("red", foreground="red")  # Configura a cor vermelha para a tag "red"
                     if crea_entry == "TO":
-                        for page_num in range(pag_ce, len(pdf_reader.pages)):
+                        for page_num in range(folhas_ce, len(pdf_reader.pages)):
                             page = pdf_reader.pages[page_num]
                             text4 = page.extract_text()
                             datato = re.search(r'\/TO, (.+)\.', text4)
                             if datato:
-                                result_datato = datato.group(1)
-                                self.caixace.insert("5.6", result_datato, "red")  # Adiciona a tag "red" ao novo valor
+                                data_ce = datato.group(1)
+                                self.caixace.insert("5.6", data_ce, "red")  # Adiciona a tag "red" ao novo valor
                                 self.caixace.tag_config("red", foreground="red")
                                 break
                     if crea_entry == "BA":
                         data3 = re.search(r', (\d{2}) de (\d{2}) de (\d{4})\.', text3)
                         if data3:
-                            result_data3 = data3.group(1)
-                            self.caixace.insert("5.6", result_data3, "red")  # Adiciona a tag "red" ao novo valor
+
+                            data_ce = data3.group(1)
+                            self.caixace.insert("5.6", data_ce, "red")  # Adiciona a tag "red" ao novo valor
                             self.caixace.tag_config("red", foreground="red")
                         data2 = re.search(r'- (\d{2})/(\d{2})/(\d{4})', text3)
                         if data2:
+
                             configdata2(data2)
-                        multa(pdf_reader, pag_ce, crea_entry, pdf_file)
+                        multa(pdf_reader, folhas_ce, crea_entry, pdf_file)
                         break
                     if crea_entry == "AM":
-                        for page_num in range(pag_ce, len(pdf_reader.pages)):
+                        for page_num in range(folhas_ce, len(pdf_reader.pages)):
                             page = pdf_reader.pages[page_num-1]
                             text4 = page.extract_text()
                             data2 = re.search(r'- (\d{2})/(\d{2})/(\d{4})', text4)
                             if data2:
                                 configdata2(data2)
                                 break
-                    multa(pdf_reader, pag_ce, crea_entry, pdf_file, num_pages)
+                    multa(pdf_reader, folhas_ce, crea_entry, pdf_file, num_pages)
                     break
                 if (pagdecisaocamarago or pagdecisaocamarago2 or pagdecisaocamararj) and (crea_entry == 'GO' or crea_entry == 'RJ' or crea_entry == 'BA' or crea_entry =='RN' or crea_entry =='RS'  or crea_entry =='TO'):
                     if pagdecisaocamarago2:
@@ -894,24 +623,26 @@ class App():
 
                         pagdecisaocamarago = pagdecisaocamarago2
                     if crea_entry == "TO":
-                        pag_ce = page_num + 1
-                        for page_num in range(pag_ce, len(pdf_reader.pages)):
+                        folhas_ce = page_num + 1
+                        for page_num in range(folhas_ce, len(pdf_reader.pages)):
                             page = pdf_reader.pages[page_num]
                             text4 = page.extract_text()
                             datato = re.search(r'\/TO, (.+)\.', text4)
                             if datato:
-                                result_datato = datato.group(1)
-                                self.caixace.insert("5.6", result_datato, "red")  # Adiciona a tag "red" ao novo valor
+                                data_ce = datato.group(1)
+                                self.caixace.insert("5.6", data_ce, "red")  # Adiciona a tag "red" ao novo valor
                                 self.caixace.tag_config("red", foreground="red")
                                 break
                     print("8 passo: Achei a pagina da DECISAO DA CAMARA ESPECIALIZADA")
                     print("9.2 passo: Procura os dados da DECISAO DA CAMARA ESPECIALIZADA")
                     if pagdecisaocamarago:
                         print("v3")
-                        especialidade_ce = pagdecisaocamarago.group(1)
+                        especialidade_ce = pagdecisaocamarago.group(1).strip()
+                        # Removendo a palavra "De" caso ela esteja presente
+                        especialidade_ce = especialidade_ce.replace("De ", "")
                     if pagdecisaocamararj:
                         print("v2")
-                        especialidade_ce = pagdecisaocamararj.group()
+                        especialidade_ce = pagdecisaocamararj.group(1)
                     self.caixace.insert("4.15", especialidade_ce, "red")  # Adiciona a tag "red" ao novo valor
                     self.caixace.tag_config("red", foreground="red")  # Configura a cor vermelha para a tag "red"
                     folhas_ce = page_num + 1
@@ -944,8 +675,8 @@ class App():
                         datace = datace2
                     print("10.2 passo: Achei os dados da DECISAO DA CAMARA ESPECIALIZADA")
                     if ndecisaoce:
-                        result_ndecisaoce = ndecisaoce.group(1)
-                        self.caixace.insert("3.12", result_ndecisaoce, "red")  # Adiciona a tag "red" ao novo valor
+                        ndecisao_ce = ndecisaoce.group(1)
+                        self.caixace.insert("3.12", ndecisao_ce, "red")  # Adiciona a tag "red" ao novo valor
                         self.caixace.tag_config("red", foreground="red")
                     if datace and (crea_entry != "TO"):
                         print("nao pode")
@@ -961,12 +692,12 @@ class App():
                 if (pagdecisaocamara and (crea_entry == 'MT')):
                     print("8 passo: Achei a pagina da DECISAO DA CAMARA ESPECIALIZADA")
                     print("9.3 passo: Procura os dados da DECISAO DA CAMARA ESPECIALIZADA")
-                    result_pagdecisaocamara = pagdecisaocamara.group(1)
-                    self.caixace.insert("4.15", result_pagdecisaocamara, "red")  # Adiciona a tag "red" ao novo valor
+                    especialidade_ce = pagdecisaocamara.group(1)
+                    self.caixace.insert("4.15", especialidade_ce, "red")  # Adiciona a tag "red" ao novo valor
                     self.caixace.tag_config("red", foreground="red")  # Configura a cor vermelha para a tag "red"
-                    pag_ce = page_num + 1
+                    folhas_ce = page_num + 1
                     # Inserir o novo valor extraído do PDF no widget Text
-                    self.caixace.insert("2.8", str(pag_ce), "red")  # Adiciona a tag "red" ao novo valor
+                    self.caixace.insert("2.8", str(folhas_ce), "red")  # Adiciona a tag "red" ao novo valor
                     self.caixace.tag_config("red", foreground="red")  # Configura a cor vermelha para a tag "red"
                     page2 = pdf_reader.pages[page_num]
                     text3 = page2.extract_text()
@@ -978,16 +709,16 @@ class App():
                         if ndecisaoce:
                             result_ndecisaoce = ndecisaoce.group(1)
                         if ndecisaoce2:
-                            result_ndecisaoce = ndecisaoce2.group(1)
-                        self.caixace.insert("3.12", result_ndecisaoce, "red")  # Adiciona a tag "red" ao novo valor
+                            ndecisao_ce = ndecisaoce2.group(1)
+                        self.caixace.insert("3.12", ndecisao_ce, "red")  # Adiciona a tag "red" ao novo valor
                         self.caixace.tag_config("red", foreground="red")  # Configura a cor vermelha para a tag "red"
 
                     if crea_entry == "BA":
                         data3 = re.search(r', (\d{2}) de (\d{2}) de (\d{4})\.', text3)
                         if data3:
 
-                            result_data3 = data3.group(1)
-                            self.caixace.insert("5.6", result_data3, "red")  # Adiciona a tag "red" ao novo valor
+                            data_ce = data3.group(1)
+                            self.caixace.insert("5.6", data_ce, "red")  # Adiciona a tag "red" ao novo valor
                             self.caixace.tag_config("red", foreground="red")
                         data2 = re.search(r'- (\d{2})/(\d{2})/(\d{4})', text3)
                         if data2:
@@ -995,14 +726,14 @@ class App():
                     if crea_entry == "GO":
                         datace = re.search(r', (\d{2}) de (.*) de (\d{4})', text3)
                         result_datace = datace.group()
-                        result_datace_real = result_datace[2:]
-                        self.caixace.insert("5.6", result_datace_real, "red")  # Adiciona a tag "red" ao novo valor
+                        data_ce = result_datace[2:]
+                        self.caixace.insert("5.6", data_ce, "red")  # Adiciona a tag "red" ao novo valor
                         self.caixace.tag_config("red", foreground="red")
                     if crea_entry == "MT":
                         datace = re.search(r'MT no dia (\d{2}) de (.*) de (\d{4})', text3)
                         result_datace = datace.group()
-                        result_datace_real = result_datace[2:]
-                        self.caixace.insert("5.6", result_datace_real, "red")  # Adiciona a tag "red" ao novo valor
+                        data_ce = result_datace[2:]
+                        self.caixace.insert("5.6", data_ce, "red")  # Adiciona a tag "red" ao novo valor
                         self.caixace.tag_config("red", foreground="red")
                     if crea_entry == "RS":
                             decisao_desc_pos = text3.find(" - CE")
@@ -1014,7 +745,7 @@ class App():
                             if melhora_decisao:
                                 self.caixace.insert("3.12", "CE" + melhora_decisao, "red")  # Adiciona a tag "red" ao novo valor
                                 self.caixace.tag_config("red", foreground="red")
-                                for page_num in range(pag_ce, len(pdf_reader.pages)):
+                                for page_num in range(folhas_ce, len(pdf_reader.pages)):
                                     page = pdf_reader.pages[page_num - 1]
                                     text4 = page.extract_text()
                                     datacers = re.search(r', (\d{2}) de (.*) de (\d{4})\.', text4)
@@ -1028,10 +759,8 @@ class App():
                                         break
 
 
-                    multa(pdf_reader, pag_ce,crea_entry,pdf_file, num_pages)
+                    multa(pdf_reader, folhas_ce,crea_entry,pdf_file, num_pages)
                     break
-
-
         """Descobrindo a Data"""
         def configdata2(data2):
             dia2 = data2.group(1)
@@ -1080,9 +809,6 @@ class App():
             if data_formatada2:
                 self.caixace.insert("5.6", str(data_formatada2), "red")  # Adiciona a tag "red" ao novo valor
                 self.caixace.tag_config("red", foreground="red")
-
-
-
         def multa(pdf_reader, folhas_ce,crea_entry, pdf_file, num_pages):
             self.valBarra(45)
             global multa_ce
@@ -1139,18 +865,18 @@ class App():
 
                         if multacego_melhora:
                             if "redução" in multacego_melhora:
+                                multa_ce = 'reduziu'
                                 self.caixace.insert("6.6", "reduziu para valor minimo",
                                                     "red")  # Adiciona a tag "red" ao novo valor
                                 self.caixace.tag_config("red", foreground="red")
                             elif "manutenção" in multacego_melhora:
+                                multa_ce = 'manteve'
                                 self.caixace.insert("6.6", "manteve o valor da multa",
                                                     "red")  # Adiciona a tag "red" ao novo valor
                                 self.caixace.tag_config("red", foreground="red")
                         break
 
                 plcrea_entry(pdf_reader, folhas_ce,crea_entry, pdf_file, num_pages)
-
-
         """Descobre qual a pagina da Decisao Plenaria"""
         def plcrea_entry(pdf_reader, folhas_ce,crea_entry, pdf_file, num_pages):
             self.valBarra(50)
@@ -1182,7 +908,7 @@ class App():
                         print("hello2")
                         self.caixapl.insert("2.8", folhas_pl, "red")  # Adiciona a tag "red" ao novo valor
                         self.caixapl.tag_config("red", foreground="red")
-                    #self.caixapl.insert("2.8", str(pag_pl), "red")  # Adiciona a tag "red" ao novo valor
+                    #self.caixapl.insert("2.8", str(folhas_pl), "red")  # Adiciona a tag "red" ao novo valor
                     #self.caixapl.tag_config("red", foreground="red")
 
                     ndecisaopl2 = re.search(r'Decisão:(.+)', text3)
@@ -1198,34 +924,33 @@ class App():
                     print("13 passo: Procura dados da DECISAO PLENARIA")
                     if ndecisaopl:
                         print("1")
-                        result_ndecisaopl = ndecisaopl.group(1)
-                        self.caixapl.insert("3.12", result_ndecisaopl, "red")  # Adiciona a tag "red" ao novo valor
+                        ndecisao_pl = ndecisaopl.group(1)
+                        self.caixapl.insert("3.12", ndecisao_pl, "red")  # Adiciona a tag "red" ao novo valor
                         self.caixapl.tag_config("red", foreground="red")
                     elif ndecisaopl2:
                         print("2")
-                        result_ndecisaopl = ndecisaopl2.group(1)
-                        self.caixapl.insert("3.12", result_ndecisaopl, "red")  # Adiciona a tag "red" ao novo valor
+                        ndecisao_pl = ndecisaopl2.group(1)
+                        self.caixapl.insert("3.12", ndecisao_pl, "red")  # Adiciona a tag "red" ao novo valor
                         self.caixapl.tag_config("red", foreground="red")
                     elif ndecisaopl3:
                         print("3")
-                        result_ndecisaopl = ndecisaopl3.group(1)
-                        self.caixapl.insert("3.12", result_ndecisaopl, "red")  # Adiciona a tag "red" ao novo valor
+                        ndecisao_pl = ndecisaopl3.group(1)
+                        self.caixapl.insert("3.12", ndecisao_pl, "red")  # Adiciona a tag "red" ao novo valor
                         self.caixapl.tag_config("red", foreground="red")
                     elif ndecisaopl5:
                         print("4")
-                        result_ndecisaopl = ndecisaopl5.group(1)
-                        self.caixapl.insert("3.12", result_ndecisaopl, "red")  # Adiciona a tag "red" ao novo valor
+                        ndecisao_pl = ndecisaopl5.group(1)
+                        self.caixapl.insert("3.12", ndecisao_pl, "red")  # Adiciona a tag "red" ao novo valor
                         self.caixapl.tag_config("red", foreground="red")
                     elif ndecisaopl4:
                         print("5")
-                        result_ndecisaopl = ndecisaopl4.group(1)
-                        self.caixapl.insert("3.12", result_ndecisaopl, "red")  # Adiciona a tag "red" ao novo valor
+                        ndecisao_pl = ndecisaopl4.group(1)
+                        self.caixapl.insert("3.12", ndecisao_pl, "red")  # Adiciona a tag "red" ao novo valor
                         self.caixapl.tag_config("red", foreground="red")
                     elif ndecisaopl7:
                         print("6")
-                        result_ndecisaopl=ndecisaopl7.group(1)
-
-                        self.caixapl.insert("3.12", result_ndecisaopl, "red")  # Adiciona a tag "red" ao novo valor
+                        ndecisao_pl=ndecisaopl7.group(1)
+                        self.caixapl.insert("3.12", ndecisao_pl, "red")  # Adiciona a tag "red" ao novo valor
                         self.caixapl.tag_config("red", foreground="red")
                     if crea_entry == 'RJ':
 
@@ -1257,39 +982,39 @@ class App():
                             self.caixapl.tag_config("red", foreground="red")
                             break
                     if crea_entry == 'GO':
-                        for page_num in range(pag_pl, len(pdf_reader.pages)):
+                        for page_num in range(folhas_pl, len(pdf_reader.pages)):
                             page = pdf_reader.pages[page_num - 1]
                             text5 = page.extract_text()
                             datatopl = re.search(r', (\d{2}) de (.*) de (\d{4})', text5)
                             print("14 passo: Achei os dados da DECISÃO PLENARIA")
                             if datatopl:
                                 result_datapl = datatopl.group()
-                                result_datapl_real = result_datapl[2:]
-                                self.caixapl.insert("4.6", result_datapl_real, "red")  # Adiciona a tag "red" ao novo valor
+                                data_pl = result_datapl[2:]
+                                self.caixapl.insert("4.6", data_pl, "red")  # Adiciona a tag "red" ao novo valor
                                 self.caixapl.tag_config("red", foreground="red")
                                 break
                     if crea_entry == 'AM' or crea_entry =='SP':
-                        for page_num in range(pag_pl, len(pdf_reader.pages)):
+                        for page_num in range(folhas_pl, len(pdf_reader.pages)):
                             page = pdf_reader.pages[page_num - 1]
                             text5 = page.extract_text()
                             datatopl = re.search(r', (\d{2}) de (.*) de (\d{4})\.', text5)
                             print("14 passo: Achei os dados da DECISÃO PLENARIA")
                             if datatopl:
                                 result_datapl = datatopl.group()
-                                result_datapl_real = result_datapl[2:]
-                                self.caixapl.insert("4.6", result_datapl_real, "red")  # Adiciona a tag "red" ao novo valor
+                                data_pl = result_datapl[2:]
+                                self.caixapl.insert("4.6", data_pl, "red")  # Adiciona a tag "red" ao novo valor
                                 self.caixapl.tag_config("red", foreground="red")
                                 break
                     if crea_entry == "MT":
-                        for page_num in range(pag_pl, len(pdf_reader.pages)):
+                        for page_num in range(folhas_pl, len(pdf_reader.pages)):
                             page = pdf_reader.pages[page_num - 1]
                             text5 = page.extract_text()
                             datatopl = re.search(r', reunido em (\d{2}) de (.*) de (\d{4})', text5)
                             print("14 passo: Achei os dados da DECISÃO PLENARIA")
                             if datatopl:
                                 result_datapl = datatopl.group()
-                                result_datapl_real = result_datapl[2:]
-                                self.caixapl.insert("4.6", result_datapl_real, "red")  # Adiciona a tag "red" ao novo valor
+                                data_pl = result_datapl[2:]
+                                self.caixapl.insert("4.6", data_pl, "red")  # Adiciona a tag "red" ao novo valor
                                 self.caixapl.tag_config("red", foreground="red")
                                 break
                     if crea_entry == 'BA':
@@ -1302,33 +1027,32 @@ class App():
                             print("14 passo: Achei os dados da DECISÃO PLENARIA")
                             if datatopl:
                                 result_datapl = datatopl.group()
-                                result_datapl_real = result_datapl[2:]
-                                self.caixapl.insert("4.6", result_datapl_real, "red")  # Adiciona a tag "red" ao novo valor
+                                data_pl = result_datapl[2:]
+                                self.caixapl.insert("4.6", data_pl, "red")  # Adiciona a tag "red" ao novo valor
                                 self.caixapl.tag_config("red", foreground="red")
                                 break
                     elif crea_entry == "TO":
-                        for page_num in range(pag_pl, len(pdf_reader.pages)):
+                        for page_num in range(folhas_pl, len(pdf_reader.pages)):
                             page = pdf_reader.pages[page_num]
                             text5 = page.extract_text()
                             datatopl = re.search(r'TO, (.+)\.', text5)
                             print("14 passo: Achei os dados da DECISÃO PLENARIA")
                             if datatopl:
-                                result_datapl = datatopl.group(1)
-                                self.caixapl.insert("4.6", result_datapl, "red")  # Adiciona a tag "red" ao novo valor
+                                data_pl = datatopl.group(1)
+                                self.caixapl.insert("4.6", data_pl, "red")  # Adiciona a tag "red" ao novo valor
                                 self.caixapl.tag_config("red", foreground="red")
                                 break
                     elif  crea_entry == "RS":
                             datatopl = re.search(r'Data:(.+)\.', text3)
                             print("14 passo: Achei os dados da DECISÃO PLENARIA")
                             if datatopl:
-                                result_datapl = datatopl.group(1)
-                                self.caixapl.insert("4.6", result_datapl, "red")  # Adiciona a tag "red" ao novo valor
+                                data_pl = datatopl.group(1)
+                                self.caixapl.insert("4.6", data_pl, "red")  # Adiciona a tag "red" ao novo valor
                                 self.caixapl.tag_config("red", foreground="red")
                                 break
 
 
             multapl(pdf_reader, folhas_pl,crea_entry, pdf_file, num_pages)
-
         def multapl(pdf_reader, folhas_pl,crea_entry, pdf_file, num_pages):
             self.valBarra(55)
             global multa_pl
@@ -1384,9 +1108,11 @@ class App():
 
                         if multaplgo_melhora:
                             if "redução" in multaplgo_melhora:
+                                multa_pl = 'reduziu'
                                 self.caixapl.insert("5.6", "reduziu para valor minimo","red")  # Adiciona a tag "red" ao novo valor
                                 self.caixapl.tag_config("red", foreground="red")
                             elif "manutenção" in multaplgo_melhora or "MANUTENÇÃO" in multaplgo_melhora:
+                                multa_pl = 'manteve'
                                 self.caixapl.insert("5.6", "manteve o valor da multa do AUTO","red")  # Adiciona a tag "red" ao novo valor
                                 self.caixapl.tag_config("red", foreground="red")
                         break
@@ -1404,9 +1130,11 @@ class App():
                         multaplrs_melhora = multaplrs_extracted_text.replace("\n", "")
                         if multaplrs_melhora:
                             if "redução" in multaplrs_melhora:
+                                multa_pl = 'reduziu'
                                 self.caixapl.insert("5.6", "reduziu para valor minimo","red")  # Adiciona a tag "red" ao novo valor
                                 self.caixapl.tag_config("red", foreground="red")
                             elif "manutenção" in multaplrs_melhora:
+                                multa_pl = 'manteve'
                                 self.caixapl.insert("5.6", "manteve o valor da multa do AUTO","red")  # Adiciona a tag "red" ao novo valor
                                 self.caixapl.tag_config("red", foreground="red")
 
@@ -1417,9 +1145,11 @@ class App():
                         multaplrs_melhora = multaplrs_extracted_text.replace("\n", "")
                         if multaplrs_melhora:
                             if "redução" in multaplrs_melhora:
+                                multa_pl = 'reduziu'
                                 self.caixapl.insert("5.6", "reduziu para valor minimo","red")  # Adiciona a tag "red" ao novo valor
                                 self.caixapl.tag_config("red", foreground="red")
                             elif "manutenção" in multaplrs_melhora:
+                                multa_pl = 'manteve'
                                 self.caixapl.insert("5.6", "manteve o valor da multa do AUTO","red")  # Adiciona a tag "red" ao novo valor
                                 self.caixapl.tag_config("red", foreground="red")
                         break
@@ -1437,18 +1167,20 @@ class App():
                         multaplrs_melhora = multaplrs_extracted_text.replace("\n", "")
                         if multaplrs_melhora:
                             if "redução" in multaplrs_melhora or "minimo" in multaplrs_melhora:
+                                multa_pl = 'reduziu'
                                 self.caixapl.insert("5.6", "reduziu para valor minimo","red")  # Adiciona a tag "red" ao novo valor
                                 self.caixapl.tag_config("red", foreground="red")
                             elif "manutenção" in multaplrs_melhora:
+                                multa_pl = 'manteve'
                                 self.caixapl.insert("5.6", "manteve o valor da multa do AUTO","red")  # Adiciona a tag "red" ao novo valor
                                 self.caixapl.tag_config("red", foreground="red")
 
 
             aviso(pdf_reader, folhas_pl, crea_entry, pdf_file, num_pages)
-
         def aviso(pdf_reader, folhas_pl,crea_entry, pdf_file, num_pages):
             self.valBarra(75)
             global folhas_aviso
+            global data_aviso
             data1= ''
             print("15 passo: Procurar o aviso de recebimento")
             for pagina in range(folhas_pl, len(pdf_reader.pages)):
@@ -1491,10 +1223,10 @@ class App():
                     if data3:
                         configdata3(data3)
 
-            recurso(folhas_pl,pdf_file,pdf_reader,crea_entry,data1,num_pages)
-
+            recurso(folhas_pl,pdf_reader,crea_entry,data_aviso,num_pages)
         """Descobrindo a Data"""
         def configdata3(data3):
+            global data_aviso
             dia2 = data3.group(1)
             mes2 = data3.group(2)
             ano2 = data3.group(3)
@@ -1534,16 +1266,16 @@ class App():
             elif mes2 == '12':
                 mes_escrito2 = "dezembro"
                 configmes3(dia2,mes_escrito2,ano2)
-
         """Exibindo a data"""
         def configmes3(dia2,mes_escrito2,ano2):
-            data_formatada2 = f"{dia2} de {mes_escrito2} de {ano2}"
-            self.caixaar.insert("3.5", str(data_formatada2), "red")  # Adiciona a tag "red" ao novo valor
+            global data_aviso
+            data_aviso = f"{dia2} de {mes_escrito2} de {ano2}"
+            self.caixaar.insert("3.5", str(data_aviso), "red")  # Adiciona a tag "red" ao novo valor
             self.caixaar.tag_config("red", foreground="red")
-
-        def recurso(folhas_pl,pdf_file,pdf_reader , crea_entry,data1,num_pages):
+        def recurso(folhas_pl,pdf_reader , crea_entry,data_aviso,num_pages):
             global folhas_recurso
             global data_recurso
+
             self.valBarra(80)
             print("17 passo: Procurar o recurso")
             for page_num in range(folhas_pl, len(pdf_reader.pages)):
@@ -1575,14 +1307,14 @@ class App():
                         print("18 passo: Achei o recurso")
 
                         pag_recurso = page_num
-                        pag_recurso_total = f"{pag_recurso}/{num_pages}"
-                        self.caixarecurso.insert("2.7", pag_recurso_total, "red")
+                        folhas_recurso = f"{pag_recurso}/{num_pages}"
+                        self.caixarecurso.insert("2.7", folhas_recurso, "red")
                         self.caixarecurso.tag_config("red", foreground="red")
                         datarecurso = re.search(r'(\d{2})/(\d{2})/(\d{4})', text7)
                         datarecurso2 = re.search(r'(\d{2}) de (\w+) de (\d{4})',text7)
                         if datarecurso2:
-                            data_formatadare = datarecurso2.group()
-                            self.caixarecurso.insert("3.5", str(data_formatadare),"red")  # Adiciona a tag "red" ao novo valor
+                            data_recurso = datarecurso2.group()
+                            self.caixarecurso.insert("3.5", str(data_recurso),"red")  # Adiciona a tag "red" ao novo valor
                             self.caixarecurso.tag_config("red", foreground="red")
                         elif datarecurso:
                             diare = datarecurso.group(1)
@@ -1628,12 +1360,12 @@ class App():
                             elif mesre == '12':
                                 mes_escritore = "dezembro"
                             configmesre(diare, mes_escritore, anore)
-                            data_formatadare = f"{diare} de {mes_escritore} de {anore}"
-                            self.caixarecurso.insert("3.5", str(data_formatadare),
+                            data_recurso = f"{diare} de {mes_escritore} de {anore}"
+                            self.caixarecurso.insert("3.5", str(data_recurso),
                                                      "red")  # Adiciona a tag "red" ao novo valor
                             self.caixarecurso.tag_config("red", foreground="red")
-                            if data1 is not None:
-                                diferenca = (data1 - data4).days
+                            if data_aviso is not None:
+                                diferenca = (data_aviso - data4).days
                                 if diferenca:
                                     diferenca2 = diferenca*(-1)+1
                                     self.caixatempestividade.insert("2.17", "FORA DO PRAZO", "red")
@@ -1665,27 +1397,26 @@ class App():
                         print("18 passo: Achei o recurso")
 
                         if datagore:
-                            result_datagore = datagore.group()
-                            self.caixarecurso.insert("3.7", result_datagore, "red")
+                            data_recurso = datagore.group()
+                            self.caixarecurso.insert("3.7", data_recurso, "red")
                             self.caixarecurso.tag_config("red", foreground="red")
                         self.valBarra(95)
                     elif recursors:
-                        result_recursors = recursors.group()
+                        data_recurso = recursors.group()
                         #result_recursors_real =
                         pag_recursors = page_num + 1
-                        pag_recursors_total = f"{pag_recursors}/{num_pages}"
-                        self.caixarecurso.insert("2.7", pag_recursors_total, "red")
+                        folhas_recurso = f"{pag_recursors}/{num_pages}"
+                        self.caixarecurso.insert("2.7", folhas_recurso, "red")
                         self.caixarecurso.tag_config("red", foreground="red")
-                        self.caixarecurso.insert("3.5", result_recursors, "red")
+                        self.caixarecurso.insert("3.5", data_recurso, "red")
                         self.caixarecurso.tag_config("red", foreground="red")
                         break
                     def configmesre(diare, mes_escritore, anore):
-                        data_formatadare = f"{diare} de {mes_escritore} de {anore}"
-                        self.caixarecurso.insert("3.5", str(data_formatadare), "red")  # Adiciona a tag "red" ao novo valor
+                        data_recurso = f"{diare} de {mes_escritore} de {anore}"
+                        self.caixarecurso.insert("3.5", str(data_recurso), "red")  # Adiciona a tag "red" ao novo valor
                         self.caixarecurso.tag_config("red", foreground="red")
 
             art(pdf_reader,crea_entry)
-
         def art(pdf_reader, crea_entry):
             art_page = None
             reincidencia_page = None
@@ -1825,11 +1556,10 @@ class App():
                             print(con)
                     except mysql.connector.Error as error:
                         messagebox.showwarning("Duplicidade", f"Auto de infração duplicado ou já analisado\n {str(error)}")
-            salvar()
+            #salvar()
             self.variaveis()
             self.valBarra(100)
             tk.messagebox.showinfo("Sistema confea","Finalizado")
-
 ##########################################################################################################
 #           CREAS GO
 ##########################################################################################################
@@ -1851,7 +1581,6 @@ class App():
                     #salvar(nsei_entry)
                     #salvar(folhas_entry)
                     pagdoautogo(folhas_entry, pdf_file,crea_entry, num_pages)
-
         """EXTRAINDO DADOS DO AUTO DE INFRAÇÃO"""
         def pagdoautogo(folhas_entry,pdf_file,crea_entry,num_pages):
             pdf_reader = PdfReader(pdf_file)
@@ -1914,7 +1643,6 @@ class App():
 #           CREAS RS
 ##########################################################################################################
         """CREAS= RS"""
-
         def crea_entrysrs(pdf_file, num_pages, crea_entry):
             self.valBarra(10)
             print("3 passo: Procura a pagina do AUTO DE INFRAÇÃO")
@@ -1941,7 +1669,6 @@ class App():
                     #salvar(folhas_entry)
                     pagedoautors(folhas_entry, pdf_file, num_pages, crea_entry)
                     break
-
         """EXTRAINDO DADOS DO AUTO DE INFRAÇÃO"""
         def pagedoautors(folhas_entry, pdf_file, num_pages, crea_entry):
             self.valBarra(20)
@@ -2037,26 +1764,16 @@ class App():
 
                         break
             ce(pdf_reader, folhas_entry, crea_entry, pdf_file, num_pages)
-
-        """Descobre qual a pagina da Camara Especializada"""
-
-        #def cego(pdf_reader, folhas_entry, result, pdf_file):
-
-
-
-
         def configmes(dia,mes_escrito,ano):
-            data_formatada = f"{dia} de {mes_escrito} de {ano}"
-            if data_formatada:
-                self.caixaai.insert("9.6", str(data_formatada), "red")  # Adiciona a tag "red" ao novo valor
+            global data_ai
+            data_ai = f"{dia} de {mes_escrito} de {ano}"
+
+            if data_ai:
+                self.caixaai.insert("9.6", str(data_ai), "red")  # Adiciona a tag "red" ao novo valor
                 self.caixaai.tag_config("red", foreground="red")
-                return data_formatada
-#            self.caixatexto.insert("1.238", str(data_formatada), "red")
-#            self.caixatexto.tag_config("red", foreground="red")
-
-
+                return data_ai
         def configdata(data):
-
+            global data_ai
             dia = data.group(1)
             mes = data.group(2)
             ano = data.group(3)
@@ -2096,12 +1813,10 @@ class App():
             elif mes == '12':
                 mes_escrito = "dezembro"
                 configmes(dia,mes_escrito,ano)
-
 ##########################################################################################################
 #           CREAS RJ
 ##########################################################################################################
         """Descobre qual pagina do Auto de Infração"""
-
         def crea_entrysrj(pdf_file, num_pages, crea_entry):
             self.valBarra(10)
             print("3 passo: Procura a pagina do AUTO DE INFRAÇÃO")
@@ -2128,9 +1843,7 @@ class App():
                     #folhas_entry)
                     pagedoautorj(folhas_ai, pdf_file, num_pages, crea_entry)
                     break
-
         """EXTRAINDO DADOS DO AUTO DE INFRAÇÃO"""
-
         def pagedoautorj(folhas_ai, pdf_file, num_pages, crea_entry):
             locale.setlocale(locale.LC_TIME, 'pt_BR.utf8')
             global nauto_ai
@@ -2217,17 +1930,15 @@ class App():
                 result_data = data.group(1)
                 data_objeto = datetime.strptime(result_data, "%d de %B de %Y")
                 data_ai = data_objeto.strftime("%Y-%m-%d")
-                self.caixaai.insert("9.6", str(result_data), "red")  # Adiciona a tag "red" ao novo valor
+                self.caixaai.insert("9.6", str(data_ai), "red")  # Adiciona a tag "red" ao novo valor
                 self.caixaai.tag_config("red", foreground="red")
             ce(pdf_reader, folhas_ai, crea_entry, pdf_file, num_pages)
-
-        #def pagedopl(pag_pl, pdf_file):
+        #def pagedopl(folhas_pl, pdf_file):
 
 ##########################################################################################################
 #           CREAS SP
 ##########################################################################################################
         """Descobre qual pagina do Auto de Infração"""
-
         def crea_entryssp(pdf_file, num_pages, crea_entry):
             self.valBarra(10)
             print("3 passo: Procura a pagina do AUTO DE INFRAÇÃO")
@@ -2241,7 +1952,7 @@ class App():
                 if pagautuado:
                     self.valBarra(15)
                     print("4 passo: Achei a pagina do AUTO DE INFRAÇÃO")
-                    folhas_entry = page_num + 1
+                    folhas_ai = page_num + 1
 
 
                     # result_nsei_entry = nsei_entry.group(1)
@@ -2249,21 +1960,18 @@ class App():
                     # self.caixaai.insert("2.16", str(result_nsei_entry), "red")  # Adiciona a tag "red" ao novo valor
                         # self.caixaai.tag_config("red", foreground="red")
                     """Inserir folha do AUTO DE INFRAÇÃO"""
-                    self.caixaai.insert("6.11", str(folhas_entry), "red")  # Adiciona a tag "red" ao novo valor
+                    self.caixaai.insert("6.11", str(folhas_ai), "red")  # Adiciona a tag "red" ao novo valor
                     self.caixaai.tag_config("red", foreground="red")  # Configura a cor vermelha para a tag "red"
                     # folhas_entry)
-                    pagedoautosp(folhas_entry, pdf_file, num_pages, crea_entry)
+                    pagedoautosp(folhas_ai, pdf_file, num_pages, crea_entry)
                     break
-
-
         """EXTRAINDO DADOS DO AUTO DE INFRAÇÃO"""
-
-        def pagedoautosp(folhas_entry, pdf_file, num_pages, crea_entry):
-            global nauto_entry
+        def pagedoautosp(folhas_ai, pdf_file, num_pages, crea_entry):
+            global nauto_ai
             self.valBarra(20)
             print("5 passo: Procura todos os dados do AUTO DE INFRAÇÃO")
             pdf_reader = PdfReader(pdf_file)
-            page = pdf_reader.pages[folhas_entry - 1]
+            page = pdf_reader.pages[folhas_ai - 1]
             text = page.extract_text()
             """Extrai o valor da multa"""
             """Extrai a data do auto"""
@@ -2341,19 +2049,933 @@ class App():
                 result_data = data.group(1)
                 self.caixaai.insert("9.6", str(result_data), "red")  # Adiciona a tag "red" ao novo valor
                 self.caixaai.tag_config("red", foreground="red")
-            ce(pdf_reader, folhas_entry, crea_entry, pdf_file, num_pages)
+            ce(pdf_reader, folhas_ai, crea_entry, pdf_file, num_pages)
 
-                # pagedoce(pag_ce, pdf_file)
+                # pagedoce(folhas_ce, pdf_file)
 
-        """variaveis = [nsei_entry, artigo, autuado, cnpj_cpf, folhas_entry, nauto, multa, data, motivo,
-                     folhas_entryce, ndecisaoce, especialidade, datace, multace, folhas_entrypl, ndecisaopl, datapl,
-                     multapl, folharecurso, datarecurso, justificativa, folhaaviso, dataaviso, prazo, dias,
-                     folhas_entryart, nart, dataart, folhas_entrycnpj, datacnpj, cnaeprimeiro, cnaesegundo,
-                     folhas_entryreincidencia, datareincidencia, folhas_entryprocuracao, nomeprocuracao,
-                     folhas_entryalteracao, nalteracao]"""
+    #def botoes(self):
+        """Barra de pesquisa"""
+        lb_pes = Entry(self.frame_1, text="Digite sua busca aqui")
+        lb_pes.configure(background='#fff', fg='black', font='Arial 10 ')
+        lb_pes.place(relx=0.60, rely=0.4, relwidth=0.25, relheight=0.25)
+        """Botao pesquisar"""
+        btn_pes = ctk.CTkButton(self.frame_1, text='Pesquisar', fg_color='#fff', text_color='#000', font=('Arial', 14))
+        btn_pes.place(relx=0.86, rely=0.4, relwidth=0.07, relheight=0.25)
+        def tela_menu():
+            self.pag59.place_forget()
 
+        #self.conteudo()
+        def tela_texto():
+
+            self.caixaai.pack_forget()
+            self.caixace.pack_forget()
+            self.caixapl.pack_forget()
+            self.caixaar.pack_forget()
+            self.caixarecurso.pack_forget()
+            self.caixatempestividade.pack_forget()
+            self.caixaart.pack_forget()
+            self.caixareincidencia.pack_forget()
+            self.caixacnpj.pack_forget()
+            self.caixaprocuracao.pack_forget()
+            global crea_entry
+            global nsei_ai
+            global artigo_ai
+            global autuado_ai
+            global cnpj_cpf_ai
+            global folhas_ai
+            global nauto_ai
+            global multa_ai
+            global data_ai
+            print(data_ai)
+            global motivo_ai
+            global especialidade_ce
+            global folhas_ce
+            global ndecisao_ce
+            global data_ce
+            global folhas_pl
+            global ndecisao_pl
+            global data_pl
+            global multa_pl
+            global folhas_recurso
+            global data_recurso
+            global justifica_recurso
+            global folhas_aviso
+            global data_aviso
+            global prazo
+            global dias
+            global folhas_art
+            global n_art
+            global data_art
+            global folhas_cnpj
+            global data_cnpj
+            global cnae_primeiro
+            global cnae_segundo
+            global folhas_reincidencia
+            global data_reincidencia
+            global folhas_procuracao
+            global nome_procuracao
+            global folhas_alteracao
+            global n_alteracao
+            if ('alínea "b"' in artigo_ai or "alínea 'b'" in artigo_ai):
+                self.pag59 = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+                self.pag59.tag_configure("red", foreground="red")
+                self.pag59.insert(tk.INSERT,
+                    """ALINEA B
+                    Trata-se de recurso interposto ao Confea contra a decisão do Plenário do Crea-""" + str(crea_entry) + """ pela pessoa """ + str(autuado_ai) + """, CNPJ nº ***""" + str(cnpj_cpf_ai) + """***, autuada mediante o Auto de Infração n° """ + str(nauto_ai) + """, lavrado em """ + str(data_ai) + """, por infração """ + str(artigo_ai) + """, ao """ + str(motivo_ai) + """. (fls.""" + str(folhas_ai) + """  e """ + str(folhas_recurso) + """)
+                    A Câmara Especializada de """ + str(especialidade_ce) + """ analisou os autos e concluiu pela manutenção da autuação, expedindo a Decisão nº """ + str(ndecisao_ce) + """, de """ + str(data_ce) + """ (fl. """ + str(folhas_ce) + """)
+                    O recurso do(a) interessado(a) ao Plenário do Crea foi julgado mediante a Decisão nº """ + str(ndecisao_pl) + """, de """ + str(data_pl) + """, que decidiu manter a autuação. (fl. """ + str(folhas_pl) + """)
+                    O(A) interessado(a) teve ciência da decisão do Plenário do Regional em """ + str(data_aviso) + """ e protocolizou, em """ + str(data_recurso) + """, no Crea-""" + str(crea_entry) + """, recurso ao Confea. (fls. """ + str(folhas_aviso) + """ e """ + str(folhas_recurso) + """)
+                    Embora não conste do processo a informação da data em que o interessado(a) teve ciência da Decisão do Plenário do Regional, em """ + str(data_recurso) + """, foi protocolizado pelo interessado(a)""" + str(nome_procuracao) + """ no Crea-""" + str(crea_entry) + """ recurso ao Confea. (fls. """ + str(folhas_recurso) + """)
+                    As folhas citadas neste parecer são relativas ao número da página eletrônica no SEI - XXXXX.
+1.Análise
+
+                    A PROCURAÇÃO ESTA NA PAGINA """+ str(folhas_procuracao)+"""
+                    O COMPROVANTE DE CADASTRO NACIONAL DA PESSOA JURIDICA ESTA NA PAGINA"""+ str(folhas_cnpj)+"""
+                    REINCIDÊNCIA ESTA CITADA NA PAGINA """+ str(folhas_reincidencia)+"""
+                    A ART ESTA NA PAGINA """+ str(folhas_art)+"""
+
+                    Considerando que a alínea “e” do art. 27 da Lei nº 5.194, de 1966, estabelece que compete ao Confea julgar em última instância os recursos sobre registros, decisões e penalidades impostas pelos Conselhos Regionais;
+                    Considerando que a alínea “a” do art. 6º da Lei nº 5.194, de 1966, prevê que exerce ilegalmente a profissão de engenheiro ou engenheiro - agrônomo a pessoa física ou jurídica que realizar atos ou prestar serviços, públicos ou privados, reservados aos profissionais de que trata a lei e que não possua registro nos Conselhos Regionais;
+                    Considerando que o inciso II do art. 1º da Decisão Normativa nº 74, de 27 de agosto de 2004, esclarece que pessoas físicas leigas executando atividades privativas de profissionais fiscalizados pelo Sistema Confea / Crea estarão infringindo a alínea “a” do art. 6º da Lei nº 5.194, de 1966;
+                    Considerando que o(a) interessado(a), em seu recurso ao Plenário do Confea, alegou que sintetizar alegações, se necessário fazer mais considerandos;
+                    Considerando que não procedem as alegações constantes do recurso apresentado, visto que contra - argumentar o recurso;
+                    Considerando que, não obstante as alegações apresentadas, o(a) interessado(a) motivou a lavratura do auto de infração, uma vez que fundamentar;
+                    Considerando que a infração está capitulada na alínea “a” do art. 6º da Lei n° 5.194, de 1966, cuja penalidade está prevista no art. 71, alínea “c” – multa, combinado com o art. 73, alínea “d”, dessa lei;e
+                    UTILIZAR CONFORME O CASO
+                    Auto lavrado no ano de 2010:
+                    Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 513, de 21 de agosto de 2009, art. 4º, alínea “d”, no valor compreendido entre R$ 238,00 (duzentos e trinta e oito reais) e R$ 801,50 (oitocentos e um reais e cinquenta centavos),
+                    Auto lavrado no ano de 2011:
+                    Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 518, de 24 de setembro de 2010, art. 5º, alínea “d”, no valor compreendido entre R$ 509,50 (quinhentos e nove reais e cinquenta centavos) e R$ 844,00 (oitocentos e quarenta e quatro reais),
+                    Auto lavrado no ano de 2012:
+                    Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 524, de 3 de outubro de 2011, art. 4º, alínea “d”, no valor compreendido entre R$ 752,00 (setecentos e cinquenta e dois reais) e R$ 1.504,50 (mil, quinhentos e quatro reais e cinquenta centavos),
+                    Auto lavrado no ano de 2013:
+                    Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.043, de 28 de setembro de 2012, art. 1º, alínea “d”, no valor compreendido entre R$ 792,53 (setecentos e noventa e dois reais e cinquenta e três centavos) e R$ 1.585,59 (mil, quinhentos e oitenta e cinco reais e cinquenta e nove centavos),
+                    Auto lavrado no ano de 2014:
+                    Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.049, de 27 de setembro de 2013, art. 1º, alínea “d”, no valor compreendido entre R$ 840,64 (oitocentos e quarenta reais e sessenta e quatro centavos) e R$ 1.681,84 (mil, seiscentos e oitenta e um reais e oitenta e quatro centavos),
+                    Auto lavrado no ano de 2015:
+                    Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.058, de 26 de setembro de 2014, art. 1º, alínea “d”, no valor compreendido entre R$ 894,36 (oitocentos e noventa e quatro reais e trinta e seis centavos) e R$ 1.788,72 (mil, setecentos e oitenta e oito reais e setenta e dois centavos),
+                    Auto lavrado no ano de 2016:
+                    Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-2041/2015, de 25 de setembro de 2015, no valor compreendido entre R$ 982,72 (novecentos e oitenta e dois reais e setenta e dois centavos) e R$ 1.965,45 (mil, novecentos e sessenta e cinco reais e quarenta e cinco centavos),
+                    Auto lavrado no ano de 2017:
+                    Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1056/2016, de 22 de setembro de 2016, no valor compreendido entre R$ 1.077,30 (mil e setenta e sete reais e trinta centavos) e R$ 2.154,60 (dois mil, cento e cinquenta e quatro reais e sessenta centavos),
+                    Auto lavrado no ano de 2018:
+                    Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1758/2017, de 28 de setembro de 2017, no valor compreendido entre R$ 1.095,96 (mil e noventa e cinco reais e noventa e seis centavos) e R$ 2.191,91 (dois mil, cento e noventa e um reais e noventa e um centavos),
+                    Auto lavrado no ano de 2019:
+                    Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1611/2018, de 28 de setembro de 2018, no valor compreendido entre R$ 1.135,87 (mil cento e trinta e cinco reais e oitenta e sete centavos) e R$ 2.271,73 (dois mil duzentos e setenta e um reais e setenta e três centavos);
+                    Auto lavrado no ano de 2020:
+                    Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1544/2019, de 26 de setembro de 2019, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos);
+                    Auto lavrado no ano de 2021: 
+                    Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1642/2020, de 29 de setembro de 2020, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos), 
+                    Auto lavrado no ano de 2022:
+                    Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1513/2021, de 24 de setembro de 2021, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos), 
+                    Auto lavrado no ano de 2023: 
+                    Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1457/2022, de 30 de setembro de 2022, no valor de R$ 1.276,71 (um mil duzentos e setenta e seis reais e setenta e um centavos)  a R$ 2.553,41 (dois mil quinhentos e cinquenta e três reais e quarenta e um centavos), 
+                    OU
+                    NO CASO DE O CREA TER FIXADO MULTA EM VALOR FORA DAS FAIXAS DA RESOLUÇÃO
+                    Considerando que apesar de o Regional ter estabelecido a multa no valor de R$ (valor por extenso), a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº colocar a resolução aplicável dos parágrafos acima,
+                    ACRESCENTAR, SE NECESSÁRIO:
+                    HAVENDO A REGULARIZAÇÃO DO FATO QUE ENSEJOU A AUTUAÇÃO, APÓS A LAVRATURA DO A.I.
+                    Considerando que o § 2° do art. 11 da Resolução n° 1.008, de 9 de dezembro de 2004, estabelece que lavrado o auto de infração, a regularização da situação não exime o(a) autuado(a) das cominações legais;
+                    Considerando que o § 3º do art. 43 dessa resolução dispõe que é facultada a redução de multas pelas instâncias julgadoras do Crea e do Confea nos casos previstos nesse artigo, respeitadas as faixas de valores estabelecidas em resolução específica;
+                    Considerando que o(a) interessado(a) somente providenciou a regularização após a lavratura do auto de infração, mediante a contratação do(a) profissional Título abreviado conforme Res. nº 473/2002 Nome do profissional OU o registro da ART nº NÚMERO, em data, o que motiva a aplicação da multa em seu valor mínimo, tal como dispõe o inciso V do art. 43 da Resolução nº 1.008, de 2004; e (fl. ART ou contrato)
+                    SE FOR PRIMÁRIO
+                    Considerando que não foi comprovada nos autos a prática, pelo(a) interessado(a), de irregularidade anterior, capitulada no mesmo dispositivo legal e transitada em julgado,
+                    E/OU
+                    NO CASO DE REINCIDÊNCIA OU NOVA REINCIDÊNCIA
+                    Considerando que o(a) interessado(a) incorreu em reincidência OU nova reincidência, comprovada nos autos mediante apontar documento que comprova, o que motiva a aplicação do valor da multa em dobro, conforme dispõem os §§ 1° e 2º do art. 43 da Resolução n° 1.008, de 9 de dezembro de 2004,
+                    E/OU
+                    QUANDO A SITUAÇÃO PERMITE A APLICAÇÃO DO ART. 43 DA RESOLUÇÃO Nº 1.008, DE 2004
+                    Considerando que se trata de autuado(a) primário(a), conforme informações constantes do processo, não tendo sido imputada pena anterior pelo Crea ao(à) interessado(a), por esta ou outra infração à legislação do Sistema Confea/Crea e transitada em julgado;
+                    E/OU
+                    Considerando que a infração não pode ser considerada de caráter grave, justificada pela pouca repercussão, tendo ficado restrita à sua atuação ilegal, perante a legislação em comento;
+                    E/OU
+                    Considerando que a falta cometida não trouxe prejuízos diretamente a terceiros, bem como consequências de outra natureza que possa ser considerada insanável, podendo ser facilmente reparada e corrigida a linha de condução;
+                    Considerando que os três critérios atenuantes acima estão previstos nos Incisos I, III e IV do art. 43 da Resolução nº 1.008, de 9 de dezembro de 2004; (Obs.: utilizar apenas os incisos aplicáveis ao caso)
+                    Considerando a necessidade de cumprimento pelo Sistema Confea/Crea da finalidade de interesse público a que se destina;
+                    Considerando que o(a) autuado(a) se enquadra nas questões acima, motivos pelos quais a multa deveria ter sido fixada pelo Crea em valor proporcional e razoável, comparativamente à falta cometida;
+2. Conclusão
+                    Sugerimos à Comissão de Ética e Exercício Profissional – CEEP propor ao Plenário do Confea:
+                    2.1. conhecer o recurso interposto pelo(a) interessado(a) para, no mérito, negar-lhe provimento; e
+                    NO CASO DE MANUTENÇÃO DO VALOR DA MULTA ESTABELECIDA PELO CREA
+                    2.2. manter a aplicação de multa no valor de R$ (valor por extenso), conforme estabelecido pelo Regional, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei.
+                    OU
+                    EM CASOS GERAIS DE REINCIDÊNCIA
+                    manter a aplicação de multa no valor de R$ (valor por extenso), já dobrado em função da comprovada reincidência, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei. (valor máximo ou qualquer valor estabelecido conforme faixa)
+                    NO CASO DE REINCIDÊNCIA, REGULARIZAÇÃO E REDUÇÃO DO VALOR DA MULTA PELO CONFEA
+                    2.2. manter a aplicação de multa no valor de R$ (valor por extenso), reduzido em função da regularização da falta e já dobrado devido a comprovada reincidência, a ser corrigido pelo Crea na forma da lei. (valor mínimo em função da regularização).
+                    OU
+                    NO CASO DE REDUÇÃO DA MULTA, EM FUNÇÃO DO CONTIDO NO ART. 43 DA RESOLUÇÃO Nº 1.008, DE 2004
+                    2.2 - manter a aplicação de multa e reduzir o seu valor para R$ (valor por extenso), em função dos princípios de proporcionalidade e razoabilidade, relativamente à infração cometida, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei.
+                    Observação: o “conforme estabelecido pelo Regional” deve ser utilizado somente nos casos em que o valor da multa do Crea divergir do valor correto da resolução.""")
+                cores()
+
+            elif ('alínea "e"' in artigo_ai or "alínea 'e'" in artigo_ai):
+                    self.pag59 = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+                    self.pag59.tag_configure("red", foreground="red")
+                    self.pag59.insert(tk.INSERT,
+                                      """ALINEA E
+                                      Trata-se de recurso interposto ao Confea contra a decisão do Plenário do Crea-""" + str(
+                                          crea_entry) + """ pela pessoa """ + str(
+                                          autuado_ai) + """, CNPJ nº ***""" + str(
+                                          cnpj_cpf_ai) + """***, autuada mediante o Auto de Infração n° """ + str(
+                                          nauto_ai) + """, lavrado em """ + str(data_ai) + """, por infração """ + str(
+                                          artigo_ai) + """, ao """ + str(motivo_ai) + """. (fls.""" + str(
+                                          folhas_ai) + """  e """ + str(folhas_recurso) + """)
+                            A Câmara Especializada de """ + str(
+                                          especialidade_ce) + """ analisou os autos e concluiu pela manutenção da autuação, expedindo a Decisão nº """ + str(
+                                          ndecisao_ce) + """, de """ + str(data_ce) + """ (fl. """ + str(folhas_ce) + """)
+                            O recurso do(a) interessado(a) ao Plenário do Crea foi julgado mediante a Decisão nº """ + str(
+                                          ndecisao_pl) + """, de """ + str(
+                                          data_pl) + """, que decidiu manter a autuação. (fl. """ + str(folhas_pl) + """)
+                            O(A) interessado(a) teve ciência da decisão do Plenário do Regional em """ + str(
+                                          data_aviso) + """ e protocolizou, em """ + str(
+                                          data_recurso) + """, no Crea-""" + str(
+                                          crea_entry) + """, recurso ao Confea. (fls. """ + str(
+                                          folhas_aviso) + """ e """ + str(folhas_recurso) + """)
+                            Embora não conste do processo a informação da data em que o interessado(a) teve ciência da Decisão do Plenário do Regional, em """ + str(
+                                          data_recurso) + """, foi protocolizado pelo interessado(a)""" + str(
+                                          nome_procuracao) + """ no Crea-""" + str(
+                                          crea_entry) + """ recurso ao Confea. (fls. """ + str(folhas_recurso) + """)
+                            As folhas citadas neste parecer são relativas ao número da página eletrônica no SEI - XXXXX.
+        1.Análise
+        
+        
+                    A PROCURAÇÃO ESTA NA PAGINA """+ str(folhas_procuracao)+"""
+                    O COMPROVANTE DE CADASTRO NACIONAL DA PESSOA JURIDICA ESTA NA PAGINA"""+ str(folhas_cnpj)+"""
+                    REINCIDÊNCIA ESTA CITADA NA PAGINA """+ str(folhas_reincidencia)+"""
+                    A ART ESTA NA PAGINA """+ str(folhas_art)+"""
+
+        
+                            Considerando que a alínea “e” do art. 27 da Lei nº 5.194, de 1966, estabelece que compete ao Confea julgar em última instância os recursos sobre registros, decisões e penalidades impostas pelos Conselhos Regionais;
+                            Considerando que a alínea “a” do art. 6º da Lei nº 5.194, de 1966, prevê que exerce ilegalmente a profissão de engenheiro ou engenheiro - agrônomo a pessoa física ou jurídica que realizar atos ou prestar serviços, públicos ou privados, reservados aos profissionais de que trata a lei e que não possua registro nos Conselhos Regionais;
+                            Considerando que o inciso II do art. 1º da Decisão Normativa nº 74, de 27 de agosto de 2004, esclarece que pessoas físicas leigas executando atividades privativas de profissionais fiscalizados pelo Sistema Confea / Crea estarão infringindo a alínea “a” do art. 6º da Lei nº 5.194, de 1966;
+                            Considerando que o(a) interessado(a), em seu recurso ao Plenário do Confea, alegou que sintetizar alegações, se necessário fazer mais considerandos;
+                            Considerando que não procedem as alegações constantes do recurso apresentado, visto que contra - argumentar o recurso;
+                            Considerando que, não obstante as alegações apresentadas, o(a) interessado(a) motivou a lavratura do auto de infração, uma vez que fundamentar;
+                            Considerando que a infração está capitulada na alínea “a” do art. 6º da Lei n° 5.194, de 1966, cuja penalidade está prevista no art. 71, alínea “c” – multa, combinado com o art. 73, alínea “d”, dessa lei;e
+                            UTILIZAR CONFORME O CASO
+                            Auto lavrado no ano de 2010:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 513, de 21 de agosto de 2009, art. 4º, alínea “d”, no valor compreendido entre R$ 238,00 (duzentos e trinta e oito reais) e R$ 801,50 (oitocentos e um reais e cinquenta centavos),
+                            Auto lavrado no ano de 2011:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 518, de 24 de setembro de 2010, art. 5º, alínea “d”, no valor compreendido entre R$ 509,50 (quinhentos e nove reais e cinquenta centavos) e R$ 844,00 (oitocentos e quarenta e quatro reais),
+                            Auto lavrado no ano de 2012:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 524, de 3 de outubro de 2011, art. 4º, alínea “d”, no valor compreendido entre R$ 752,00 (setecentos e cinquenta e dois reais) e R$ 1.504,50 (mil, quinhentos e quatro reais e cinquenta centavos),
+                            Auto lavrado no ano de 2013:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.043, de 28 de setembro de 2012, art. 1º, alínea “d”, no valor compreendido entre R$ 792,53 (setecentos e noventa e dois reais e cinquenta e três centavos) e R$ 1.585,59 (mil, quinhentos e oitenta e cinco reais e cinquenta e nove centavos),
+                            Auto lavrado no ano de 2014:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.049, de 27 de setembro de 2013, art. 1º, alínea “d”, no valor compreendido entre R$ 840,64 (oitocentos e quarenta reais e sessenta e quatro centavos) e R$ 1.681,84 (mil, seiscentos e oitenta e um reais e oitenta e quatro centavos),
+                            Auto lavrado no ano de 2015:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.058, de 26 de setembro de 2014, art. 1º, alínea “d”, no valor compreendido entre R$ 894,36 (oitocentos e noventa e quatro reais e trinta e seis centavos) e R$ 1.788,72 (mil, setecentos e oitenta e oito reais e setenta e dois centavos),
+                            Auto lavrado no ano de 2016:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-2041/2015, de 25 de setembro de 2015, no valor compreendido entre R$ 982,72 (novecentos e oitenta e dois reais e setenta e dois centavos) e R$ 1.965,45 (mil, novecentos e sessenta e cinco reais e quarenta e cinco centavos),
+                            Auto lavrado no ano de 2017:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1056/2016, de 22 de setembro de 2016, no valor compreendido entre R$ 1.077,30 (mil e setenta e sete reais e trinta centavos) e R$ 2.154,60 (dois mil, cento e cinquenta e quatro reais e sessenta centavos),
+                            Auto lavrado no ano de 2018:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1758/2017, de 28 de setembro de 2017, no valor compreendido entre R$ 1.095,96 (mil e noventa e cinco reais e noventa e seis centavos) e R$ 2.191,91 (dois mil, cento e noventa e um reais e noventa e um centavos),
+                            Auto lavrado no ano de 2019:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1611/2018, de 28 de setembro de 2018, no valor compreendido entre R$ 1.135,87 (mil cento e trinta e cinco reais e oitenta e sete centavos) e R$ 2.271,73 (dois mil duzentos e setenta e um reais e setenta e três centavos);
+                            Auto lavrado no ano de 2020:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1544/2019, de 26 de setembro de 2019, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos);
+                            Auto lavrado no ano de 2021: 
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1642/2020, de 29 de setembro de 2020, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos), 
+                            Auto lavrado no ano de 2022:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1513/2021, de 24 de setembro de 2021, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos), 
+                            Auto lavrado no ano de 2023: 
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1457/2022, de 30 de setembro de 2022, no valor de R$ 1.276,71 (um mil duzentos e setenta e seis reais e setenta e um centavos)  a R$ 2.553,41 (dois mil quinhentos e cinquenta e três reais e quarenta e um centavos), 
+                            OU
+                            NO CASO DE O CREA TER FIXADO MULTA EM VALOR FORA DAS FAIXAS DA RESOLUÇÃO
+                            Considerando que apesar de o Regional ter estabelecido a multa no valor de R$ (valor por extenso), a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº colocar a resolução aplicável dos parágrafos acima,
+                            ACRESCENTAR, SE NECESSÁRIO:
+                            HAVENDO A REGULARIZAÇÃO DO FATO QUE ENSEJOU A AUTUAÇÃO, APÓS A LAVRATURA DO A.I.
+                            Considerando que o § 2° do art. 11 da Resolução n° 1.008, de 9 de dezembro de 2004, estabelece que lavrado o auto de infração, a regularização da situação não exime o(a) autuado(a) das cominações legais;
+                            Considerando que o § 3º do art. 43 dessa resolução dispõe que é facultada a redução de multas pelas instâncias julgadoras do Crea e do Confea nos casos previstos nesse artigo, respeitadas as faixas de valores estabelecidas em resolução específica;
+                            Considerando que o(a) interessado(a) somente providenciou a regularização após a lavratura do auto de infração, mediante a contratação do(a) profissional Título abreviado conforme Res. nº 473/2002 Nome do profissional OU o registro da ART nº NÚMERO, em data, o que motiva a aplicação da multa em seu valor mínimo, tal como dispõe o inciso V do art. 43 da Resolução nº 1.008, de 2004; e (fl. ART ou contrato)
+                            SE FOR PRIMÁRIO
+                            Considerando que não foi comprovada nos autos a prática, pelo(a) interessado(a), de irregularidade anterior, capitulada no mesmo dispositivo legal e transitada em julgado,
+                            E/OU
+                            NO CASO DE REINCIDÊNCIA OU NOVA REINCIDÊNCIA
+                            Considerando que o(a) interessado(a) incorreu em reincidência OU nova reincidência, comprovada nos autos mediante apontar documento que comprova, o que motiva a aplicação do valor da multa em dobro, conforme dispõem os §§ 1° e 2º do art. 43 da Resolução n° 1.008, de 9 de dezembro de 2004,
+                            E/OU
+                            QUANDO A SITUAÇÃO PERMITE A APLICAÇÃO DO ART. 43 DA RESOLUÇÃO Nº 1.008, DE 2004
+                            Considerando que se trata de autuado(a) primário(a), conforme informações constantes do processo, não tendo sido imputada pena anterior pelo Crea ao(à) interessado(a), por esta ou outra infração à legislação do Sistema Confea/Crea e transitada em julgado;
+                            E/OU
+                            Considerando que a infração não pode ser considerada de caráter grave, justificada pela pouca repercussão, tendo ficado restrita à sua atuação ilegal, perante a legislação em comento;
+                            E/OU
+                            Considerando que a falta cometida não trouxe prejuízos diretamente a terceiros, bem como consequências de outra natureza que possa ser considerada insanável, podendo ser facilmente reparada e corrigida a linha de condução;
+                            Considerando que os três critérios atenuantes acima estão previstos nos Incisos I, III e IV do art. 43 da Resolução nº 1.008, de 9 de dezembro de 2004; (Obs.: utilizar apenas os incisos aplicáveis ao caso)
+                            Considerando a necessidade de cumprimento pelo Sistema Confea/Crea da finalidade de interesse público a que se destina;
+                            Considerando que o(a) autuado(a) se enquadra nas questões acima, motivos pelos quais a multa deveria ter sido fixada pelo Crea em valor proporcional e razoável, comparativamente à falta cometida;
+        2. Conclusão
+                            Sugerimos à Comissão de Ética e Exercício Profissional – CEEP propor ao Plenário do Confea:
+                            2.1. conhecer o recurso interposto pelo(a) interessado(a) para, no mérito, negar-lhe provimento; e
+                            NO CASO DE MANUTENÇÃO DO VALOR DA MULTA ESTABELECIDA PELO CREA
+                            2.2. manter a aplicação de multa no valor de R$ (valor por extenso), conforme estabelecido pelo Regional, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei.
+                            OU
+                            EM CASOS GERAIS DE REINCIDÊNCIA
+                            manter a aplicação de multa no valor de R$ (valor por extenso), já dobrado em função da comprovada reincidência, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei. (valor máximo ou qualquer valor estabelecido conforme faixa)
+                            NO CASO DE REINCIDÊNCIA, REGULARIZAÇÃO E REDUÇÃO DO VALOR DA MULTA PELO CONFEA
+                            2.2. manter a aplicação de multa no valor de R$ (valor por extenso), reduzido em função da regularização da falta e já dobrado devido a comprovada reincidência, a ser corrigido pelo Crea na forma da lei. (valor mínimo em função da regularização).
+                            OU
+                            NO CASO DE REDUÇÃO DA MULTA, EM FUNÇÃO DO CONTIDO NO ART. 43 DA RESOLUÇÃO Nº 1.008, DE 2004
+                            2.2 - manter a aplicação de multa e reduzir o seu valor para R$ (valor por extenso), em função dos princípios de proporcionalidade e razoabilidade, relativamente à infração cometida, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei.
+                            Observação: o “conforme estabelecido pelo Regional” deve ser utilizado somente nos casos em que o valor da multa do Crea divergir do valor correto da resolução.""")
+                    cores()
+            elif ('alínea "a"' in artigo_ai or "alínea 'a'" in artigo_ai):
+                    self.pag59 = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+                    self.pag59.tag_configure("red", foreground="red")
+                    self.pag59.insert(tk.INSERT,
+                                      """ALINEA A
+                                      Trata-se de recurso interposto ao Confea contra a decisão do Plenário do Crea-""" + str(
+                                          crea_entry) + """ pela pessoa """ + str(
+                                          autuado_ai) + """, CNPJ nº ***""" + str(
+                                          cnpj_cpf_ai) + """***, autuada mediante o Auto de Infração n° """ + str(
+                                          nauto_ai) + """, lavrado em """ + str(data_ai) + """, por infração """ + str(
+                                          artigo_ai) + """, ao """ + str(motivo_ai) + """. (fls.""" + str(
+                                          folhas_ai) + """  e """ + str(folhas_recurso) + """)
+                            A Câmara Especializada de """ + str(
+                                          especialidade_ce) + """ analisou os autos e concluiu pela manutenção da autuação, expedindo a Decisão nº """ + str(
+                                          ndecisao_ce) + """, de """ + str(data_ce) + """ (fl. """ + str(folhas_ce) + """)
+                            O recurso do(a) interessado(a) ao Plenário do Crea foi julgado mediante a Decisão nº """ + str(
+                                          ndecisao_pl) + """, de """ + str(
+                                          data_pl) + """, que decidiu manter a autuação. (fl. """ + str(folhas_pl) + """)
+                            O(A) interessado(a) teve ciência da decisão do Plenário do Regional em """ + str(
+                                          data_aviso) + """ e protocolizou, em """ + str(
+                                          data_recurso) + """, no Crea-""" + str(
+                                          crea_entry) + """, recurso ao Confea. (fls. """ + str(
+                                          folhas_aviso) + """ e """ + str(folhas_recurso) + """)
+                            Embora não conste do processo a informação da data em que o interessado(a) teve ciência da Decisão do Plenário do Regional, em """ + str(
+                                          data_recurso) + """, foi protocolizado pelo interessado(a)""" + str(
+                                          nome_procuracao) + """ no Crea-""" + str(
+                                          crea_entry) + """ recurso ao Confea. (fls. """ + str(folhas_recurso) + """)
+                            As folhas citadas neste parecer são relativas ao número da página eletrônica no SEI - XXXXX.
+        1.Análise
+        
+        
+                    A PROCURAÇÃO ESTA NA PAGINA """+ str(folhas_procuracao)+"""
+                    O COMPROVANTE DE CADASTRO NACIONAL DA PESSOA JURIDICA ESTA NA PAGINA"""+ str(folhas_cnpj)+"""
+                    REINCIDÊNCIA ESTA CITADA NA PAGINA """+ str(folhas_reincidencia)+"""
+                    A ART ESTA NA PAGINA """+ str(folhas_art)+"""
+
+        
+                            Considerando que a alínea “e” do art. 27 da Lei nº 5.194, de 1966, estabelece que compete ao Confea julgar em última instância os recursos sobre registros, decisões e penalidades impostas pelos Conselhos Regionais;
+                            Considerando que a alínea “a” do art. 6º da Lei nº 5.194, de 1966, prevê que exerce ilegalmente a profissão de engenheiro ou engenheiro - agrônomo a pessoa física ou jurídica que realizar atos ou prestar serviços, públicos ou privados, reservados aos profissionais de que trata a lei e que não possua registro nos Conselhos Regionais;
+                            Considerando que o inciso II do art. 1º da Decisão Normativa nº 74, de 27 de agosto de 2004, esclarece que pessoas físicas leigas executando atividades privativas de profissionais fiscalizados pelo Sistema Confea / Crea estarão infringindo a alínea “a” do art. 6º da Lei nº 5.194, de 1966;
+                            Considerando que o(a) interessado(a), em seu recurso ao Plenário do Confea, alegou que sintetizar alegações, se necessário fazer mais considerandos;
+                            Considerando que não procedem as alegações constantes do recurso apresentado, visto que contra - argumentar o recurso;
+                            Considerando que, não obstante as alegações apresentadas, o(a) interessado(a) motivou a lavratura do auto de infração, uma vez que fundamentar;
+                            Considerando que a infração está capitulada na alínea “a” do art. 6º da Lei n° 5.194, de 1966, cuja penalidade está prevista no art. 71, alínea “c” – multa, combinado com o art. 73, alínea “d”, dessa lei;e
+                            UTILIZAR CONFORME O CASO
+                            Auto lavrado no ano de 2010:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 513, de 21 de agosto de 2009, art. 4º, alínea “d”, no valor compreendido entre R$ 238,00 (duzentos e trinta e oito reais) e R$ 801,50 (oitocentos e um reais e cinquenta centavos),
+                            Auto lavrado no ano de 2011:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 518, de 24 de setembro de 2010, art. 5º, alínea “d”, no valor compreendido entre R$ 509,50 (quinhentos e nove reais e cinquenta centavos) e R$ 844,00 (oitocentos e quarenta e quatro reais),
+                            Auto lavrado no ano de 2012:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 524, de 3 de outubro de 2011, art. 4º, alínea “d”, no valor compreendido entre R$ 752,00 (setecentos e cinquenta e dois reais) e R$ 1.504,50 (mil, quinhentos e quatro reais e cinquenta centavos),
+                            Auto lavrado no ano de 2013:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.043, de 28 de setembro de 2012, art. 1º, alínea “d”, no valor compreendido entre R$ 792,53 (setecentos e noventa e dois reais e cinquenta e três centavos) e R$ 1.585,59 (mil, quinhentos e oitenta e cinco reais e cinquenta e nove centavos),
+                            Auto lavrado no ano de 2014:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.049, de 27 de setembro de 2013, art. 1º, alínea “d”, no valor compreendido entre R$ 840,64 (oitocentos e quarenta reais e sessenta e quatro centavos) e R$ 1.681,84 (mil, seiscentos e oitenta e um reais e oitenta e quatro centavos),
+                            Auto lavrado no ano de 2015:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.058, de 26 de setembro de 2014, art. 1º, alínea “d”, no valor compreendido entre R$ 894,36 (oitocentos e noventa e quatro reais e trinta e seis centavos) e R$ 1.788,72 (mil, setecentos e oitenta e oito reais e setenta e dois centavos),
+                            Auto lavrado no ano de 2016:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-2041/2015, de 25 de setembro de 2015, no valor compreendido entre R$ 982,72 (novecentos e oitenta e dois reais e setenta e dois centavos) e R$ 1.965,45 (mil, novecentos e sessenta e cinco reais e quarenta e cinco centavos),
+                            Auto lavrado no ano de 2017:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1056/2016, de 22 de setembro de 2016, no valor compreendido entre R$ 1.077,30 (mil e setenta e sete reais e trinta centavos) e R$ 2.154,60 (dois mil, cento e cinquenta e quatro reais e sessenta centavos),
+                            Auto lavrado no ano de 2018:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1758/2017, de 28 de setembro de 2017, no valor compreendido entre R$ 1.095,96 (mil e noventa e cinco reais e noventa e seis centavos) e R$ 2.191,91 (dois mil, cento e noventa e um reais e noventa e um centavos),
+                            Auto lavrado no ano de 2019:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1611/2018, de 28 de setembro de 2018, no valor compreendido entre R$ 1.135,87 (mil cento e trinta e cinco reais e oitenta e sete centavos) e R$ 2.271,73 (dois mil duzentos e setenta e um reais e setenta e três centavos);
+                            Auto lavrado no ano de 2020:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1544/2019, de 26 de setembro de 2019, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos);
+                            Auto lavrado no ano de 2021: 
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1642/2020, de 29 de setembro de 2020, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos), 
+                            Auto lavrado no ano de 2022:
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1513/2021, de 24 de setembro de 2021, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos), 
+                            Auto lavrado no ano de 2023: 
+                            Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1457/2022, de 30 de setembro de 2022, no valor de R$ 1.276,71 (um mil duzentos e setenta e seis reais e setenta e um centavos)  a R$ 2.553,41 (dois mil quinhentos e cinquenta e três reais e quarenta e um centavos), 
+                            OU
+                            NO CASO DE O CREA TER FIXADO MULTA EM VALOR FORA DAS FAIXAS DA RESOLUÇÃO
+                            Considerando que apesar de o Regional ter estabelecido a multa no valor de R$ (valor por extenso), a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº colocar a resolução aplicável dos parágrafos acima,
+                            ACRESCENTAR, SE NECESSÁRIO:
+                            HAVENDO A REGULARIZAÇÃO DO FATO QUE ENSEJOU A AUTUAÇÃO, APÓS A LAVRATURA DO A.I.
+                            Considerando que o § 2° do art. 11 da Resolução n° 1.008, de 9 de dezembro de 2004, estabelece que lavrado o auto de infração, a regularização da situação não exime o(a) autuado(a) das cominações legais;
+                            Considerando que o § 3º do art. 43 dessa resolução dispõe que é facultada a redução de multas pelas instâncias julgadoras do Crea e do Confea nos casos previstos nesse artigo, respeitadas as faixas de valores estabelecidas em resolução específica;
+                            Considerando que o(a) interessado(a) somente providenciou a regularização após a lavratura do auto de infração, mediante a contratação do(a) profissional Título abreviado conforme Res. nº 473/2002 Nome do profissional OU o registro da ART nº NÚMERO, em data, o que motiva a aplicação da multa em seu valor mínimo, tal como dispõe o inciso V do art. 43 da Resolução nº 1.008, de 2004; e (fl. ART ou contrato)
+                            SE FOR PRIMÁRIO
+                            Considerando que não foi comprovada nos autos a prática, pelo(a) interessado(a), de irregularidade anterior, capitulada no mesmo dispositivo legal e transitada em julgado,
+                            E/OU
+                            NO CASO DE REINCIDÊNCIA OU NOVA REINCIDÊNCIA
+                            Considerando que o(a) interessado(a) incorreu em reincidência OU nova reincidência, comprovada nos autos mediante apontar documento que comprova, o que motiva a aplicação do valor da multa em dobro, conforme dispõem os §§ 1° e 2º do art. 43 da Resolução n° 1.008, de 9 de dezembro de 2004,
+                            E/OU
+                            QUANDO A SITUAÇÃO PERMITE A APLICAÇÃO DO ART. 43 DA RESOLUÇÃO Nº 1.008, DE 2004
+                            Considerando que se trata de autuado(a) primário(a), conforme informações constantes do processo, não tendo sido imputada pena anterior pelo Crea ao(à) interessado(a), por esta ou outra infração à legislação do Sistema Confea/Crea e transitada em julgado;
+                            E/OU
+                            Considerando que a infração não pode ser considerada de caráter grave, justificada pela pouca repercussão, tendo ficado restrita à sua atuação ilegal, perante a legislação em comento;
+                            E/OU
+                            Considerando que a falta cometida não trouxe prejuízos diretamente a terceiros, bem como consequências de outra natureza que possa ser considerada insanável, podendo ser facilmente reparada e corrigida a linha de condução;
+                            Considerando que os três critérios atenuantes acima estão previstos nos Incisos I, III e IV do art. 43 da Resolução nº 1.008, de 9 de dezembro de 2004; (Obs.: utilizar apenas os incisos aplicáveis ao caso)
+                            Considerando a necessidade de cumprimento pelo Sistema Confea/Crea da finalidade de interesse público a que se destina;
+                            Considerando que o(a) autuado(a) se enquadra nas questões acima, motivos pelos quais a multa deveria ter sido fixada pelo Crea em valor proporcional e razoável, comparativamente à falta cometida;
+        2. Conclusão
+                            Sugerimos à Comissão de Ética e Exercício Profissional – CEEP propor ao Plenário do Confea:
+                            2.1. conhecer o recurso interposto pelo(a) interessado(a) para, no mérito, negar-lhe provimento; e
+                            NO CASO DE MANUTENÇÃO DO VALOR DA MULTA ESTABELECIDA PELO CREA
+                            2.2. manter a aplicação de multa no valor de R$ (valor por extenso), conforme estabelecido pelo Regional, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei.
+                            OU
+                            EM CASOS GERAIS DE REINCIDÊNCIA
+                            manter a aplicação de multa no valor de R$ (valor por extenso), já dobrado em função da comprovada reincidência, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei. (valor máximo ou qualquer valor estabelecido conforme faixa)
+                            NO CASO DE REINCIDÊNCIA, REGULARIZAÇÃO E REDUÇÃO DO VALOR DA MULTA PELO CONFEA
+                            2.2. manter a aplicação de multa no valor de R$ (valor por extenso), reduzido em função da regularização da falta e já dobrado devido a comprovada reincidência, a ser corrigido pelo Crea na forma da lei. (valor mínimo em função da regularização).
+                            OU
+                            NO CASO DE REDUÇÃO DA MULTA, EM FUNÇÃO DO CONTIDO NO ART. 43 DA RESOLUÇÃO Nº 1.008, DE 2004
+                            2.2 - manter a aplicação de multa e reduzir o seu valor para R$ (valor por extenso), em função dos princípios de proporcionalidade e razoabilidade, relativamente à infração cometida, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei.
+                            Observação: o “conforme estabelecido pelo Regional” deve ser utilizado somente nos casos em que o valor da multa do Crea divergir do valor correto da resolução.""")
+                    cores()
+
+            elif ("59" in artigo_ai):
+                        self.pag59 = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+                        self.pag59.tag_configure("red", foreground="red")
+                        self.pag59.insert(tk.INSERT,
+                                          """art 59
+                                          Trata-se de recurso interposto ao Confea contra a decisão do Plenário do Crea-""" + str(
+                                              crea_entry) + """ pela pessoa jurídica """ + str(
+                                              autuado_ai) + """, CNPJ nº ***""" + str(
+                                              cnpj_cpf_ai) + """***, autuada mediante o Auto de Infração n° """ + str(
+                                              nauto_ai) + """, lavrado em """ + str(
+                                              data_ai) + """, por infração ao art. 59 da Lei n° 5.194, ao """ + str(
+                                              motivo_ai) + """, sem possuir registro no Crea-""" + str(
+                                              crea_entry) + """. (fls.""" + str(folhas_ai) + """  e """ + str(
+                                              folhas_recurso) + """)
+                            A Câmara Especializada de """ + str(
+                                              especialidade_ce) + """ analisou os autos e concluiu pela manutenção da autuação, expedindo a Decisão nº """ + str(
+                                              ndecisao_ce) + """, de """ + str(data_ce) + """ (fl. """ + str(
+                                              folhas_ce) + """)
+                            O recurso do(a) interessado(a) ao Plenário do Crea foi julgado mediante a Decisão nº """ + str(
+                                              ndecisao_pl) + """, de """ + str(
+                                              data_pl) + """, que decidiu manter a autuação. (fl. """ + str(folhas_pl) + """)
+                            O(A) interessado(a) teve ciência da decisão do Plenário do Regional em """ + str(
+                                              data_aviso) + """ e protocolizou, em """ + str(
+                                              data_recurso) + """, no Crea-""" + str(
+                                              crea_entry) + """, recurso ao Confea. (fls. """ + str(
+                                              folhas_aviso) + """ e """ + str(folhas_recurso) + """)
+                            Embora não conste do processo a informação da data em que o interessado(a) teve ciência da Decisão do Plenário do Regional, em """ + str(
+                                              data_recurso) + """, foi protocolizado pelo interessado(a)""" + str(
+                                              nome_procuracao) + """ no Crea-""" + str(
+                                              crea_entry) + """ recurso ao Confea. (fls. """ + str(folhas_recurso) + """)
+                            As folhas citadas neste parecer são relativas ao número da página eletrônica no SEI - XXXXX.
+            1. Análise
+            
+            
+                    A PROCURAÇÃO ESTA NA PAGINA """+ str(folhas_procuracao)+"""
+                    O COMPROVANTE DE CADASTRO NACIONAL DA PESSOA JURIDICA ESTA NA PAGINA"""+ str(folhas_cnpj)+"""
+                    REINCIDÊNCIA ESTA CITADA NA PAGINA """+ str(folhas_reincidencia)+"""
+                    A ART ESTA NA PAGINA """+ str(folhas_art)+"""
+
+                        
+                        Considerando que a alínea “e” do art. 27 da Lei nº 5.194, de 1966, estabelece que compete ao Confea julgar em última instância os recursos sobre registros, decisões e penalidades impostas pelos Conselhos Regionais;
+                        Considerando que o art. 59 da Lei nº 5.194, de 1966, prevê que as firmas, sociedades, associações, companhias, cooperativas e empresas em geral, que se organizem para executar obras ou serviços relacionados na forma estabelecida nessa lei, só poderão iniciar suas atividades depois de promoverem o competente registro nos Conselhos Regionais, bem como o dos profissionais do seu quadro técnico;
+                        Considerando que o art. 1º da Lei nº 6.839, de 30 de outubro de 1980, determina que o registro de empresas e a anotação dos profissionais legalmente habilitados, delas encarregados, serão obrigatórios nas entidades competentes para a fiscalização do exercício das diversas profissões, em razão da atividade básica ou em relação àquela pela qual prestem serviços a terceiros;
+                        Considerando que o art. 3º da Resolução nº 336, de 27 de outubro de 1989, vigente à época da autuação, dispõe que o registro de pessoa jurídica é ato obrigatório de inscrição no Conselho Regional de Engenharia e Agronomia onde ela inicia suas atividades profissionais no campo técnico da Engenharia, Agronomia, Geologia, Geografia ou Meteorologia; OU
+                        Considerando que os arts. 2º e 3º da Resolução nº 1.121, de 13 de dezembro de 2019, vigente à época da autuação, dispõem respectivamente que o registro é a inscrição da pessoa jurídica nos assentamentos do Crea da circunscrição onde ela inicia suas atividades envolvendo o exercício de profissões fiscalizadas pelo Sistema Confea/Crea; e o registro é obrigatório para a pessoa jurídica que possua atividade básica ou que execute efetivamente serviços para terceiros envolvendo o exercício de profissões fiscalizadas pelo Sistema Confea/Crea; 
+                        Considerando que o inciso III do art. 1º da Decisão Normativa nº 74, de 27 de agosto de 2004, esclarece que pessoas jurídicas com objetivo social relacionado às atividades privativas de profissionais fiscalizados pelo Sistema Confea/Crea, sem registro no Crea, estarão infringindo o art. 59, com multa prevista na alínea “c” do art. 73 da Lei nº 5.194, de 1966;
+                        PARA O CASO DE A FISCALIZAÇÃO NÃO CONSTATAR EM LOCO O EXERCÍCIO DE ATIVIDADES DE ENGENHARIA PELA PJ AUTUADA
+                        Considerando, em que pese a edição da Dec. Plen. n° 0980/2022, de 8 de julho de 2022, a qual [sic] "Informa ao Crea-RN, em resposta a consulta formulada por meio do Ofício nº 436/2021-PRES (0532856), que conclui-se, que a mera constituição formal da pessoa jurídica perante o Registro de Pessoas Jurídicas sem o respectivo registro perante o Crea não é suficiente para a autuação com base no art. 59 c/c alínea "c", do art. 73, da Lei nº 5.194, de 1966 pois a caracterização da infração depende da demonstração do efetivo desempenho de atividade abrangida pelo Sistema Confea/Crea", pontuamos que a Decisão Normativa nº 74, de 2004, encontra-se em pleno vigor, motivo pelo qual o(a) Auto de Infração e Notificação n° NÚMERO, lavrado(a) em data, é pertinente;
+                        PARA OS DEMAIS CASOS
+                        Considerando que a interessada, em seu recurso ao Plenário do Confea, alegou que sintetizar alegações, se necessário fazer mais considerandos;
+                        Considerando que o Contrato Social OU o Estatuto Social OU a Alteração do Contrato Social da pessoa jurídica estabelece em sua cláusula NÚMERO que a sociedade tem por objeto social texto objetivo social; (fls. XX)
+                        E/OU
+                        Considerando que o comprovante do Cadastro Nacional da Pessoa Jurídica – CNPJ, emitido em data, apresenta como atividade econômica principal da interessada o(a) “texto da certidão do CNPJ” e como atividade(s) econômica(s) secundária(s) o(a), entre outras, “texto da certidão do CNPJ”; (fls. XX OU cópia anexa)
+                        SE FOR O CASO   
+                        Considerando que o art. 1º da Resolução nº 417, de 27 de março de 1998, estabelece que, para efeito de registro nos Conselhos Regionais, consideram-se enquadradas nos arts. 59 e 60 da Lei nº 5.194, de 1966, as indústrias tipo de indústria (código);
+                        Considerando que não procedem as alegações constantes do recurso apresentado, visto que a interessada desenvolve atividades no ramo da Engenharia OU Agronomia, razão pela qual deve possuir registro no Crea-UF e profissional(ais) registrado(s) em seu quadro técnico, com conhecimentos em processos ou atividades – VER DOCUMENTO DO GRUPO TÉCNICO DA ENGENHARIA QUÍMICA, SE FOR O CASO (Decisão PL-0577/2018), dada à responsabilidade técnica inerente ao desenvolvimento de objetivo social;
+                        Considerando se for o caso, contra-argumentar outras alegações;
+                        Considerando que a infração está capitulada no art. 59 da Lei n° 5.194, de 1966, cuja penalidade está prevista no art. 71, alínea “c” – multa, combinado com o art. 73, alínea “c”, dessa lei; e
+                        UTILIZAR CONFORME O CASO
+                        Auto lavrado no ano de 2010:
+                        Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 513, de 21 de agosto de 2009, art. 4º, alínea “c”, no valor compreendido entre R$ 238,00 (duzentos e trinta e oito reais) e R$ 484,00 (quatrocentos e oitenta e quatro reais),
+                        Auto lavrado no ano de 2011:
+                        Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 518, de 24 de setembro de 2010, art. 5º, alínea “c”, no valor compreendido entre R$ 250,50 (duzentos e cinquenta reais e cinquenta centavos) e R$ 509,50 (quinhentos e nove reais e cinquenta centavos),
+                        Auto lavrado no ano de 2012:
+                        Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 524, de 3 de outubro de 2011, art. 4º, alínea “c”, no valor compreendido entre R$ 752,00 (setecentos e cinquenta e dois reais) e R$ 1.504,50 (mil, quinhentos e quatro reais e cinquenta centavos),
+                        Auto lavrado no ano de 2013:
+                        Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.043, de 28 de setembro de 2012, art. 1º, alínea “c”, no valor compreendido entre R$ 792,53 (setecentos e noventa e dois reais e cinquenta e três centavos) e R$ 1.585,59 (mil, quinhentos e oitenta e cinco reais e cinquenta e nove centavos),
+                        Auto lavrado no ano de 2014:
+                        Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.049, de 27 de setembro de 2013, art. 1º, alínea “c”, no valor compreendido entre R$ 840,64 (oitocentos e quarenta reais e sessenta e quatro centavos) e R$ 1.681,84 (mil, seiscentos e oitenta e um reais e oitenta e quatro centavos),
+                        Auto lavrado no ano de 2015:
+                        Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.058, de 26 de setembro de 2014, art. 1º, alínea “c”, no valor compreendido entre R$ 894,36 (oitocentos e noventa e quatro reais e trinta e seis centavos) e R$ 1.788,72 (mil, setecentos e oitenta e oito reais e setenta e dois centavos),
+                        Auto lavrado no ano de 2016:
+                        Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-2041/2015, de 25 de setembro de 2015, no valor compreendido entre R$ 982,72 (novecentos e oitenta e dois reais e setenta e dois centavos) e R$ 1.965,45 (mil, novecentos e sessenta e cinco reais e quarenta e cinco centavos),
+                        Auto lavrado no ano de 2017:
+                        Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1056/2016, de 22 de setembro de 2016, no valor compreendido entre R$ 1.077,30 (mil e setenta e sete reais e trinta centavos) e R$ 2.154,60 (dois mil, cento e cinquenta e quatro reais e sessenta centavos),
+                        Auto lavrado no ano de 2018:
+                        Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1758/2017, de 28 de setembro de 2017, no valor compreendido entre R$ 1.095,96 (mil e noventa e cinco reais e noventa e seis centavos) e R$ 2.191,91 (dois mil, cento e noventa e um reais e noventa e um centavos),
+                        Auto lavrado no ano de 2019:
+                        Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1611/2018, de 28 de setembro de 2018, no valor compreendido entre R$ 1.135,87 (mil cento e trinta e cinco reais e oitenta e sete centavos) e R$ 2.271,73 (dois mil duzentos e setenta e um reais e setenta e três centavos);
+                        Auto lavrado no ano de 2020: 
+                        Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1544/2019, de 26 de setembro de 2019, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) e R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos);
+                        Auto lavrado no ano de 2021: 
+                        Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1642/2020, de 29 de setembro de 2020, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) e R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos);
+                        Auto lavrado no ano de 2022: 
+                        Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1513/2021, de 24 de setembro de 2021, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) e R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos), 
+                        Auto lavrado no ano de 2023: 
+                        Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1457/2022, de 30 de setembro de 2022, no valor de R$ 1.276,71 (mil duzentos e setenta e seis reais e setenta e um centavo) a R$ 2.553,41 (dois mil quinhentos e cinquenta e três reais e quarenta e um centavos), 
+                        OU
+                        NO CASO DE O CREA TER FIXADO MULTA EM VALOR FORA DAS FAIXAS DA RESOLUÇÃO
+                        Considerando que apesar de o Regional ter estabelecido a multa no valor de R$ (valor por extenso), a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº colocar a resolução aplicável dos parágrafos acima,
+                        ACRESCENTAR, SE NECESSÁRIO:
+                        HAVENDO A REGULARIZAÇÃO DO FATO QUE ENSEJOU A AUTUAÇÃO, APÓS A LAVRATURA DO A.I.
+                        Considerando que o § 2° do art. 11 da Resolução n° 1.008, de 9 de dezembro de 2004, estabelece que lavrado o auto de infração, a regularização da situação não exime a autuada das cominações legais;
+                        Considerando que o § 3º do art. 43 dessa resolução prevê que é facultada a redução de multas pelas instâncias julgadoras do Crea e do Confea nos casos previstos nesse artigo, respeitadas as faixas de valores estabelecidas em resolução específica;
+                        Considerando que a interessada somente providenciou a regularização após a lavratura do auto de infração, mediante o registro no Crea-UF, em data, o que motiva a aplicação da multa em seu valor mínimo, tal como dispõe o inciso V do art. 43 da Resolução nº 1.008, de 2004; e (fl. XX)
+                        SE FOR PRIMÁRIO
+                        Considerando que não foi comprovada nos autos a prática, pela interessada, de irregularidade anterior, capitulada no mesmo dispositivo legal e transitada em julgado,
+                        E/OU
+                        NO CASO DE REINCIDÊNCIA OU NOVA REINCIDÊNCIA
+                        Considerando que a interessada incorreu em reincidência OU nova reincidência, comprovada nos autos mediante apontar documento que comprova, o que motiva a aplicação do valor da multa em dobro, conforme dispõem os §§ 1° e 2º do art. 43 da Resolução n° 1.008, de 9 de dezembro de 2004,
+                        E/OU
+                        QUANDO A INTERESSADA INFORMAR IMPOSSIBILIDADE DE PAGAMENTO DA MULTA – COLOCAR APENAS O CONSIDERANDO
+                        Considerando que a Resolução nº 1.118, de 26 de julho de 2019, prevê a possibilidade de parcelamento de débitos, desde que atendidas as condições estipuladas na resolução, (Obs.: utilizar a partir de 1º/1/2020, data na qual se iniciam os efeitos da resolução, que revogou a Resolução nº 479, de 2003)
+                        E/OU
+                        QUANDO A SITUAÇÃO PERMITE A APLICAÇÃO DO ART. 43 DA RESOLUÇÃO Nº 1.008, DE 2004
+                        Considerando que se trata de autuado(a) primário(a), conforme informações constantes do processo, não tendo sido imputada pena anterior pelo Crea ao(à) interessado(a), por esta ou outra infração à legislação do Sistema Confea/Crea e transitada em julgado;
+                        E/OU
+                        Considerando que a infração não pode ser considerada de caráter grave, justificada pela pouca repercussão, tendo ficado restrita à sua atuação ilegal, perante a legislação em comento;
+                        E/OU
+                        Considerando que a falta cometida não trouxe prejuízos diretamente a terceiros, bem como consequências de outra natureza que possa ser considerada insanável, podendo ser facilmente reparada e corrigida a linha de condução;
+                        Considerando que os três critérios atenuantes acima estão previstos nos Incisos I, III e IV do art. 43 da Resolução nº 1.008, de 9 de dezembro de 2004; (Obs.: utilizar apenas os incisos aplicáveis ao caso)
+                        Considerando a necessidade de cumprimento pelo Sistema Confea/Crea da finalidade de interesse público a que se destina;
+                        Considerando que o(a) autuado(a) se enquadra nas questões acima, motivos pelos quais a multa deveria ter sido fixada pelo Crea em valor proporcional e razoável, comparativamente à falta cometida;
+            2. Conclusão
+                        Sugerimos à Comissão de Ética e Exercício Profissional – CEEP propor ao Plenário do Confea: 
+                        2.1. conhecer o recurso interposto pelo(a) interessado(a) para, no mérito, negar-lhe provimento;    
+                        NO CASO DE MANUTENÇÃO DO VALOR DA MULTA ESTABELECIDA PELO CREA
+                        2.2. manter a aplicação de multa no valor de R$ (valor por extenso), conforme estabelecido pelo Regional, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei.
+                        OU
+                        EM CASOS GERAIS DE REINCIDÊNCIA
+                        manter a aplicação de multa no valor de R$ (valor por extenso), já dobrado em função da comprovada reincidência, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei. (valor máximo ou qualquer valor estabelecido conforme faixa)
+                        NO CASO DE REINCIDÊNCIA, REGULARIZAÇÃO E REDUÇÃO DO VALOR DA MULTA PELO CONFEA
+                        2.2. manter a aplicação de multa no valor de R$ (valor por extenso), reduzido em função da regularização da falta e já dobrado devido a comprovada reincidência, a ser corrigido pelo Crea na forma da lei. (valor mínimo em função da regularização).
+                        OU
+                        NO CASO DE REDUÇÃO DA MULTA, EM FUNÇÃO DO CONTIDO NO ART. 43 DA RESOLUÇÃO Nº 1.008, DE 2004
+                        2.2 - manter a aplicação de multa e reduzir o seu valor para R$ (valor por extenso), em função dos princípios de proporcionalidade e razoabilidade, relativamente à infração cometida, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei.
+                        Observação: o “conforme estabelecido pelo Regional” deve ser utilizado somente nos casos em que o valor da multa do Crea divergir do valor correto da resolução.
+                        OU
+                        NO CASO DE REDUÇÃO DA MULTA, EM FUNÇÃO DO CONTIDO NO ART. 43 DA RESOLUÇÃO Nº 1.008, DE 2004
+                        2.2 - manter a aplicação de multa e reduzir o seu valor para R$ (valor por extenso), em função da regularização da falta, a ser corrigido pelo Crea na forma da lei.""")
+                        cores()
+
+            elif ('64' in artigo_ai):
+                            print(data_ai)
+                            self.pag59 = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+                            self.pag59.tag_configure("red", foreground="red")
+                            self.pag59.insert(tk.INSERT,
+                                              """art 64
+                                              Trata-se de recurso interposto ao Confea contra a decisão do Plenário do Crea-""" + str(
+                                                  crea_entry) + """ pela pessoa """ + str(
+                                                  autuado_ai) + """, CNPJ nº ***""" + str(
+                                                  cnpj_cpf_ai) + """***, autuada mediante o Auto de Infração n° """ + str(
+                                                  nauto_ai) + """, lavrado em """ + str(data_ai) + """, por infração """ + str(artigo_ai) + """, ao """ + str(
+                                                  motivo_ai) + """. (fls.""" + str(folhas_ai) + """  e """ + str(
+                                                  folhas_recurso) + """)
+                                A Câmara Especializada de """ + str(
+                                                  especialidade_ce) + """ analisou os autos e concluiu pela manutenção da autuação, expedindo a Decisão nº """ + str(
+                                                  ndecisao_ce) + """, de """ + str(data_ce) + """ (fl. """ + str(
+                                                  folhas_ce) + """)
+                                O recurso do(a) interessado(a) ao Plenário do Crea foi julgado mediante a Decisão nº """ + str(
+                                                  ndecisao_pl) + """, de """ + str(
+                                                  data_pl) + """, que decidiu manter a autuação. (fl. """ + str(
+                                                  folhas_pl) + """)
+                                O(A) interessado(a) teve ciência da decisão do Plenário do Regional em """ + str(
+                                                  data_aviso) + """ e protocolizou, em """ + str(
+                                                  data_recurso) + """, no Crea-""" + str(
+                                                  crea_entry) + """, recurso ao Confea. (fls. """ + str(
+                                                  folhas_aviso) + """ e """ + str(folhas_recurso) + """)
+                                Embora não conste do processo a informação da data em que o interessado(a) teve ciência da Decisão do Plenário do Regional, em """ + str(
+                                                  data_recurso) + """, foi protocolizado pelo interessado(a)""" + str(
+                                                  nome_procuracao) + """ no Crea-""" + str(
+                                                  crea_entry) + """ recurso ao Confea. (fls. """ + str(folhas_recurso) + """)
+                                As folhas citadas neste parecer são relativas ao número da página eletrônica no SEI - XXXXX.
+            1.Análise
+            
+            
+                    A PROCURAÇÃO ESTA NA PAGINA """+ str(folhas_procuracao)+"""
+                    O COMPROVANTE DE CADASTRO NACIONAL DA PESSOA JURIDICA ESTA NA PAGINA"""+ str(folhas_cnpj)+"""
+                    REINCIDÊNCIA ESTA CITADA NA PAGINA """+ str(folhas_reincidencia)+"""
+                    A ART ESTA NA PAGINA """+ str(folhas_art)+"""
+
+            
+                                Considerando que a alínea “e” do art. 27 da Lei nº 5.194, de 1966, estabelece que compete ao Confea julgar em última instância os recursos sobre registros, decisões e penalidades impostas pelos Conselhos Regionais;
+                                Considerando que a alínea “a” do art. 6º da Lei nº 5.194, de 1966, prevê que exerce ilegalmente a profissão de engenheiro ou engenheiro - agrônomo a pessoa física ou jurídica que realizar atos ou prestar serviços, públicos ou privados, reservados aos profissionais de que trata a lei e que não possua registro nos Conselhos Regionais;
+                                Considerando que o inciso II do art. 1º da Decisão Normativa nº 74, de 27 de agosto de 2004, esclarece que pessoas físicas leigas executando atividades privativas de profissionais fiscalizados pelo Sistema Confea / Crea estarão infringindo a alínea “a” do art. 6º da Lei nº 5.194, de 1966;
+                                Considerando que o(a) interessado(a), em seu recurso ao Plenário do Confea, alegou que sintetizar alegações, se necessário fazer mais considerandos;
+                                Considerando que não procedem as alegações constantes do recurso apresentado, visto que contra - argumentar o recurso;
+                                Considerando que, não obstante as alegações apresentadas, o(a) interessado(a) motivou a lavratura do auto de infração, uma vez que fundamentar;
+                                Considerando que a infração está capitulada na alínea “a” do art. 6º da Lei n° 5.194, de 1966, cuja penalidade está prevista no art. 71, alínea “c” – multa, combinado com o art. 73, alínea “d”, dessa lei;e
+                                UTILIZAR CONFORME O CASO
+                                Auto lavrado no ano de 2010:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 513, de 21 de agosto de 2009, art. 4º, alínea “d”, no valor compreendido entre R$ 238,00 (duzentos e trinta e oito reais) e R$ 801,50 (oitocentos e um reais e cinquenta centavos),
+                                Auto lavrado no ano de 2011:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 518, de 24 de setembro de 2010, art. 5º, alínea “d”, no valor compreendido entre R$ 509,50 (quinhentos e nove reais e cinquenta centavos) e R$ 844,00 (oitocentos e quarenta e quatro reais),
+                                Auto lavrado no ano de 2012:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 524, de 3 de outubro de 2011, art. 4º, alínea “d”, no valor compreendido entre R$ 752,00 (setecentos e cinquenta e dois reais) e R$ 1.504,50 (mil, quinhentos e quatro reais e cinquenta centavos),
+                                Auto lavrado no ano de 2013:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.043, de 28 de setembro de 2012, art. 1º, alínea “d”, no valor compreendido entre R$ 792,53 (setecentos e noventa e dois reais e cinquenta e três centavos) e R$ 1.585,59 (mil, quinhentos e oitenta e cinco reais e cinquenta e nove centavos),
+                                Auto lavrado no ano de 2014:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.049, de 27 de setembro de 2013, art. 1º, alínea “d”, no valor compreendido entre R$ 840,64 (oitocentos e quarenta reais e sessenta e quatro centavos) e R$ 1.681,84 (mil, seiscentos e oitenta e um reais e oitenta e quatro centavos),
+                                Auto lavrado no ano de 2015:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.058, de 26 de setembro de 2014, art. 1º, alínea “d”, no valor compreendido entre R$ 894,36 (oitocentos e noventa e quatro reais e trinta e seis centavos) e R$ 1.788,72 (mil, setecentos e oitenta e oito reais e setenta e dois centavos),
+                                Auto lavrado no ano de 2016:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-2041/2015, de 25 de setembro de 2015, no valor compreendido entre R$ 982,72 (novecentos e oitenta e dois reais e setenta e dois centavos) e R$ 1.965,45 (mil, novecentos e sessenta e cinco reais e quarenta e cinco centavos),
+                                Auto lavrado no ano de 2017:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1056/2016, de 22 de setembro de 2016, no valor compreendido entre R$ 1.077,30 (mil e setenta e sete reais e trinta centavos) e R$ 2.154,60 (dois mil, cento e cinquenta e quatro reais e sessenta centavos),
+                                Auto lavrado no ano de 2018:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1758/2017, de 28 de setembro de 2017, no valor compreendido entre R$ 1.095,96 (mil e noventa e cinco reais e noventa e seis centavos) e R$ 2.191,91 (dois mil, cento e noventa e um reais e noventa e um centavos),
+                                Auto lavrado no ano de 2019:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1611/2018, de 28 de setembro de 2018, no valor compreendido entre R$ 1.135,87 (mil cento e trinta e cinco reais e oitenta e sete centavos) e R$ 2.271,73 (dois mil duzentos e setenta e um reais e setenta e três centavos);
+                                Auto lavrado no ano de 2020:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1544/2019, de 26 de setembro de 2019, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos);
+                                Auto lavrado no ano de 2021: 
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1642/2020, de 29 de setembro de 2020, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos), 
+                                Auto lavrado no ano de 2022:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1513/2021, de 24 de setembro de 2021, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos), 
+                                Auto lavrado no ano de 2023: 
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1457/2022, de 30 de setembro de 2022, no valor de R$ 1.276,71 (um mil duzentos e setenta e seis reais e setenta e um centavos)  a R$ 2.553,41 (dois mil quinhentos e cinquenta e três reais e quarenta e um centavos), 
+                                OU
+                                NO CASO DE O CREA TER FIXADO MULTA EM VALOR FORA DAS FAIXAS DA RESOLUÇÃO
+                                Considerando que apesar de o Regional ter estabelecido a multa no valor de R$ (valor por extenso), a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº colocar a resolução aplicável dos parágrafos acima,
+                                ACRESCENTAR, SE NECESSÁRIO:
+                                HAVENDO A REGULARIZAÇÃO DO FATO QUE ENSEJOU A AUTUAÇÃO, APÓS A LAVRATURA DO A.I.
+                                Considerando que o § 2° do art. 11 da Resolução n° 1.008, de 9 de dezembro de 2004, estabelece que lavrado o auto de infração, a regularização da situação não exime o(a) autuado(a) das cominações legais;
+                                Considerando que o § 3º do art. 43 dessa resolução dispõe que é facultada a redução de multas pelas instâncias julgadoras do Crea e do Confea nos casos previstos nesse artigo, respeitadas as faixas de valores estabelecidas em resolução específica;
+                                Considerando que o(a) interessado(a) somente providenciou a regularização após a lavratura do auto de infração, mediante a contratação do(a) profissional Título abreviado conforme Res. nº 473/2002 Nome do profissional OU o registro da ART nº NÚMERO, em data, o que motiva a aplicação da multa em seu valor mínimo, tal como dispõe o inciso V do art. 43 da Resolução nº 1.008, de 2004; e (fl. ART ou contrato)
+                                SE FOR PRIMÁRIO
+                                Considerando que não foi comprovada nos autos a prática, pelo(a) interessado(a), de irregularidade anterior, capitulada no mesmo dispositivo legal e transitada em julgado,
+                                E/OU
+                                NO CASO DE REINCIDÊNCIA OU NOVA REINCIDÊNCIA
+                                Considerando que o(a) interessado(a) incorreu em reincidência OU nova reincidência, comprovada nos autos mediante apontar documento que comprova, o que motiva a aplicação do valor da multa em dobro, conforme dispõem os §§ 1° e 2º do art. 43 da Resolução n° 1.008, de 9 de dezembro de 2004,
+                                E/OU
+                                QUANDO A SITUAÇÃO PERMITE A APLICAÇÃO DO ART. 43 DA RESOLUÇÃO Nº 1.008, DE 2004
+                                Considerando que se trata de autuado(a) primário(a), conforme informações constantes do processo, não tendo sido imputada pena anterior pelo Crea ao(à) interessado(a), por esta ou outra infração à legislação do Sistema Confea/Crea e transitada em julgado;
+                                E/OU
+                                Considerando que a infração não pode ser considerada de caráter grave, justificada pela pouca repercussão, tendo ficado restrita à sua atuação ilegal, perante a legislação em comento;
+                                E/OU
+                                Considerando que a falta cometida não trouxe prejuízos diretamente a terceiros, bem como consequências de outra natureza que possa ser considerada insanável, podendo ser facilmente reparada e corrigida a linha de condução;
+                                Considerando que os três critérios atenuantes acima estão previstos nos Incisos I, III e IV do art. 43 da Resolução nº 1.008, de 9 de dezembro de 2004; (Obs.: utilizar apenas os incisos aplicáveis ao caso)
+                                Considerando a necessidade de cumprimento pelo Sistema Confea/Crea da finalidade de interesse público a que se destina;
+                                Considerando que o(a) autuado(a) se enquadra nas questões acima, motivos pelos quais a multa deveria ter sido fixada pelo Crea em valor proporcional e razoável, comparativamente à falta cometida;
+            2. Conclusão
+                                Sugerimos à Comissão de Ética e Exercício Profissional – CEEP propor ao Plenário do Confea:
+                                2.1. conhecer o recurso interposto pelo(a) interessado(a) para, no mérito, negar-lhe provimento; e
+                                NO CASO DE MANUTENÇÃO DO VALOR DA MULTA ESTABELECIDA PELO CREA
+                                2.2. manter a aplicação de multa no valor de R$ (valor por extenso), conforme estabelecido pelo Regional, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei.
+                                OU
+                                EM CASOS GERAIS DE REINCIDÊNCIA
+                                manter a aplicação de multa no valor de R$ (valor por extenso), já dobrado em função da comprovada reincidência, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei. (valor máximo ou qualquer valor estabelecido conforme faixa)
+                                NO CASO DE REINCIDÊNCIA, REGULARIZAÇÃO E REDUÇÃO DO VALOR DA MULTA PELO CONFEA
+                                2.2. manter a aplicação de multa no valor de R$ (valor por extenso), reduzido em função da regularização da falta e já dobrado devido a comprovada reincidência, a ser corrigido pelo Crea na forma da lei. (valor mínimo em função da regularização).
+                                OU
+                                NO CASO DE REDUÇÃO DA MULTA, EM FUNÇÃO DO CONTIDO NO ART. 43 DA RESOLUÇÃO Nº 1.008, DE 2004
+                                2.2 - manter a aplicação de multa e reduzir o seu valor para R$ (valor por extenso), em função dos princípios de proporcionalidade e razoabilidade, relativamente à infração cometida, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei.
+                                Observação: o “conforme estabelecido pelo Regional” deve ser utilizado somente nos casos em que o valor da multa do Crea divergir do valor correto da resolução.""")
+                            cores()
+
+            elif ('art. 1' in artigo_ai or 'Art. 1' in artigo_ai or 'art 1'in artigo_ai):
+                print(data_ai)
+                self.pag59 = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+                self.pag59.tag_configure("red", foreground="red")
+                self.pag59.insert(tk.INSERT,
+                                  """art 1
+                                  Trata-se de recurso interposto ao Confea contra a decisão do Plenário do Crea-""" + str(
+                                      crea_entry) + """ pela pessoa """ + str(
+                                      autuado_ai) + """, CNPJ nº ***""" + str(
+                                      cnpj_cpf_ai) + """***, autuada mediante o Auto de Infração n° """ + str(
+                                      nauto_ai) + """, lavrado em """ + str(data_ai) + """, por infração """ + str(
+                                      artigo_ai) + """, ao """ + str(
+                                      motivo_ai) + """. (fls.""" + str(folhas_ai) + """  e """ + str(
+                                      folhas_recurso) + """)
+                                A Câmara Especializada de """ + str(
+                                      especialidade_ce) + """ analisou os autos e concluiu pela manutenção da autuação, expedindo a Decisão nº """ + str(
+                                      ndecisao_ce) + """, de """ + str(data_ce) + """ (fl. """ + str(
+                                      folhas_ce) + """)
+                                O recurso do(a) interessado(a) ao Plenário do Crea foi julgado mediante a Decisão nº """ + str(
+                                      ndecisao_pl) + """, de """ + str(
+                                      data_pl) + """, que decidiu manter a autuação. (fl. """ + str(
+                                      folhas_pl) + """)
+                                O(A) interessado(a) teve ciência da decisão do Plenário do Regional em """ + str(
+                                      data_aviso) + """ e protocolizou, em """ + str(
+                                      data_recurso) + """, no Crea-""" + str(
+                                      crea_entry) + """, recurso ao Confea. (fls. """ + str(
+                                      folhas_aviso) + """ e """ + str(folhas_recurso) + """)
+                                Embora não conste do processo a informação da data em que o interessado(a) teve ciência da Decisão do Plenário do Regional, em """ + str(
+                                      data_recurso) + """, foi protocolizado pelo interessado(a)""" + str(
+                                      nome_procuracao) + """ no Crea-""" + str(
+                                      crea_entry) + """ recurso ao Confea. (fls. """ + str(folhas_recurso) + """)
+                                As folhas citadas neste parecer são relativas ao número da página eletrônica no SEI - XXXXX.
+            1.Análise
+
+
+                    A PROCURAÇÃO ESTA NA PAGINA """ + str(folhas_procuracao) + """
+                    O COMPROVANTE DE CADASTRO NACIONAL DA PESSOA JURIDICA ESTA NA PAGINA""" + str(folhas_cnpj) + """
+                    REINCIDÊNCIA ESTA CITADA NA PAGINA """ + str(folhas_reincidencia) + """
+                    A ART ESTA NA PAGINA """ + str(folhas_art) + """
+
+
+                                Considerando que a alínea “e” do art. 27 da Lei nº 5.194, de 1966, estabelece que compete ao Confea julgar em última instância os recursos sobre registros, decisões e penalidades impostas pelos Conselhos Regionais;
+                                Considerando que a alínea “a” do art. 6º da Lei nº 5.194, de 1966, prevê que exerce ilegalmente a profissão de engenheiro ou engenheiro - agrônomo a pessoa física ou jurídica que realizar atos ou prestar serviços, públicos ou privados, reservados aos profissionais de que trata a lei e que não possua registro nos Conselhos Regionais;
+                                Considerando que o inciso II do art. 1º da Decisão Normativa nº 74, de 27 de agosto de 2004, esclarece que pessoas físicas leigas executando atividades privativas de profissionais fiscalizados pelo Sistema Confea / Crea estarão infringindo a alínea “a” do art. 6º da Lei nº 5.194, de 1966;
+                                Considerando que o(a) interessado(a), em seu recurso ao Plenário do Confea, alegou que sintetizar alegações, se necessário fazer mais considerandos;
+                                Considerando que não procedem as alegações constantes do recurso apresentado, visto que contra - argumentar o recurso;
+                                Considerando que, não obstante as alegações apresentadas, o(a) interessado(a) motivou a lavratura do auto de infração, uma vez que fundamentar;
+                                Considerando que a infração está capitulada na alínea “a” do art. 6º da Lei n° 5.194, de 1966, cuja penalidade está prevista no art. 71, alínea “c” – multa, combinado com o art. 73, alínea “d”, dessa lei;e
+                                UTILIZAR CONFORME O CASO
+                                Auto lavrado no ano de 2010:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 513, de 21 de agosto de 2009, art. 4º, alínea “d”, no valor compreendido entre R$ 238,00 (duzentos e trinta e oito reais) e R$ 801,50 (oitocentos e um reais e cinquenta centavos),
+                                Auto lavrado no ano de 2011:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 518, de 24 de setembro de 2010, art. 5º, alínea “d”, no valor compreendido entre R$ 509,50 (quinhentos e nove reais e cinquenta centavos) e R$ 844,00 (oitocentos e quarenta e quatro reais),
+                                Auto lavrado no ano de 2012:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 524, de 3 de outubro de 2011, art. 4º, alínea “d”, no valor compreendido entre R$ 752,00 (setecentos e cinquenta e dois reais) e R$ 1.504,50 (mil, quinhentos e quatro reais e cinquenta centavos),
+                                Auto lavrado no ano de 2013:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.043, de 28 de setembro de 2012, art. 1º, alínea “d”, no valor compreendido entre R$ 792,53 (setecentos e noventa e dois reais e cinquenta e três centavos) e R$ 1.585,59 (mil, quinhentos e oitenta e cinco reais e cinquenta e nove centavos),
+                                Auto lavrado no ano de 2014:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.049, de 27 de setembro de 2013, art. 1º, alínea “d”, no valor compreendido entre R$ 840,64 (oitocentos e quarenta reais e sessenta e quatro centavos) e R$ 1.681,84 (mil, seiscentos e oitenta e um reais e oitenta e quatro centavos),
+                                Auto lavrado no ano de 2015:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.058, de 26 de setembro de 2014, art. 1º, alínea “d”, no valor compreendido entre R$ 894,36 (oitocentos e noventa e quatro reais e trinta e seis centavos) e R$ 1.788,72 (mil, setecentos e oitenta e oito reais e setenta e dois centavos),
+                                Auto lavrado no ano de 2016:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-2041/2015, de 25 de setembro de 2015, no valor compreendido entre R$ 982,72 (novecentos e oitenta e dois reais e setenta e dois centavos) e R$ 1.965,45 (mil, novecentos e sessenta e cinco reais e quarenta e cinco centavos),
+                                Auto lavrado no ano de 2017:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1056/2016, de 22 de setembro de 2016, no valor compreendido entre R$ 1.077,30 (mil e setenta e sete reais e trinta centavos) e R$ 2.154,60 (dois mil, cento e cinquenta e quatro reais e sessenta centavos),
+                                Auto lavrado no ano de 2018:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1758/2017, de 28 de setembro de 2017, no valor compreendido entre R$ 1.095,96 (mil e noventa e cinco reais e noventa e seis centavos) e R$ 2.191,91 (dois mil, cento e noventa e um reais e noventa e um centavos),
+                                Auto lavrado no ano de 2019:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1611/2018, de 28 de setembro de 2018, no valor compreendido entre R$ 1.135,87 (mil cento e trinta e cinco reais e oitenta e sete centavos) e R$ 2.271,73 (dois mil duzentos e setenta e um reais e setenta e três centavos);
+                                Auto lavrado no ano de 2020:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1544/2019, de 26 de setembro de 2019, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos);
+                                Auto lavrado no ano de 2021: 
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1642/2020, de 29 de setembro de 2020, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos), 
+                                Auto lavrado no ano de 2022:
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1513/2021, de 24 de setembro de 2021, no valor de R$ 1.173,17 (mil cento e setenta e três reais e dezessete centavos) a R$ 2.346,33 (dois mil trezentos e quarenta e seis reais e trinta e três centavos), 
+                                Auto lavrado no ano de 2023: 
+                                Considerando que a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº 1.066, de 25 de setembro de 2015, art. 18, com valores atualizados pela Decisão nº PL-1457/2022, de 30 de setembro de 2022, no valor de R$ 1.276,71 (um mil duzentos e setenta e seis reais e setenta e um centavos)  a R$ 2.553,41 (dois mil quinhentos e cinquenta e três reais e quarenta e um centavos), 
+                                OU
+                                NO CASO DE O CREA TER FIXADO MULTA EM VALOR FORA DAS FAIXAS DA RESOLUÇÃO
+                                Considerando que apesar de o Regional ter estabelecido a multa no valor de R$ (valor por extenso), a multa, à época da autuação, encontrava-se regulamentada pela Resolução nº colocar a resolução aplicável dos parágrafos acima,
+                                ACRESCENTAR, SE NECESSÁRIO:
+                                HAVENDO A REGULARIZAÇÃO DO FATO QUE ENSEJOU A AUTUAÇÃO, APÓS A LAVRATURA DO A.I.
+                                Considerando que o § 2° do art. 11 da Resolução n° 1.008, de 9 de dezembro de 2004, estabelece que lavrado o auto de infração, a regularização da situação não exime o(a) autuado(a) das cominações legais;
+                                Considerando que o § 3º do art. 43 dessa resolução dispõe que é facultada a redução de multas pelas instâncias julgadoras do Crea e do Confea nos casos previstos nesse artigo, respeitadas as faixas de valores estabelecidas em resolução específica;
+                                Considerando que o(a) interessado(a) somente providenciou a regularização após a lavratura do auto de infração, mediante a contratação do(a) profissional Título abreviado conforme Res. nº 473/2002 Nome do profissional OU o registro da ART nº NÚMERO, em data, o que motiva a aplicação da multa em seu valor mínimo, tal como dispõe o inciso V do art. 43 da Resolução nº 1.008, de 2004; e (fl. ART ou contrato)
+                                SE FOR PRIMÁRIO
+                                Considerando que não foi comprovada nos autos a prática, pelo(a) interessado(a), de irregularidade anterior, capitulada no mesmo dispositivo legal e transitada em julgado,
+                                E/OU
+                                NO CASO DE REINCIDÊNCIA OU NOVA REINCIDÊNCIA
+                                Considerando que o(a) interessado(a) incorreu em reincidência OU nova reincidência, comprovada nos autos mediante apontar documento que comprova, o que motiva a aplicação do valor da multa em dobro, conforme dispõem os §§ 1° e 2º do art. 43 da Resolução n° 1.008, de 9 de dezembro de 2004,
+                                E/OU
+                                QUANDO A SITUAÇÃO PERMITE A APLICAÇÃO DO ART. 43 DA RESOLUÇÃO Nº 1.008, DE 2004
+                                Considerando que se trata de autuado(a) primário(a), conforme informações constantes do processo, não tendo sido imputada pena anterior pelo Crea ao(à) interessado(a), por esta ou outra infração à legislação do Sistema Confea/Crea e transitada em julgado;
+                                E/OU
+                                Considerando que a infração não pode ser considerada de caráter grave, justificada pela pouca repercussão, tendo ficado restrita à sua atuação ilegal, perante a legislação em comento;
+                                E/OU
+                                Considerando que a falta cometida não trouxe prejuízos diretamente a terceiros, bem como consequências de outra natureza que possa ser considerada insanável, podendo ser facilmente reparada e corrigida a linha de condução;
+                                Considerando que os três critérios atenuantes acima estão previstos nos Incisos I, III e IV do art. 43 da Resolução nº 1.008, de 9 de dezembro de 2004; (Obs.: utilizar apenas os incisos aplicáveis ao caso)
+                                Considerando a necessidade de cumprimento pelo Sistema Confea/Crea da finalidade de interesse público a que se destina;
+                                Considerando que o(a) autuado(a) se enquadra nas questões acima, motivos pelos quais a multa deveria ter sido fixada pelo Crea em valor proporcional e razoável, comparativamente à falta cometida;
+            2. Conclusão
+                                Sugerimos à Comissão de Ética e Exercício Profissional – CEEP propor ao Plenário do Confea:
+                                2.1. conhecer o recurso interposto pelo(a) interessado(a) para, no mérito, negar-lhe provimento; e
+                                NO CASO DE MANUTENÇÃO DO VALOR DA MULTA ESTABELECIDA PELO CREA
+                                2.2. manter a aplicação de multa no valor de R$ (valor por extenso), conforme estabelecido pelo Regional, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei.
+                                OU
+                                EM CASOS GERAIS DE REINCIDÊNCIA
+                                manter a aplicação de multa no valor de R$ (valor por extenso), já dobrado em função da comprovada reincidência, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei. (valor máximo ou qualquer valor estabelecido conforme faixa)
+                                NO CASO DE REINCIDÊNCIA, REGULARIZAÇÃO E REDUÇÃO DO VALOR DA MULTA PELO CONFEA
+                                2.2. manter a aplicação de multa no valor de R$ (valor por extenso), reduzido em função da regularização da falta e já dobrado devido a comprovada reincidência, a ser corrigido pelo Crea na forma da lei. (valor mínimo em função da regularização).
+                                OU
+                                NO CASO DE REDUÇÃO DA MULTA, EM FUNÇÃO DO CONTIDO NO ART. 43 DA RESOLUÇÃO Nº 1.008, DE 2004
+                                2.2 - manter a aplicação de multa e reduzir o seu valor para R$ (valor por extenso), em função dos princípios de proporcionalidade e razoabilidade, relativamente à infração cometida, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei.
+                                Observação: o “conforme estabelecido pelo Regional” deve ser utilizado somente nos casos em que o valor da multa do Crea divergir do valor correto da resolução.""")
+                cores()
+        def cores():
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(crea_entry), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(crea_entry))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(autuado_ai), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(autuado_ai))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(cnpj_cpf_ai), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(cnpj_cpf_ai))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(nauto_ai), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(nauto_ai))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(data_ai), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(data_ai))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(artigo_ai), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(artigo_ai))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(motivo_ai), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(motivo_ai))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(folhas_ai), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(folhas_ai))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(folhas_recurso), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(folhas_recurso))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(folhas_ce), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(folhas_ce))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(folhas_pl), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(folhas_pl))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(especialidade_ce), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(especialidade_ce))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(data_ce), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(data_ce))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(ndecisao_pl), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(ndecisao_pl))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(data_pl), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(data_pl))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(folhas_aviso), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(folhas_aviso))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(data_aviso), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(data_aviso))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(data_recurso), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(data_recurso))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+            start_index = "1.0"
+            while True:
+                start_index = self.pag59.search(str(ndecisao_ce), start_index, stopindex="end", regexp=False)
+                if not start_index:
+                    break
+                end_index = self.pag59.index(f"{start_index}+{len(str(ndecisao_ce))}c")
+                self.pag59.tag_add("red", start_index, end_index)
+                start_index = end_index
+
+            self.pag59.place(relx=0.065, rely=0.26, relwidth=0.925, relheight=0.72)
+            #self.conteudo()
+            #self.botoes()
+        """selecionar arquivos"""
         btn_selecionar = ctk.CTkButton(self.frame_3, text="Selecionar arquivo", command=selecionar_arquivo)
         btn_selecionar.place(relx=0.65, rely=0.10, relwidth=0.15, relheight=0.80)
+        """Botao Menu"""
+        btn_menu = ctk.CTkButton(self.frame_2, text='Menu', fg_color='#01509b', text_color='White',font=('Arial', 14), command=tela_menu)
+        btn_menu.place(relx=0, rely=0, relwidth=1, relheight=0.08)
+        """Botao Artigo 1"""
+        btn_art1 = ctk.CTkButton(self.frame_2, text='Art 1º', fg_color='#01509b', text_color='White',font=('Arial', 14))
+        btn_art1.place(relx=0, rely=0.08, relwidth=1, relheight=0.08)
+        """Botao Artigo 6 A"""
+        btn_art6a = ctk.CTkButton(self.frame_2, text='Art 6º a', fg_color='#01509b', text_color='White',font=('Arial', 14))
+        btn_art6a.place(relx=0, rely=0.16, relwidth=1, relheight=0.08)
+        """Botao Artigo 6 E"""
+        btn_art6e = ctk.CTkButton(self.frame_2, text='Art 6º e', fg_color='#01509b', text_color='White',font=('Arial', 14))
+        btn_art6e.place(relx=0, rely=0.24, relwidth=1, relheight=0.08)
+        """Botao Artigo 16"""
+        btn_art16 = ctk.CTkButton(self.frame_2, text='Art 16º', fg_color='#01509b', text_color='White',font=('Arial', 14))
+        btn_art16.place(relx=0, rely=0.32, relwidth=1, relheight=0.08)
+        """Botao Artigo 59"""
+        btn_art59 = ctk.CTkButton(self.frame_2, text='Art 59º', fg_color='#01509b', text_color='White',font=('Arial', 14))
+        btn_art59.place(relx=0, rely=0.4, relwidth=1, relheight=0.08)
+        """Botao Texto Padrao"""
+        btn_textopadrao = ctk.CTkButton(self.frame_2, text='Texto', fg_color='#01509b', text_color='White',font=('Arial', 14), command=tela_texto)
+        btn_textopadrao.place(relx=0, rely=0.48, relwidth=1, relheight=0.08)
     #funcoes.varBarra()
 
 App()
