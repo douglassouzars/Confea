@@ -15,7 +15,7 @@ import requests
 
 import mysql.connector
 
-root = Tk()
+root = ctk.CTk()
 
 
 class App():
@@ -35,7 +35,7 @@ class App():
     def tela(self):
         """Definição da tela e sua cor total"""
         self.root.title("Sistema Confea")
-        self.root.configure(background='#e8e8e8')
+        self.root.configure(fg_color='#e8e8e8')
         self.root.geometry("1900x900")
         self.root.resizable(True, True)
         self.root.minsize(1000, 600)
@@ -47,71 +47,62 @@ class App():
         self.variaveis()
 
         """Header azul"""
-        self.frame_1 = Frame(self.root)
-        self.frame_1.configure(background='#4a8ad4')
+        self.frame_1 = ctk.CTkFrame(self.root,fg_color='#4a89d3')
         self.frame_1.place(relx=0.0, rely=0.0, relwidth=1, relheight=0.2)
         self.logo()
 
-        """SubHeader cinza"""
-        self.frame_3 = Frame(self.root)
-        self.frame_3.configure(background='#adadad')
-        self.frame_3.place(relx=0.0, rely=0.2, relwidth=1, relheight=0.05)
 
-        """nav lateral azul"""
-        self.frame_2 = Frame(self.root)
-        self.frame_2.configure(background='#01509b')
-        self.frame_2.place(relx=0.0, rely=0.25, relwidth=0.055, relheight=1)
         #self.botoes()
     def caixas(self):
         """Caixa AI"""
-        self.caixaai = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+        self.caixaai = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
         self.caixaai.insert(tk.INSERT,"                           AUTO DE INFRAÇÃO\nNº do Processo:\nArtigo:\nAutuado(a):\nCNPJ:\nFolhas:\nNº do AI:\nMulta:\nData:\nMotivo:")
-        self.caixaai.place(relx=0.065, rely=0.26, relwidth=0.46, relheight=0.25)
+        self.caixaai.place(relx=0.065, rely=0.26, relwidth=0.46, relheight=0.34)
 
         """Caixa CE"""
-        self.caixace = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+        self.caixace = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Bold', 18))
         self.caixace.insert(tk.INSERT,"                           DECISÃO DA CÂMARA ESPECIALIZADA DO CREA\nFolhas:\nDecisão nº:\nEspecialidade:\nData:\nMulta:")
-        self.caixace.place(relx=0.54, rely=0.26, relwidth=0.45, relheight=0.13)
+        self.caixace.place(relx=0.54, rely=0.26, relwidth=0.45, relheight=0.16)
 
         """Caixa PL"""
-        self.caixapl = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+        self.caixapl = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
         self.caixapl.insert(tk.INSERT,"                           DECISÃO PLENÁRIO DO CREA\nFolhas:\nDecisão nº:\nData:\nMulta:")
-        self.caixapl.place(relx=0.065, rely=0.52, relwidth=0.46, relheight=0.11)
+        self.caixapl.place(relx=0.065, rely=0.61, relwidth=0.46, relheight=0.14)
 
         """Caixa AR"""
-        self.caixaar = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+        self.caixaar = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
         self.caixaar.insert(tk.INSERT, "                           AVISO DE RECEBIMENTO\nFolhas:\nData:")
-        self.caixaar.place(relx=0.54, rely=0.4, relwidth=0.22, relheight=0.07)
+        self.caixaar.place(relx=0.54, rely=0.43, relwidth=0.22, relheight=0.09)
 
         """Caixa Tempestividade"""
-        self.caixatempestividade = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+        self.caixatempestividade = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
         self.caixatempestividade.insert(tk.INSERT,"                           INTEMPESTIVIDADE\nDentro do prazo:\nDias:")
-        self.caixatempestividade.place(relx=0.77, rely=0.4, relwidth=0.22, relheight=0.07)
+        self.caixatempestividade.place(relx=0.77, rely=0.43, relwidth=0.22, relheight=0.09)
 
         """Caixa RECURSO"""
-        self.caixarecurso = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+        self.caixarecurso = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
         self.caixarecurso.insert(tk.INSERT,"                           RECURSO AO CONFEA\nFolhas:\nData:\nContrato:\nJustificativa 1:")
-        self.caixarecurso.place(relx=0.065, rely=0.64, relwidth=0.46, relheight=0.11)
+        self.caixarecurso.place(relx=0.065, rely=0.76, relwidth=0.46, relheight=0.14)
 
         """Caixa ART"""
-        self.caixaart = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+        self.caixaart = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
         self.caixaart.insert(tk.INSERT,"                           REGULARIZAÇÃO POR ANOTAÇÃO DE RESPONSABILIDADE TÉCNICA-ART\nFolhas:\nNº da ART:\nData:")
-        self.caixaart.place(relx=0.54, rely=0.48, relwidth=0.45, relheight=0.09)
+        self.caixaart.place(relx=0.54, rely=0.53, relwidth=0.45, relheight=0.12)
 
         """Caixa Comprovante de Cadastro Nacional de Pessoa Juridica"""
-        self.caixacnpj = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+        self.caixacnpj = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
         self.caixacnpj.insert(tk.INSERT,"                           COMPROVANTE DE CADASTRO NACIONAL DE PESSOA JURÍDICA\nFolhas:\nData:\nCNAE Primário:\nCNAE Secundário:")
-        self.caixacnpj.place(relx=0.54, rely=0.58, relwidth=0.45, relheight=0.11)
+        self.caixacnpj.place(relx=0.54, rely=0.66, relwidth=0.45, relheight=0.14)
 
         """Caixa Reincidência"""
-        self.caixareincidencia = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+        self.caixareincidencia = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
         self.caixareincidencia.insert(tk.INSERT, "                           REINCIDÊNCIA\nFolhas:\nData:")
-        self.caixareincidencia.place(relx=0.54, rely=0.7, relwidth=0.22, relheight=0.07)
+        self.caixareincidencia.place(relx=0.54, rely=0.81, relwidth=0.22, relheight=0.09)
 
         """Caixa Procuração"""
-        self.caixaprocuracao = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
+        self.caixaprocuracao = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
         self.caixaprocuracao.insert(tk.INSERT, "                           PROCURAÇÃO\nFolhas:\nNome:")
-        self.caixaprocuracao.place(relx=0.77, rely=0.7, relwidth=0.22, relheight=0.07)
+        self.caixaprocuracao.place(relx=0.77, rely=0.81, relwidth=0.22, relheight=0.09)
     def valBarra(self, progress):
         self.varBarra.set(progress)
         self.root.update()
@@ -123,21 +114,27 @@ class App():
         self.varBarra = DoubleVar()
         self.varBarra.set(0)
 
-        self.barra = ttk.Progressbar(self.root, variable=self.varBarra, maximum=100)
-        self.barra.place(relx=0.80, rely=0.98, relwidth=0.2, relheight=0.02)
+        self.barra = ctk.CTkProgressBar(self.root, variable=self.varBarra)
+        self.barra.configure(fg_color="#535353",progress_color="#4a89d3")
+        #self.barra = ctk.CTkProgressBar(self.root,  )
+        #self.barra.start()
+        self.barra.place(relx=0.43, rely=0.94, relwidth=0.2, relheight=0.02)
     def logo(self):
-        self.frame_3 = Frame(self.root)
-        self.frame_3.configure(background='#adadad')
+        self.frame_3 = ctk.CTkFrame(self.root, fg_color='#535353')
         self.frame_3.place(relx=0.0, rely=0.2, relwidth=1, relheight=0.05)
-        self.frame_2 = Frame(self.root)
-        self.frame_2.configure(background='#01509b')
-        self.frame_2.place(relx=0.0, rely=0.25, relwidth=0.055, relheight=1)
+        self.frame_2 = ctk.CTkFrame(self.root,fg_color='#094c8c')
+        self.frame_2.place(relx=0.0, rely=0.25, relwidth=0.06, relheight=1)
         """definir a logo do projeto"""
-        logoimg = Image.open("log.png")
-        self.lg = ImageTk.PhotoImage(logoimg)
-        self.lbl = tk.Label(self.frame_1, image=self.lg)
-        self.lbl.place(relx=0.07, rely=0.1, relwidth=0.35, relheight=0.8)
-        self.lbl.image = self.lg
+        #logoimg = Image.open("log.png")
+        #self.lg = ImageTk.PhotoImage(logoimg)
+        #self.lbl = tk.Label(self.frame_1, image=self.lg)
+        #self.lbl = tk.Label(self.frame_1, image=self.lg)
+        #self.lbl.place(relx=0.07, rely=0.1, relwidth=0.35, relheight=0.8)
+        #self.lbl.image = self.lg
+
+        lg= ctk.CTkImage(Image.open("log.png"),size=(300,70))
+        logo=ctk.CTkLabel(self.frame_1,image=lg,text='')
+        logo.place(relx=0.07, rely=0.1, relwidth=0.35, relheight=0.8)
         """consulta de acordo com crea_entrys TO/BA/PR"""
         global con
         global crea_entry
@@ -148,8 +145,7 @@ class App():
         """limpar dados"""
         def limpar():
             """limpa o nome do arquivo"""
-            lbl_selecionado = Label(self.frame_3)
-            lbl_selecionado.config(text=" ", background='#adadad')
+            lbl_selecionado = ctk.CTkLabel(self.frame_3, text='', fg_color='#535353')
             lbl_selecionado.place(relx=0.25, rely=0.10, relwidth=0.3, relheight=0.80)
             """limpar barra"""
             self.varBarra.set(0)
@@ -281,11 +277,9 @@ class App():
             global con
             global crea_entry
 
-            lbl2_selecionado = Label(self.frame_1)
-            lbl2_selecionado.config(text="  ", background='white')
-            lbl2_selecionado.place(relx=0.395, rely=0.45, relwidth=0.025, relheight=0.09)
-            lbl_selecionado = Label(self.frame_3)
-            lbl_selecionado.config(text="  ", background='#adadad')
+            lbl2_selecionado = ctk.CTkLabel(self.frame_1,text="  ",fg_color="#4a89d3")
+            lbl2_selecionado.place(relx=0.395, rely=0.45, relwidth=0.05, relheight=0.2)
+            lbl_selecionado = ctk.CTkLabel(self.frame_3,text="  ", fg_color='#535353')
             lbl_selecionado.place(relx=0.45, rely=0.10, relwidth=0.15, relheight=0.80)
             limpar()
             file_path = askopenfilename(filetypes=[("Arquivos PDF", "*.pdf")], defaultextension=".pdf")
@@ -294,8 +288,7 @@ class App():
                 partes = file_path.split("Downloads/")
                 if len(partes) > 1:
                     depois_downloads = partes[1]
-                lbl_selecionado = Label(self.frame_3)
-                lbl_selecionado.config(text=depois_downloads, background='#adadad')
+                lbl_selecionado = ctk.CTkLabel(self.frame_3,text=depois_downloads, fg_color='#535353')
                 lbl_selecionado.place(relx=0.25, rely=0.10, relwidth=0.3, relheight=0.80)
                 # Abre o arquivo PDF em modo leitura binária
                 with open(file_path, 'rb') as pdf_file:
@@ -311,18 +304,19 @@ class App():
                         if match:
                                 crea_entry_result = match.group(1)
                                 crea_entry = crea_entry_result.upper()
-                                lbl2_selecionado = Label(self.frame_1)
-                                lbl2_selecionado.config(text=crea_entry, background='#a1a1a1')
-                                fonte = font.Font(size=18)
-                                lbl2_selecionado["font"] = fonte
-                                lbl2_selecionado.place(relx=0.395, rely=0.45, relwidth=0.025, relheight=0.09)
+                                lbl2_selecionado = ctk.CTkLabel(self.frame_1, text=crea_entry, fg_color='#4a89d3',text_color='black', bg_color='#094c8c',font=('Lato Regular', 30))
+                                #lbl2_selecionado.config()
+                                #fonte = font.Font(size=18)
+                                #lbl2_selecionado["font"] = fonte
+                                lbl2_selecionado.place(relx=0.395, rely=0.45, relwidth=0.05, relheight=0.2)
 
                                 #crea_entry["crea_entry"]=crea_entry
                                 #requests.session['crea_entry'] = crea_entry
                                 #salvar(crea_entry)
                             #GRUPOS CREAS
                                 print("1 passo: Procura qual crea_entry")
-                                self.valBarra(5)
+                                self.valBarra(0.05)
+                                #self.barra.set(0.05)
                                 if crea_entry == "TO":
                                     print("2.1 passo: Achei qual o Crea")
                                     crea_entrys(pdf_file, num_pages,crea_entry)
@@ -361,7 +355,8 @@ class App():
 
             global nsei_ai
             global folhas_ai
-            self.valBarra(10)
+            self.valBarra(0.10)
+            #self.barra.set(0.10)
             print("3 passo: Procura a pagina do AUTO DE INFRAÇÃO")
             pdf_reader = PdfReader(pdf_file)
             for page_num in range(num_pages):
@@ -372,7 +367,7 @@ class App():
                 result_nsei_entry = re.search(r'Nº(.*)', text)
                 """Pagina do Auto de infração"""
                 if (pagautuado and pagmulta) and result_nsei_entry:
-                    self.valBarra(15)
+                    self.valBarra(0.15)
                     print("4 passo: Achei a pagina do AUTO DE INFRAÇÃO")
                     folhas_ai = page_num + 1
                     #cursor = con.cursor()
@@ -396,7 +391,7 @@ class App():
                     break
         """EXTRAINDO DADOS DO AUTO DE INFRAÇÃO"""
         def pagedoauto(folhas_ai, pdf_file,num_pages,crea_entry):
-            self.valBarra(20)
+            self.valBarra(0.20)
             global nauto_ai
             global multa_ai
             global autuado_ai
@@ -431,7 +426,7 @@ class App():
             extracted_text = text[desc_pos + len("DESCRIÇÃO"):action_pos].strip()
             melhora_motivo = extracted_text.replace("\n", "")
             print("6 passo: Achei todos os dados do AUTO DE INFRAÇÃO")
-            self.valBarra(25)
+            self.valBarra(0.25)
             if cnpj:
                 cnpj_cpf_ai = cnpj.group(1)
                 self.caixaai.insert("5.6", f"***{cnpj_cpf_ai}***", "red")
@@ -506,7 +501,7 @@ class App():
 ##########################################################################################################
         """Descobre qual a pagina da Camara Especializada"""
         def ce(pdf_reader, folhas_ai,crea_entry, pdf_file, num_pages):
-            self.valBarra(30)
+            self.valBarra(0.30)
             global especialidade_ce
             global folhas_ce
             global ndecisao_ce
@@ -522,10 +517,10 @@ class App():
 
                 pagdecisaocamarago = re.search(r'A Câmara Especializada (.*)do Conselho', text2)
                 pagdecisaocamaraam = re.search(r'\bA Reunião\b(.*)\bdo Conselho\b', text2)
-                pagdecisaocamarasp = re.search(r'A Câmara Especializada , reunida ',text2)
+                pagdecisaocamarasp = re.search(r'A Câmara Especializada de(.*), reunida ',text2)
                 pagdecisaocamararj = re.search(r"A Câmara Especializada de (.*) - ",text2)
-                self.valBarra(35)
-                print(pagdecisaocamararj)
+                self.valBarra(0.35)
+
 
                 if pagdecisaocamarasp:
                     print("8 passo: Achei a pagina da DECISAO DA CAMARA ESPECIALIZADA")
@@ -551,7 +546,7 @@ class App():
                         for page_num in range(folhas_ce, len(pdf_reader.pages)):
                             page = pdf_reader.pages[page_num-1]
                             text4 = page.extract_text()
-                            datato = re.search(r',[ ^]/de [A-Z][a-z]+ de (\d{4})', text4)
+                            datato = re.search(r',(.*)de [A-Z][a-z]+ de (\d{4})', text4)
                             if datato:
                                 data_ce = datato.group()
                                 self.caixace.insert("5.6", data_ce, "red")  # Adiciona a tag "red" ao novo valor
@@ -662,7 +657,7 @@ class App():
                             result_ndecisaoce = ndecisaoce.group(1)
                             ndecisao_ce = result_ndecisaoce
 
-                        self.valBarra(25)
+                        self.valBarra(0.25)
                         self.caixace.insert("3.12", ndecisao_ce,"red")  # Adiciona a tag "red" ao novo valor
                         self.caixace.tag_config("red", foreground="red")
                     ndecisaoce = re.search(r'Decisão:(.+)', text2)
@@ -671,7 +666,7 @@ class App():
                     datace = re.search(r', (\d{2}) de (.*) de (\d{4})', text3)
                     datace2= re.search(r', (\d{1})(.*) de (\d{4}).',text3)
                     if datace2:
-                        print(datace2)
+
                         datace = datace2
                     print("10.2 passo: Achei os dados da DECISAO DA CAMARA ESPECIALIZADA")
                     if ndecisaoce:
@@ -741,7 +736,7 @@ class App():
                             extractedrs_text = text3[decisao_desc_pos + len(" - CE"):decisao_action_pos].strip()
                             melhora_decisao = extractedrs_text.replace("\n", "")
                             print("oi")
-                            self.valBarra(25)
+                            self.valBarra(0.25)
                             if melhora_decisao:
                                 self.caixace.insert("3.12", "CE" + melhora_decisao, "red")  # Adiciona a tag "red" ao novo valor
                                 self.caixace.tag_config("red", foreground="red")
@@ -804,13 +799,13 @@ class App():
                 configmes2(dia2,mes_escrito2,ano2)
         """Exibindo a data"""
         def configmes2(dia2,mes_escrito2,ano2):
-            self.valBarra(40)
+            self.valBarra(0.40)
             data_formatada2 = f"{dia2} de {mes_escrito2} de {ano2}"
             if data_formatada2:
                 self.caixace.insert("5.6", str(data_formatada2), "red")  # Adiciona a tag "red" ao novo valor
                 self.caixace.tag_config("red", foreground="red")
         def multa(pdf_reader, folhas_ce,crea_entry, pdf_file, num_pages):
-            self.valBarra(45)
+            self.valBarra(0.45)
             global multa_ce
             if crea_entry == 'GO' or crea_entry == "AM"  or crea_entry == "BA" or crea_entry == "MT" or crea_entry == 'RN' or crea_entry == 'RJ' or crea_entry == 'SP':
                 for page_num in range(folhas_ce, len(pdf_reader.pages)):
@@ -879,7 +874,7 @@ class App():
                 plcrea_entry(pdf_reader, folhas_ce,crea_entry, pdf_file, num_pages)
         """Descobre qual a pagina da Decisao Plenaria"""
         def plcrea_entry(pdf_reader, folhas_ce,crea_entry, pdf_file, num_pages):
-            self.valBarra(50)
+            self.valBarra(0.50)
             global folhas_pl
             global ndecisao_pl
             global data_pl
@@ -1054,7 +1049,7 @@ class App():
 
             multapl(pdf_reader, folhas_pl,crea_entry, pdf_file, num_pages)
         def multapl(pdf_reader, folhas_pl,crea_entry, pdf_file, num_pages):
-            self.valBarra(55)
+            self.valBarra(0.55)
             global multa_pl
             print("entrou na multa")
             if crea_entry == 'GO' or crea_entry == 'BA' or crea_entry =='RJ' or crea_entry == 'AM' or crea_entry =='SP':
@@ -1178,7 +1173,7 @@ class App():
 
             aviso(pdf_reader, folhas_pl, crea_entry, pdf_file, num_pages)
         def aviso(pdf_reader, folhas_pl,crea_entry, pdf_file, num_pages):
-            self.valBarra(75)
+            self.valBarra(0.75)
             global folhas_aviso
             global data_aviso
             data1= ''
@@ -1276,7 +1271,7 @@ class App():
             global folhas_recurso
             global data_recurso
 
-            self.valBarra(80)
+            self.valBarra(0.80)
             print("17 passo: Procurar o recurso")
             for page_num in range(folhas_pl, len(pdf_reader.pages)):
                     page = pdf_reader.pages[page_num-1]
@@ -1378,7 +1373,7 @@ class App():
                                     self.caixatempestividade.tag_config("red", foreground="red")
 
                         break
-                        self.valBarra(85)
+                        self.valBarra(0.85)
                     elif recursogo:
                         pag_recursogo = page_num + 1
                         folhas_recurso = f"{pag_recursogo}/{num_pages}"
@@ -1400,7 +1395,7 @@ class App():
                             data_recurso = datagore.group()
                             self.caixarecurso.insert("3.7", data_recurso, "red")
                             self.caixarecurso.tag_config("red", foreground="red")
-                        self.valBarra(95)
+                        self.valBarra(0.95)
                     elif recursors:
                         data_recurso = recursors.group()
                         #result_recursors_real =
@@ -1556,9 +1551,9 @@ class App():
                             print(con)
                     except mysql.connector.Error as error:
                         messagebox.showwarning("Duplicidade", f"Auto de infração duplicado ou já analisado\n {str(error)}")
-            #salvar()
+            salvar()
             self.variaveis()
-            self.valBarra(100)
+            self.valBarra(1)
             tk.messagebox.showinfo("Sistema confea","Finalizado")
 ##########################################################################################################
 #           CREAS GO
@@ -1644,7 +1639,7 @@ class App():
 ##########################################################################################################
         """CREAS= RS"""
         def crea_entrysrs(pdf_file, num_pages, crea_entry):
-            self.valBarra(10)
+            self.valBarra(0.10)
             print("3 passo: Procura a pagina do AUTO DE INFRAÇÃO")
             pdf_reader = PdfReader(pdf_file)
             for page_num in range(num_pages):
@@ -1656,7 +1651,7 @@ class App():
                 """Pagina do Auto de infração"""
                 if pagautuado or pagautuado2:
 
-                    self.valBarra(15)
+                    self.valBarra(0.15)
                     print("4 passo: Achei a pagina do AUTO DE INFRAÇÃO")
                     folhas_entry = page_num + 1
                     #result_nsei_entry = nsei_entry.group(1)
@@ -1671,7 +1666,7 @@ class App():
                     break
         """EXTRAINDO DADOS DO AUTO DE INFRAÇÃO"""
         def pagedoautors(folhas_entry, pdf_file, num_pages, crea_entry):
-            self.valBarra(20)
+            self.valBarra(0.20)
             print("5 passo: Procura todos os dados do AUTO DE INFRAÇÃO")
             pdf_reader = PdfReader(pdf_file)
             page = pdf_reader.pages[folhas_entry - 1]
@@ -1697,7 +1692,7 @@ class App():
             extracted_text = text[desc_pos + len(" detalhada:"):action_pos].strip()
             melhora_motivo = extracted_text.replace("\n", "")
             print("6 passo: Achei todos os dados do AUTO DE INFRAÇÃO")
-            self.valBarra(25)
+            self.valBarra(0.25)
             if melhora_motivo:
                 melhora_motivo_min = melhora_motivo.lower()
                 self.caixaai.insert("10.10", melhora_motivo_min, "red")
@@ -1818,7 +1813,7 @@ class App():
 ##########################################################################################################
         """Descobre qual pagina do Auto de Infração"""
         def crea_entrysrj(pdf_file, num_pages, crea_entry):
-            self.valBarra(10)
+            self.valBarra(0.10)
             print("3 passo: Procura a pagina do AUTO DE INFRAÇÃO")
             pdf_reader = PdfReader(pdf_file)
             for page_num in range(num_pages):
@@ -1829,7 +1824,7 @@ class App():
 
                 """Pagina do Auto de infração"""
                 if pagautuado:
-                    self.valBarra(15)
+                    self.valBarra(0.15)
                     print("4 passo: Achei a pagina do AUTO DE INFRAÇÃO")
                     global folhas_ai
                     folhas_ai = page_num + 1
@@ -1854,7 +1849,7 @@ class App():
             global artigo_ai
             global motivo_ai
             global data_ai
-            self.valBarra(20)
+            self.valBarra(0.20)
             print("5 passo: Procura todos os dados do AUTO DE INFRAÇÃO")
             pdf_reader = PdfReader(pdf_file)
             page = pdf_reader.pages[folhas_ai - 1]
@@ -1880,7 +1875,7 @@ class App():
             extracted_text = text[desc_pos + len("Serviço Executado"):action_pos].strip()
             melhora_motivo = extracted_text.replace("\n", "")
             print("6 passo: Achei todos os dados do AUTO DE INFRAÇÃO")
-            self.valBarra(25)
+            self.valBarra(0.25)
             if melhora_motivo:
 
                 melhora_motivo1 = re.search(r'[:;] .+', melhora_motivo)
@@ -1927,9 +1922,10 @@ class App():
                 #salvar(nauto_entry)
 
             if data:
-                result_data = data.group(1)
-                data_objeto = datetime.strptime(result_data, "%d de %B de %Y")
-                data_ai = data_objeto.strftime("%Y-%m-%d")
+                data_ai = data.group(1)
+                print("a data",data)
+                #data_objeto = datetime.strptime(result_data, "%d de %B de %Y")
+                #data_ai = data_objeto.strftime("%Y-%m-%d")
                 self.caixaai.insert("9.6", str(data_ai), "red")  # Adiciona a tag "red" ao novo valor
                 self.caixaai.tag_config("red", foreground="red")
             ce(pdf_reader, folhas_ai, crea_entry, pdf_file, num_pages)
@@ -1940,7 +1936,8 @@ class App():
 ##########################################################################################################
         """Descobre qual pagina do Auto de Infração"""
         def crea_entryssp(pdf_file, num_pages, crea_entry):
-            self.valBarra(10)
+            global folhas_ai
+            self.valBarra(0.10)
             print("3 passo: Procura a pagina do AUTO DE INFRAÇÃO")
             pdf_reader = PdfReader(pdf_file)
             for page_num in range(num_pages):
@@ -1950,7 +1947,7 @@ class App():
 
                 """Pagina do Auto de infração"""
                 if pagautuado:
-                    self.valBarra(15)
+                    self.valBarra(0.15)
                     print("4 passo: Achei a pagina do AUTO DE INFRAÇÃO")
                     folhas_ai = page_num + 1
 
@@ -1968,7 +1965,14 @@ class App():
         """EXTRAINDO DADOS DO AUTO DE INFRAÇÃO"""
         def pagedoautosp(folhas_ai, pdf_file, num_pages, crea_entry):
             global nauto_ai
-            self.valBarra(20)
+            global multa_ai
+            global nsei_ai
+            global autuado_ai
+            global cnpj_cpf_ai
+            global artigo_ai
+            global motivo_ai
+            global data_ai
+            self.valBarra(0.20)
             print("5 passo: Procura todos os dados do AUTO DE INFRAÇÃO")
             pdf_reader = PdfReader(pdf_file)
             page = pdf_reader.pages[folhas_ai - 1]
@@ -1982,21 +1986,25 @@ class App():
 
             # nauto2 = re.search(r'AUTO DE INFRACAO N°(.+)', text)
             """Extrai o NOME DO AUTUADO"""
-            autuado = re.search(r'nome da empresa (.*),', text)
+            desc_pos3 = text.find("nome da empresa")
+            action_pos3 = text.find(",", desc_pos3)
+            extracted_text3 = text[desc_pos3 + len("nome da empresa"):action_pos3].strip()
+            autuado = extracted_text3.replace("\n", "")
+            #autuado = re.search(r'nome da empresa (.*),', text)
 
             nsei=re.search(r'[Pp]rocesso (.*),',text)
             """Extrai o CNPJ"""
             cnpj = re.search(r'CNPJ n.°(.*), e ', text)
-
+            print("to sim")
             """Extrai o motivo do AUTO"""
             desc_pos2 = text.find("infringindo o")
             action_pos2 = text.find(" - ", desc_pos2)
             extracted_text2 = text[desc_pos2 + len("infringindo o"):action_pos2].strip()
             artigo = extracted_text2.replace("\n", "")
 
-            desc_pos = text.find(", vem ")
+            desc_pos = text.find("desenvolvendo")
             action_pos = text.find(".", desc_pos)
-            extracted_text = text[desc_pos + len(", vem "):action_pos].strip()
+            extracted_text = text[desc_pos + len("desenvolvendo"):action_pos].strip()
             melhora_motivo = extracted_text.replace("\n", "")
 
             desc_pos1 = text.find("R$")
@@ -2005,65 +2013,136 @@ class App():
             multa = extracted_text1.replace("\n", "")
 
             print("6 passo: Achei todos os dados do AUTO DE INFRAÇÃO")
-            self.valBarra(25)
+            self.valBarra(0.25)
             if melhora_motivo:
-                melhora_motivo_min = melhora_motivo.lower()
-                self.caixaai.insert("10.10", melhora_motivo_min, "red")
+                motivo_ai = melhora_motivo.lower()
+                self.caixaai.insert("10.10", motivo_ai, "red")
                 self.caixaai.tag_config("red", foreground="red")
             if nsei:
-                nsei_entry= nsei.group(1)
-                self.caixaai.insert("2.17", nsei_entry, "red")
+                nsei_ai= nsei.group(1)
+                self.caixaai.insert("2.17", nsei_ai, "red")
                 self.caixaai.tag_config("red", foreground="red")
             if cnpj:
-                result_cnpj = cnpj.group(1)
-                self.caixaai.insert("5.6", f"***{result_cnpj}***", "red")
+                cnpj_cpf_ai = cnpj.group(1)
+                self.caixaai.insert("5.6", f"***{cnpj_cpf_ai}***", "red")
                 self.caixaai.tag_config("red", foreground="red")
             if autuado:
-                result_autuado = autuado.group(1)
-                result_autuado_real = result_autuado
-                result_autuado_min = result_autuado_real.title()
-                self.caixaai.insert("4.12", str(result_autuado_min), "red")  # Adiciona a tag "red" ao novo valor
+                autuado_ai = autuado.lower().title()
+                self.caixaai.insert("4.12", str(autuado_ai), "red")  # Adiciona a tag "red" ao novo valor
                 self.caixaai.tag_config("red", foreground="red")
             if multa:
-                self.caixaai.insert("8.7", multa, "red")  # Adiciona a tag "red" ao novo valor
+                multa_ai = multa
+                self.caixaai.insert("8.7", multa_ai, "red")  # Adiciona a tag "red" ao novo valor
                 self.caixaai.tag_config("red", foreground="red")
             if artigo:
-                self.caixaai.insert("3.8", artigo, "red")  # Adiciona a tag "red" ao novo valor
+                artigo_ai=artigo
+                self.caixaai.insert("3.8", artigo_ai, "red")  # Adiciona a tag "red" ao novo valor
                 self.caixaai.tag_config("red", foreground="red")
-
             if nauto:
+
                 result_nauto_entry = nauto.group()
-                nauto_entry = result_nauto_entry[8:]
-                self.caixaai.insert("7.10", nauto_entry, "red")  # Adiciona a tag "red" ao novo valor
+
+                nauto_ai = result_nauto_entry[8:]
+                self.caixaai.insert("7.10", nauto_ai, "red")  # Adiciona a tag "red" ao novo valor
                 self.caixaai.tag_config("red", foreground="red")
-                #self.caixaai.insert("2.16", nauto_entry, "red")  # Adiciona a tag "red" ao novo valor
-                #self.caixaai.tag_config("red", foreground="red")
             elif nauto is None:
                 nauto2 = re.search(r'N°(\d{3})/(\d{4})', text)
                 if nauto2:
+
                     nauto_entry= nauto2.group()
-                    self.caixaai.insert("7.10", nauto_entry, "red")  # Adiciona a tag "red" ao novo valor
+                    self.caixaai.insert("7.10", nauto_ai, "red")  # Adiciona a tag "red" ao novo valor
                     self.caixaai.tag_config("red", foreground="red")
-                # salvar(nauto_entry)
+                nauto3 = re.search(r'Número(.*)/(\d{4})', text)
+                if nauto3:
+                    result_nauto_entry = nauto3.group()
+                    nauto_ai = result_nauto_entry[8:]
+                    self.caixaai.insert("7.10", nauto_ai, "red")  # Adiciona a tag "red" ao novo valor
+                    self.caixaai.tag_config("red", foreground="red")
             if data:
-                result_data = data.group(1)
-                self.caixaai.insert("9.6", str(result_data), "red")  # Adiciona a tag "red" ao novo valor
+                data_ai = data.group(1)
+                self.caixaai.insert("9.6", str(data_ai), "red")  # Adiciona a tag "red" ao novo valor
                 self.caixaai.tag_config("red", foreground="red")
+            elif data is None:
+                data1 = re.search(r', (\d{1,2})(.*) de (\d{4}).',text)
+                if data1:
+                    result_data1 = data1.group()
+                    data_ai = result_data1[2:]
+                    self.caixaai.insert("9.6", str(data_ai), "red")  # Adiciona a tag "red" ao novo valor
+                    self.caixaai.tag_config("red", foreground="red")
+
             ce(pdf_reader, folhas_ai, crea_entry, pdf_file, num_pages)
-
-                # pagedoce(folhas_ce, pdf_file)
-
-    #def botoes(self):
         """Barra de pesquisa"""
-        lb_pes = Entry(self.frame_1, text="Digite sua busca aqui")
-        lb_pes.configure(background='#fff', fg='black', font='Arial 10 ')
-        lb_pes.place(relx=0.60, rely=0.4, relwidth=0.25, relheight=0.25)
+        lb_pes = ctk.CTkEntry(self.frame_1, placeholder_text="Digite sua busca aqui")
+        #lb_pes.configure(background='#fff', fg='black', font='Lato 10 ')
+        lb_pes.place(relx=0.60, rely=0.4, relwidth=0.25, relheight=0.2)
         """Botao pesquisar"""
-        btn_pes = ctk.CTkButton(self.frame_1, text='Pesquisar', fg_color='#fff', text_color='#000', font=('Arial', 14))
-        btn_pes.place(relx=0.86, rely=0.4, relwidth=0.07, relheight=0.25)
+        btn_pes = ctk.CTkButton(self.frame_1, text='Pesquisar', fg_color='#fff', text_color='#000', font=('Lato', 14))
+        btn_pes.place(relx=0.86, rely=0.4, relwidth=0.07, relheight=0.2)
         def tela_menu():
-            self.pag59.place_forget()
 
+            if tela_texto is not None:
+                self.texto_padrao.place_forget()
+                if tela_historico is not None:
+                    self.canvas.place_forget()
+            elif tela_historico is not None:
+                self.canvas.place_forget()
+                if tela_texto is not None:
+                    self.texto_padrao.place_forget()
+            self.logo()
+
+        def tela_historico():
+            self.caixaai.pack_forget()
+            self.caixace.pack_forget()
+            self.caixapl.pack_forget()
+            self.caixaar.pack_forget()
+            self.caixarecurso.pack_forget()
+            self.caixatempestividade.pack_forget()
+            self.caixaart.pack_forget()
+            self.caixareincidencia.pack_forget()
+            self.caixacnpj.pack_forget()
+            self.caixaprocuracao.pack_forget()
+            x_scrollbar = ctk.CTkScrollbar(self.root)
+            x_scrollbar.place(relx=0.065, rely=0.97, relwidth=0.925, relheight=0.02)
+            self.canvas = ctk.CTkCanvas(self.root, xscrollcommand=x_scrollbar.set)
+            scrollable_frame = ctk.CTkFrame(self.canvas)
+            scrollable_frame.bind("<Configure>", lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all")))
+            self.canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+            self.canvas.place(relx=0.065, rely=0.26, relwidth=0.925, relheight=0.7)  # Manter o place para a tabela
+
+            header = ["Ações", "id", "crea", "nsei", "artigo", "autuado", "cnpj_cpf", "folhas", "nauto", "multa",
+                      "data",
+                      "motivo", "folhasce", "ndecisaoce", "especialidade", "datace", "multace", "folhaspl",
+                      "ndecisaopl",
+                      "datapl", "multapl", "folharecurso", "datarecurso", "justificativa", "folhaaviso", "dataaviso",
+                      "prazo",
+                      "dias", "folhasart", "nart", "dataart", "folhascnpj", "datacnpj", "cnaeprimeiro", "cnaesegundo",
+                      "folhasreincidencia", "datareincidencia", "folhasprocuracao", "nomeprocuracao", "folhasalteracao",
+                      "nalteracao"]
+
+            for x, y in enumerate(header):
+                entry = ctk.CTkEntry(scrollable_frame, justify='center')
+                entry.insert(0, y)
+                entry.configure(state='readonly')
+                if y.lower() == 'phone number':
+                    entry.grid(row=0, column=x, ipadx=100, pady=5)
+                else:
+                    entry.grid(row=0, column=x, pady=5)
+
+            for x in range(21):
+                entry = ctk.CTkEntry(scrollable_frame, justify='center')
+                entry.insert(0, x)
+                entry.configure(state='readonly')
+                entry.grid(row=x + 3, column=0, ipadx=3, pady=0)
+
+                button = ctk.CTkButton(scrollable_frame, text='Apagar', fg_color='red')
+                button.grid(row=x + 3, column=0, pady=0)
+
+            # Barra deslizante horizontal
+
+            self.canvas.configure(xscrollcommand=x_scrollbar.set)
+            x_scrollbar.configure(command=self.canvas.xview, fg_color='red')
+              # Usando place para a barra deslizante
+        #tela_historico()
         #self.conteudo()
         def tela_texto():
 
@@ -2086,7 +2165,6 @@ class App():
             global nauto_ai
             global multa_ai
             global data_ai
-            print(data_ai)
             global motivo_ai
             global especialidade_ce
             global folhas_ce
@@ -2117,9 +2195,9 @@ class App():
             global folhas_alteracao
             global n_alteracao
             if ('alínea "b"' in artigo_ai or "alínea 'b'" in artigo_ai):
-                self.pag59 = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
-                self.pag59.tag_configure("red", foreground="red")
-                self.pag59.insert(tk.INSERT,
+                self.texto_padrao = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
+                self.texto_padrao.tag_config("red", foreground="red")
+                self.texto_padrao.insert(tk.INSERT,
                     """ALINEA B
                     Trata-se de recurso interposto ao Confea contra a decisão do Plenário do Crea-""" + str(crea_entry) + """ pela pessoa """ + str(autuado_ai) + """, CNPJ nº ***""" + str(cnpj_cpf_ai) + """***, autuada mediante o Auto de Infração n° """ + str(nauto_ai) + """, lavrado em """ + str(data_ai) + """, por infração """ + str(artigo_ai) + """, ao """ + str(motivo_ai) + """. (fls.""" + str(folhas_ai) + """  e """ + str(folhas_recurso) + """)
                     A Câmara Especializada de """ + str(especialidade_ce) + """ analisou os autos e concluiu pela manutenção da autuação, expedindo a Decisão nº """ + str(ndecisao_ce) + """, de """ + str(data_ce) + """ (fl. """ + str(folhas_ce) + """)
@@ -2133,6 +2211,15 @@ class App():
                     O COMPROVANTE DE CADASTRO NACIONAL DA PESSOA JURIDICA ESTA NA PAGINA"""+ str(folhas_cnpj)+"""
                     REINCIDÊNCIA ESTA CITADA NA PAGINA """+ str(folhas_reincidencia)+"""
                     A ART ESTA NA PAGINA """+ str(folhas_art)+"""
+
+
+
+
+
+
+
+
+
 
                     Considerando que a alínea “e” do art. 27 da Lei nº 5.194, de 1966, estabelece que compete ao Confea julgar em última instância os recursos sobre registros, decisões e penalidades impostas pelos Conselhos Regionais;
                     Considerando que a alínea “a” do art. 6º da Lei nº 5.194, de 1966, prevê que exerce ilegalmente a profissão de engenheiro ou engenheiro - agrônomo a pessoa física ou jurídica que realizar atos ou prestar serviços, públicos ou privados, reservados aos profissionais de que trata a lei e que não possua registro nos Conselhos Regionais;
@@ -2210,9 +2297,9 @@ class App():
                 cores()
 
             elif ('alínea "e"' in artigo_ai or "alínea 'e'" in artigo_ai):
-                    self.pag59 = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
-                    self.pag59.tag_configure("red", foreground="red")
-                    self.pag59.insert(tk.INSERT,
+                    self.texto_padrao = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
+                    self.texto_padrao.tag_config("red", foreground="red")
+                    self.texto_padrao.insert(tk.INSERT,
                                       """ALINEA E
                                       Trata-se de recurso interposto ao Confea contra a decisão do Plenário do Crea-""" + str(
                                           crea_entry) + """ pela pessoa """ + str(
@@ -2245,6 +2332,14 @@ class App():
                     REINCIDÊNCIA ESTA CITADA NA PAGINA """+ str(folhas_reincidencia)+"""
                     A ART ESTA NA PAGINA """+ str(folhas_art)+"""
 
+        
+        
+        
+        
+        
+        
+        
+        
         
                             Considerando que a alínea “e” do art. 27 da Lei nº 5.194, de 1966, estabelece que compete ao Confea julgar em última instância os recursos sobre registros, decisões e penalidades impostas pelos Conselhos Regionais;
                             Considerando que a alínea “a” do art. 6º da Lei nº 5.194, de 1966, prevê que exerce ilegalmente a profissão de engenheiro ou engenheiro - agrônomo a pessoa física ou jurídica que realizar atos ou prestar serviços, públicos ou privados, reservados aos profissionais de que trata a lei e que não possua registro nos Conselhos Regionais;
@@ -2321,9 +2416,9 @@ class App():
                             Observação: o “conforme estabelecido pelo Regional” deve ser utilizado somente nos casos em que o valor da multa do Crea divergir do valor correto da resolução.""")
                     cores()
             elif ('alínea "a"' in artigo_ai or "alínea 'a'" in artigo_ai):
-                    self.pag59 = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
-                    self.pag59.tag_configure("red", foreground="red")
-                    self.pag59.insert(tk.INSERT,
+                    self.texto_padrao = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
+                    self.texto_padrao.tag_config("red", foreground="red")
+                    self.texto_padrao.insert(tk.INSERT,
                                       """ALINEA A
                                       Trata-se de recurso interposto ao Confea contra a decisão do Plenário do Crea-""" + str(
                                           crea_entry) + """ pela pessoa """ + str(
@@ -2355,6 +2450,14 @@ class App():
                     O COMPROVANTE DE CADASTRO NACIONAL DA PESSOA JURIDICA ESTA NA PAGINA"""+ str(folhas_cnpj)+"""
                     REINCIDÊNCIA ESTA CITADA NA PAGINA """+ str(folhas_reincidencia)+"""
                     A ART ESTA NA PAGINA """+ str(folhas_art)+"""
+
+
+
+
+
+
+
+
 
         
                             Considerando que a alínea “e” do art. 27 da Lei nº 5.194, de 1966, estabelece que compete ao Confea julgar em última instância os recursos sobre registros, decisões e penalidades impostas pelos Conselhos Regionais;
@@ -2433,9 +2536,9 @@ class App():
                     cores()
 
             elif ("59" in artigo_ai):
-                        self.pag59 = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
-                        self.pag59.tag_configure("red", foreground="red")
-                        self.pag59.insert(tk.INSERT,
+                        self.texto_padrao = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
+                        self.texto_padrao.tag_config("red", foreground="red")
+                        self.texto_padrao.insert(tk.INSERT,
                                           """art 59
                                           Trata-se de recurso interposto ao Confea contra a decisão do Plenário do Crea-""" + str(
                                               crea_entry) + """ pela pessoa jurídica """ + str(
@@ -2471,6 +2574,14 @@ class App():
                     REINCIDÊNCIA ESTA CITADA NA PAGINA """+ str(folhas_reincidencia)+"""
                     A ART ESTA NA PAGINA """+ str(folhas_art)+"""
 
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         
                         Considerando que a alínea “e” do art. 27 da Lei nº 5.194, de 1966, estabelece que compete ao Confea julgar em última instância os recursos sobre registros, decisões e penalidades impostas pelos Conselhos Regionais;
                         Considerando que o art. 59 da Lei nº 5.194, de 1966, prevê que as firmas, sociedades, associações, companhias, cooperativas e empresas em geral, que se organizem para executar obras ou serviços relacionados na forma estabelecida nessa lei, só poderão iniciar suas atividades depois de promoverem o competente registro nos Conselhos Regionais, bem como o dos profissionais do seu quadro técnico;
@@ -2565,10 +2676,10 @@ class App():
                         cores()
 
             elif ('64' in artigo_ai):
-                            print(data_ai)
-                            self.pag59 = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
-                            self.pag59.tag_configure("red", foreground="red")
-                            self.pag59.insert(tk.INSERT,
+
+                            self.texto_padrao = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
+                            self.texto_padrao.tag_config("red", foreground="red")
+                            self.texto_padrao.insert(tk.INSERT,
                                               """art 64
                                               Trata-se de recurso interposto ao Confea contra a decisão do Plenário do Crea-""" + str(
                                                   crea_entry) + """ pela pessoa """ + str(
@@ -2602,6 +2713,15 @@ class App():
                     O COMPROVANTE DE CADASTRO NACIONAL DA PESSOA JURIDICA ESTA NA PAGINA"""+ str(folhas_cnpj)+"""
                     REINCIDÊNCIA ESTA CITADA NA PAGINA """+ str(folhas_reincidencia)+"""
                     A ART ESTA NA PAGINA """+ str(folhas_art)+"""
+
+
+
+
+
+
+
+
+
 
             
                                 Considerando que a alínea “e” do art. 27 da Lei nº 5.194, de 1966, estabelece que compete ao Confea julgar em última instância os recursos sobre registros, decisões e penalidades impostas pelos Conselhos Regionais;
@@ -2680,10 +2800,10 @@ class App():
                             cores()
 
             elif ('art. 1' in artigo_ai or 'Art. 1' in artigo_ai or 'art 1'in artigo_ai):
-                print(data_ai)
-                self.pag59 = Text(self.root, bg='white', fg='black', bd=2, font=('Times New Roman', 13))
-                self.pag59.tag_configure("red", foreground="red")
-                self.pag59.insert(tk.INSERT,
+
+                self.texto_padrao = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
+                self.texto_padrao.tag_config("red", foreground="red")
+                self.texto_padrao.insert(tk.INSERT,
                                   """art 1
                                   Trata-se de recurso interposto ao Confea contra a decisão do Plenário do Crea-""" + str(
                                       crea_entry) + """ pela pessoa """ + str(
@@ -2718,6 +2838,15 @@ class App():
                     O COMPROVANTE DE CADASTRO NACIONAL DA PESSOA JURIDICA ESTA NA PAGINA""" + str(folhas_cnpj) + """
                     REINCIDÊNCIA ESTA CITADA NA PAGINA """ + str(folhas_reincidencia) + """
                     A ART ESTA NA PAGINA """ + str(folhas_art) + """
+
+
+
+
+
+
+
+
+
 
 
                                 Considerando que a alínea “e” do art. 27 da Lei nº 5.194, de 1966, estabelece que compete ao Confea julgar em última instância os recursos sobre registros, decisões e penalidades impostas pelos Conselhos Regionais;
@@ -2793,190 +2922,194 @@ class App():
                                 NO CASO DE REDUÇÃO DA MULTA, EM FUNÇÃO DO CONTIDO NO ART. 43 DA RESOLUÇÃO Nº 1.008, DE 2004
                                 2.2 - manter a aplicação de multa e reduzir o seu valor para R$ (valor por extenso), em função dos princípios de proporcionalidade e razoabilidade, relativamente à infração cometida, sem prejuízo da regularização da falta, a ser corrigido pelo Crea na forma da lei.
                                 Observação: o “conforme estabelecido pelo Regional” deve ser utilizado somente nos casos em que o valor da multa do Crea divergir do valor correto da resolução.""")
+                self.logo()
                 cores()
         def cores():
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(crea_entry), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(crea_entry), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(crea_entry))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(crea_entry))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
 
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(autuado_ai), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(autuado_ai), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(autuado_ai))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(autuado_ai))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(cnpj_cpf_ai), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(cnpj_cpf_ai), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(cnpj_cpf_ai))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(cnpj_cpf_ai))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(nauto_ai), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(nauto_ai), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(nauto_ai))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(nauto_ai))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(data_ai), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(data_ai), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(data_ai))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(data_ai))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(artigo_ai), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(artigo_ai), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(artigo_ai))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(artigo_ai))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(motivo_ai), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(motivo_ai), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(motivo_ai))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(motivo_ai))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(folhas_ai), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(folhas_ai), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(folhas_ai))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(folhas_ai))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(folhas_recurso), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(folhas_recurso), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(folhas_recurso))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(folhas_recurso))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(folhas_ce), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(folhas_ce), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(folhas_ce))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(folhas_ce))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(folhas_pl), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(folhas_pl), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(folhas_pl))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(folhas_pl))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(especialidade_ce), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(especialidade_ce), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(especialidade_ce))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(especialidade_ce))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(data_ce), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(data_ce), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(data_ce))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(data_ce))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(ndecisao_pl), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(ndecisao_pl), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(ndecisao_pl))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(ndecisao_pl))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(data_pl), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(data_pl), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(data_pl))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(data_pl))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(folhas_aviso), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(folhas_aviso), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(folhas_aviso))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(folhas_aviso))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(data_aviso), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(data_aviso), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(data_aviso))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(data_aviso))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(data_recurso), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(data_recurso), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(data_recurso))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(data_recurso))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
             start_index = "1.0"
             while True:
-                start_index = self.pag59.search(str(ndecisao_ce), start_index, stopindex="end", regexp=False)
+                start_index = self.texto_padrao.search(str(ndecisao_ce), start_index, stopindex="end", regexp=False)
                 if not start_index:
                     break
-                end_index = self.pag59.index(f"{start_index}+{len(str(ndecisao_ce))}c")
-                self.pag59.tag_add("red", start_index, end_index)
+                end_index = self.texto_padrao.index(f"{start_index}+{len(str(ndecisao_ce))}c")
+                self.texto_padrao.tag_add("red", start_index, end_index)
                 start_index = end_index
 
-            self.pag59.place(relx=0.065, rely=0.26, relwidth=0.925, relheight=0.72)
+            self.texto_padrao.place(relx=0.065, rely=0.26, relwidth=0.925, relheight=0.72)
             #self.conteudo()
             #self.botoes()
         """selecionar arquivos"""
-        btn_selecionar = ctk.CTkButton(self.frame_3, text="Selecionar arquivo", command=selecionar_arquivo)
-        btn_selecionar.place(relx=0.65, rely=0.10, relwidth=0.15, relheight=0.80)
+        btn_selecionar = ctk.CTkButton(self.frame_3,fg_color='#094c8c',text="Selecionar arquivo", command=selecionar_arquivo)
+        btn_selecionar.place(relx=0.65, rely=0.10, relwidth=0.15, relheight=0.75)
         """Botao Menu"""
-        btn_menu = ctk.CTkButton(self.frame_2, text='Menu', fg_color='#01509b', text_color='White',font=('Arial', 14), command=tela_menu)
+        btn_menu = ctk.CTkButton(self.frame_2, text='Menu', fg_color='#094c8c', text_color='White',font=('Lato', 14), command=tela_menu)
         btn_menu.place(relx=0, rely=0, relwidth=1, relheight=0.08)
         """Botao Artigo 1"""
-        btn_art1 = ctk.CTkButton(self.frame_2, text='Art 1º', fg_color='#01509b', text_color='White',font=('Arial', 14))
+        btn_art1 = ctk.CTkButton(self.frame_2, text='Art 1º', fg_color='#094c8c', text_color='White',font=('Lato', 14))
         btn_art1.place(relx=0, rely=0.08, relwidth=1, relheight=0.08)
         """Botao Artigo 6 A"""
-        btn_art6a = ctk.CTkButton(self.frame_2, text='Art 6º a', fg_color='#01509b', text_color='White',font=('Arial', 14))
+        btn_art6a = ctk.CTkButton(self.frame_2, text='Art 6º a', fg_color='#094c8c', text_color='White',font=('Lato', 14))
         btn_art6a.place(relx=0, rely=0.16, relwidth=1, relheight=0.08)
         """Botao Artigo 6 E"""
-        btn_art6e = ctk.CTkButton(self.frame_2, text='Art 6º e', fg_color='#01509b', text_color='White',font=('Arial', 14))
+        btn_art6e = ctk.CTkButton(self.frame_2, text='Art 6º e', fg_color='#094c8c', text_color='White',font=('Lato', 14))
         btn_art6e.place(relx=0, rely=0.24, relwidth=1, relheight=0.08)
         """Botao Artigo 16"""
-        btn_art16 = ctk.CTkButton(self.frame_2, text='Art 16º', fg_color='#01509b', text_color='White',font=('Arial', 14))
+        btn_art16 = ctk.CTkButton(self.frame_2, text='Art 16º', fg_color='#094c8c', text_color='White',font=('Lato', 14))
         btn_art16.place(relx=0, rely=0.32, relwidth=1, relheight=0.08)
         """Botao Artigo 59"""
-        btn_art59 = ctk.CTkButton(self.frame_2, text='Art 59º', fg_color='#01509b', text_color='White',font=('Arial', 14))
+        btn_art59 = ctk.CTkButton(self.frame_2, text='Art 59º', fg_color='#094c8c', text_color='White',font=('Lato', 14))
         btn_art59.place(relx=0, rely=0.4, relwidth=1, relheight=0.08)
         """Botao Texto Padrao"""
-        btn_textopadrao = ctk.CTkButton(self.frame_2, text='Texto', fg_color='#01509b', text_color='White',font=('Arial', 14), command=tela_texto)
+        btn_textopadrao = ctk.CTkButton(self.frame_2, text='Texto', fg_color='#094c8c', text_color='White',font=('Lato', 14), command=tela_texto)
         btn_textopadrao.place(relx=0, rely=0.48, relwidth=1, relheight=0.08)
-    #funcoes.varBarra()
+        """Botao Historico"""
+        btn_textopadrao = ctk.CTkButton(self.frame_2, text='Historico', fg_color='#094c8c', text_color='White',font=('Lato', 14))#, command=tela_historico)
+        btn_textopadrao.place(relx=0, rely=0.56, relwidth=1, relheight=0.08)
+
 
 App()
 root.mainloop()
