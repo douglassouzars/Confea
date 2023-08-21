@@ -11,7 +11,9 @@ from tkinter.filedialog import askopenfilename
 from PyPDF2 import PdfReader
 from tkinter import font
 from pdfminer.high_level import extract_text
-
+import pytesseract
+from pdf2image import convert_from_path
+import pytesseract
 root = Tk()
 
 
@@ -124,8 +126,34 @@ class App():
 
 
         """selecionar o arquivo"""
+
         def selecionar_arquivo():
-            pdf_path = askopenfilename(filetypes=[("Arquivos PDF", "*.pdf")], defaultextension=".pdf")
+            file_path = askopenfilename(filetypes=[("Arquivos PDF", "*.pdf")], defaultextension=".pdf")
+            try:
+                import pytesseract
+                from PIL import Image
+
+                # Carregar a imagem
+                image = Image.open(file_path)
+
+
+
+                # Converter páginas do PDF em imagens
+                images = convert_from_path('C:/Users/douglas.souza/Downloads/Processopr.pdf')
+
+                # Inicializar o Tesseract OCR
+                pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Atualize o caminho para o tesseract.exe
+
+                # Extrair texto de cada imagem
+                for i, image in enumerate(images):
+                    text = pytesseract.image_to_string(image)
+                    print(f"Texto da página {i + 1}:\n{text}\n")
+
+
+            except Exception as e:
+                print("Erro:", e)
+
+            """pdf_path = askopenfilename(filetypes=[("Arquivos PDF", "*.pdf")], defaultextension=".pdf")
             # Verifica se o usuário selecionou um arquivo ou cancelou o diálogo
             if pdf_path:
                 print("Arquivo selecionado:", pdf_path)
@@ -151,9 +179,9 @@ class App():
                         fonte = font.Font(size=18)
                         lbl2_selecionado["font"] = fonte
                         lbl2_selecionado.place(relx=0.395, rely=0.45, relwidth=0.025, relheight=0.09)
-                        return result
+                        return result"""
 
-            def
+            #def
 
 
         btn_selecionar = ctk.CTkButton(self.frame_3, text="Selecionar arquivo", command=selecionar_arquivo)
