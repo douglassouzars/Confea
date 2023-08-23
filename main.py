@@ -71,14 +71,14 @@ class App():
         self.caixapl.place(relx=0.065, rely=0.61, relwidth=0.23, relheight=0.14)
 
         """Caixa Ficha Cadastral"""
-        self.caixapl = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
-        self.caixapl.insert(tk.INSERT,"            FICHA CADASTRAL SIMPLIFICADA\nFolhas:\nData:\nObjetivo Social:")
-        self.caixapl.place(relx=0.305, rely=0.61, relwidth=0.22, relheight=0.14)
+        self.caixaficha = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
+        self.caixaficha.insert(tk.INSERT,"            FICHA CADASTRAL SIMPLIFICADA\nFolhas:\nData:\nObjetivo Social:")
+        self.caixaficha.place(relx=0.305, rely=0.61, relwidth=0.22, relheight=0.14)
 
         """Caixa Alteração"""
-        self.caixapl = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
-        self.caixapl.insert(tk.INSERT,"ALTERAÇÃO/CONSOLIDAÇÃO CONTRATUAL\nFolhas:\nData:\nObjetivo Social:")
-        self.caixapl.place(relx=0.305, rely=0.76, relwidth=0.22, relheight=0.14)
+        self.caixaalteracao = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
+        self.caixaalteracao.insert(tk.INSERT,"ALTERAÇÃO/CONSOLIDAÇÃO CONTRATUAL\nFolhas:\nData:\nObjetivo Social:")
+        self.caixaalteracao.place(relx=0.305, rely=0.76, relwidth=0.22, relheight=0.14)
 
         """Caixa AR"""
         self.caixaar = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
@@ -135,13 +135,6 @@ class App():
         self.frame_3.place(relx=0.0, rely=0.2, relwidth=1, relheight=0.05)
         self.frame_2 = ctk.CTkFrame(self.root,fg_color='#094c8c')
         self.frame_2.place(relx=0.0, rely=0.25, relwidth=0.06, relheight=1)
-        """definir a logo do projeto"""
-        #logoimg = Image.open("log.png")
-        #self.lg = ImageTk.PhotoImage(logoimg)
-        #self.lbl = tk.Label(self.frame_1, image=self.lg)
-        #self.lbl = tk.Label(self.frame_1, image=self.lg)
-        #self.lbl.place(relx=0.07, rely=0.1, relwidth=0.35, relheight=0.8)
-        #self.lbl.image = self.lg
 
         lg= ctk.CTkImage(Image.open("log.png"),size=(300,70))
         logo=ctk.CTkLabel(self.frame_1,image=lg,text='')
@@ -258,6 +251,14 @@ class App():
             self.caixapl.delete("3.11", "3.9999")
             self.caixapl.delete("4.5", "4.9999")
             self.caixapl.delete("5.6", "8.9999")
+            """limpar Ficha cadastral"""
+            self.caixaficha.delete("2.7", "2.9999")
+            self.caixaficha.delete("3.5", "3.9999")
+            self.caixaficha.delete("4.16", "4.9999")
+            """limpar Alteração"""
+            self.caixaalteracao.delete("2.7", "2.9999")
+            self.caixaalteracao.delete("3.5", "3.9999")
+            self.caixaalteracao.delete("4.16", "4.9999")
             """limpa caixa de aviso"""
             self.caixaar.delete("2.7", "2.9999")
             self.caixaar.delete("3.5", "3.9999")
@@ -469,7 +470,10 @@ class App():
             #
             #                    self.caixatexto.insert("1.103", f"***{result_cnpj}***", "red")
 #                    self.caixatexto.tag_config("red", foreground="red")
+            print(data)
+
             if data:
+
                 configdata(data)
 
             if nauto:
@@ -507,6 +511,10 @@ class App():
                     self.caixaai.tag_config("red", foreground="red")
 #                    self.caixatexto.insert("1.275", str("ao art. 59º da Lei Federal 5.194, de 1966"), "red")
 #                    self.caixatexto.tag_config("red", foreground="red")
+                elif "REGISTRO DE ART " in result_artigo:
+                    artigo_ai="Art. 1º da Lei Federal 5.194, de 1966"
+                    self.caixaai.insert("3.8", str("Art. 1º da Lei Federal 5.194, de 1966"), "red")  # Adiciona a tag "red" ao novo valor
+                    self.caixaai.tag_config("red", foreground="red")
                 elif "FALTA DE REGISTRO" in result_artigo:
                     artigo_ai="Art. 59º da Lei Federal 5.194, de 1966"
                     self.caixaai.insert("3.8", str("Art. 59º da Lei Federal 5.194, de 1966"), "red")  # Adiciona a tag "red" ao novo valor
@@ -519,7 +527,10 @@ class App():
                     self.caixaai.tag_config("red", foreground="red")
 #                   self.caixatexto.insert("1.275", str("Art. 64º da Lei Federal 5.194, de 1966"), "red")
 #                    self.caixatexto.tag_config("red", foreground="red")
-
+                elif "CANCELADO" in result_artigo:
+                    artigo_ai="Art. 64º da Lei Federal 5.194, de 1966"
+                    self.caixaai.insert("3.8", str("Art. 64º da Lei Federal 5.194, de 1966"), "red")  # Adiciona a tag "red" ao novo valor
+                    self.caixaai.tag_config("red", foreground="red")
             if melhora_motivo:
                 motivo_ai = melhora_motivo.lower()
                 self.caixaai.insert("10.10", motivo_ai, "red")
@@ -527,8 +538,57 @@ class App():
 #                self.caixatexto.insert("1.360", melhora_motivo_min, "red")
 #                self.caixatexto.tag_config("red", foreground="red")
             ce(pdf_reader,folhas_ai,crea_entry, pdf_file, num_pages)
+        def configdata(data):
+            global data_ai
+            print("config data")
+            dia = data.group(1)
+            mes = data.group(2)
+            ano = data.group(3)
+            if mes == '01' or mes == '1':
+                mes_escrito = "janeiro"
+                configmes(dia, mes_escrito, ano)
+            elif mes == '02' or mes == '2':
+                mes_escrito = "fevereiro"
+                configmes(dia, mes_escrito, ano)
+            elif mes == '03' or mes == '3':
+                mes_escrito = "março"
+                configmes(dia, mes_escrito, ano)
+            elif mes == '04' or mes == '4':
+                mes_escrito = "abril"
+                configmes(dia, mes_escrito, ano)
+            elif mes == '05' or mes == '5':
+                mes_escrito = "maio"
+                configmes(dia, mes_escrito, ano)
+            elif mes == '06' or mes == '6':
+                mes_escrito = "junho"
+                configmes(dia, mes_escrito, ano)
+            elif mes == '07' or mes == '7':
+                mes_escrito = "julho"
+                configmes(dia, mes_escrito, ano)
+            elif mes == '08' or mes == '8':
+                mes_escrito = "agosto"
+                configmes(dia, mes_escrito, ano)
+            elif mes == '09' or mes == '9':
+                mes_escrito = "setembro"
+                configmes(dia, mes_escrito, ano)
+            elif mes == '10':
+                mes_escrito = "outubro"
+                configmes(dia, mes_escrito, ano)
+            elif mes == '11':
+                mes_escrito = "novembro"
+                configmes(dia, mes_escrito, ano)
+            elif mes == '12':
+                mes_escrito = "dezembro"
+                configmes(dia, mes_escrito, ano)
+        def configmes(dia, mes_escrito, ano):
+                global data_ai
+                print("a data")
+                data_ai = f"{dia} de {mes_escrito} de {ano}"
 
-
+                if data_ai:
+                    self.caixaai.insert("9.6", str(data_ai), "red")  # Adiciona a tag "red" ao novo valor
+                    self.caixaai.tag_config("red", foreground="red")
+                    return data_ai
 ##########################################################################################################
 #           TODOS AS PAGINAS DA CAMARA ESPECIALIZADA
 ##########################################################################################################
@@ -595,7 +655,9 @@ class App():
                                     self.caixace.insert("5.6", data_ce, "red")  # Adiciona a tag "red" ao novo valor
                                     self.caixace.tag_config("red", foreground="red")
                                     break
-                    multa(pdf_reader, folhas_ce, crea_entry, pdf_file, num_pages)
+                        multa(pdf_reader, folhas_ce, crea_entry, pdf_file, num_pages)
+                    break
+
                 if pagdecisaocamarasp:
                     print("8 passo: Achei a pagina da DECISAO DA CAMARA ESPECIALIZADA")
                     print("9.1 passo: Procura os dados da DECISAO DA CAMARA ESPECIALIZADA")
@@ -1468,7 +1530,79 @@ class App():
             global data_aviso
             data1= ''
             print("15 passo: Procurar o aviso de recebimento")
+            padroes = [
+                'Resposta dos correios',
+                'Aviso de Recebimento',
+                'ESTINATARIO:',
+                'Destinatário',
+                'DESTINATÁRIO',
+                'DESTINAIÁRIO',
+                'ASSINATURA DO RECEBEDOR'
+            ]
+
+            # Trecho de código para iterar sobre as páginas e procurar os padrões
             for pagina in range(folhas_pl, len(pdf_reader.pages)):
+                texto_pagina = pdf_reader.pages[pagina].extract_text()
+                if pagina == 77:
+                    print(texto_pagina)
+                # Procurar os padrões na página
+                for padrao in padroes:
+                    if padrao in texto_pagina:
+                        print("Achei o padrão:", padrao)
+                        folhas_aviso = pagina + 1
+                        self.caixaar.insert("2.7", folhas_aviso, "red")
+                        self.caixaar.tag_config("red", foreground="red")
+                        break  # Parar a busca assim que um padrão for encontrado
+                if 'AVISO DE RECEBIMENTO' in texto_pagina and crea_entry != 'PA':
+                    print("16.1 passo: Achei o aviso de recebimento")
+                    folhas_aviso = pagina + 1
+                    self.caixaar.insert("2.7", folhas_aviso, "red")
+                    self.caixaar.tag_config("red", foreground="red")
+                    break
+                elif 'Objeto entregue' in texto_pagina:
+                    print("16.4 passo: Achei o aviso de recebimento")
+                    data3 = re.search(r'(\d{2})/(\d{2})/(\d{4}) ', texto_pagina)
+
+                    folhas_aviso = pagina + 1
+                    if folhas_aviso:
+                        folhas_aviso = pagina + 1
+
+                        self.caixaar.insert("2.7", folhas_aviso, "red")
+                        self.caixaar.tag_config("red", foreground="red")
+
+                    if data3:
+                        global data_aviso
+                        dia2 = data3.group(1)
+                        mes2 = data3.group(2)
+                        ano2 = data3.group(3)
+                        if mes2 == '01':
+                            mes_escrito2 = "janeiro"
+                        elif mes2 == '02':
+                            mes_escrito2 = "fevereiro"
+                        elif mes2 == '03':
+                            mes_escrito2 = "março"
+                        elif mes2 == '04':
+                            mes_escrito2 = "abril"
+                        elif mes2 == '05':
+                            mes_escrito2 = "maio"
+                        elif mes2 == '06':
+                            mes_escrito2 = "junho"
+                        elif mes2 == '07':
+                            mes_escrito2 = "julho"
+                        elif mes2 == '08':
+                            mes_escrito2 = "agosto"
+                        elif mes2 == '09':
+                            mes_escrito2 = "setembro"
+                        elif mes2 == '10':
+                            mes_escrito2 = "outubro"
+                        elif mes2 == '11':
+                            mes_escrito2 = "novembro"
+                        elif mes2 == '12':
+                            mes_escrito2 = "dezembro"
+                        data_aviso = f"{dia2} de {mes_escrito2} de {ano2}"
+                        self.caixaar.insert("3.5", str(data_aviso), "red")  # Adiciona a tag "red" ao novo valor
+                        self.caixaar.tag_config("red", foreground="red")
+            """for pagina in range(folhas_pl, len(pdf_reader.pages)):
                 texto_pagina = pdf_reader.pages[pagina].extract_text()
 
                 data1 = None
@@ -1495,74 +1629,11 @@ class App():
                     folhas_aviso = pagina + 1
                     self.caixaar.insert("2.7", folhas_aviso, "red")
                     self.caixaar.tag_config("red", foreground="red")
-                    break
-                elif 'Objeto entregue' in texto_pagina:
-                    print("16.4 passo: Achei o aviso de recebimento")
-                    data3 = re.search(r'(\d{2})/(\d{2})/(\d{4}) ', texto_pagina)
-                    dia1 = int(data3.group(1))
-                    mes1 = int(data3.group(2))
-                    ano1 = int(data3.group(3))
-                    data1 = datetime(ano1, mes1, dia1)
+                    break"""
 
-                    folhas_aviso = pagina + 1
-                    if folhas_aviso:
-                        folhas_aviso = pagina + 1
-
-                        self.caixaar.insert("2.7", folhas_aviso, "red")
-                        self.caixaar.tag_config("red", foreground="red")
-
-                    if data3:
-                        configdata3(data3)
 
             recurso(folhas_pl,pdf_reader,crea_entry,data_aviso,num_pages)
-        """Descobrindo a Data"""
-        def configdata3(data3):
-            global data_aviso
-            dia2 = data3.group(1)
-            mes2 = data3.group(2)
-            ano2 = data3.group(3)
-            if mes2 == '01':
-                mes_escrito2 = "janeiro"
-                configmes3(dia2,mes_escrito2,ano2)
-            elif mes2 == '02':
-                mes_escrito2 = "fevereiro"
-                configmes3(dia2,mes_escrito2,ano2)
-            elif mes2 == '03':
-                mes_escrito2 = "março"
-                configmes3(dia2,mes_escrito2,ano2)
-            elif mes2 == '04':
-                mes_escrito2 = "abril"
-                configmes3(dia2,mes_escrito2,ano2)
-            elif mes2 == '05':
-                mes_escrito2 = "maio"
-                configmes3(dia2,mes_escrito2,ano2)
-            elif mes2 == '06':
-                mes_escrito2 = "junho"
-                configmes3(dia2,mes_escrito2,ano2)
-            elif mes2 == '07':
-                mes_escrito2 = "julho"
-                configmes3(dia2,mes_escrito2,ano2)
-            elif mes2 == '08':
-                mes_escrito2 = "agosto"
-                configmes3(dia2,mes_escrito2,ano2)
-            elif mes2 == '09':
-                mes_escrito2 = "setembro"
-                configmes3(dia2,mes_escrito2,ano2)
-            elif mes2 == '10':
-                mes_escrito2 = "outubro"
-                configmes3(dia2,mes_escrito2,ano2)
-            elif mes2 == '11':
-                mes_escrito2 = "novembro"
-                configmes3(dia2,mes_escrito2,ano2)
-            elif mes2 == '12':
-                mes_escrito2 = "dezembro"
-                configmes3(dia2,mes_escrito2,ano2)
-        """Exibindo a data"""
-        def configmes3(dia2,mes_escrito2,ano2):
-            global data_aviso
-            data_aviso = f"{dia2} de {mes_escrito2} de {ano2}"
-            self.caixaar.insert("3.5", str(data_aviso), "red")  # Adiciona a tag "red" ao novo valor
-            self.caixaar.tag_config("red", foreground="red")
+
         def recurso(folhas_pl,pdf_reader , crea_entry,data_aviso,num_pages):
             global folhas_recurso
             global data_recurso
@@ -1756,7 +1827,123 @@ class App():
                             self.caixaart.insert("2.7", folhas_art, "red")  # Adiciona a tag "red" ao novo valor
                             self.caixaart.tag_config("red", foreground="red")
                             break
+                if alteracao_page is None:
+                    print("nao achou alteraçao")
+                    for page_num, page in enumerate(pdf_reader.pages):
+                        text_alteracao = page.extract_text()
+                        alteracao_match = re.search(r'ALTERAÇÃO CONTRATUAL', text_alteracao)
+                        alteracao_match2 = re.search(r'ALTERAÇÃO DA SOCIE',  text_alteracao)
+                        alteracao_match3 = re.search(r'CONTRATO DE CONSTITUIÇÃO',  text_alteracao)
+                        if alteracao_match is not None or alteracao_match2 is not None or alteracao_match3 is not None:
+                            folhas_alteracao = page_num + 1  # Número da página onde foi encontrada a correspondência
+                            self.caixaalteracao.insert("2.7", folhas_alteracao, "red")  # Adiciona a tag "red" ao novo valor
+                            self.caixaalteracao.tag_config("red", foreground="red")
+                            result_alteracao_objeto = re.search(r' objeto social(.+)', text_alteracao)
+                            if result_alteracao_objeto:
+                                alteracao_objeto = result_alteracao_objeto.group()
+                                self.caixaalteracao.insert("4.16", alteracao_objeto,"red")  # Adiciona a tag "red" ao novo valor
+                                self.caixaalteracao.tag_config("red", foreground="red")
+                            break
+                            """alteracao_match2 = re.search(r'ALTERAÇÃO CONTRATUAL', text)
+                            alteracao_match3 = re.search(r'ALTERAÇÃO DA SOCIE', text)
+                            #alteracao_desc_pos = text.find("Objeto Social")
+                            if alteracao_match2 or alteracao_match3:
+                                ("achou a alteração")
+                                ficha_extracted_text = text[ficha_desc_pos + len("Objeto Social"):ficha_action_pos].strip()
+                                print(ficha_extracted_text)
+                                ficha_melhora = ficha_extracted_text.replace("\n", "").lower()
+                                if ficha_melhora:
+                                    self.caixaficha.insert("4.18", ficha_melhora, "red")  # Adiciona a tag "red" ao novo valor
+                                    self.caixaficha.tag_config("red", foreground="red")
+                                    result_data_ficha = re.search(r'(\d{2})/(\d{2})/(\d{4})', text)
+                                    if result_data_ficha:
+                                        diaficha = result_data_ficha.group(1)
+                                        mesficha = result_data_ficha.group(2)
+                                        anoficha = result_data_ficha.group(3)
 
+                                        if mesficha == '01':
+                                            mes_escritof = "janeiro"
+                                        elif mesficha == '02':
+                                            mes_escritof = "fevereiro"
+                                        elif mesficha == '03':
+                                            mes_escritof = "março"
+                                        elif mesficha == '04':
+                                            mes_escritof = "abril"
+                                        elif mesficha == '05':
+                                            mes_escritof = "maio"
+                                        elif mesficha == '06':
+                                            mes_escritof = "junho"
+                                        elif mesficha == '07':
+                                            mes_escritof = "julho"
+                                        elif mesficha == '08':
+                                            mes_escritof = "agosto"
+                                        elif mesficha == '09':
+                                            mes_escritof = "setembro"
+                                        elif mesficha == '10':
+                                            mes_escritof = "outubro"
+                                        elif mesficha == '11':
+                                            mes_escritof = "novembro"
+                                        elif mesficha == '12':
+                                            mes_escritof = "dezembro"
+                                        data_ficha= f"{diaficha} de {mes_escritof} de {anoficha}"
+                                        self.caixaficha.insert("3.6", data_ficha, "red")  # Adiciona a tag "red" ao novo valor
+                                        self.caixaficha.tag_config("red", foreground="red")
+                                        break"""
+                if ficha_page is None:
+                    print("nao achou ficha")
+                    for page_num, page in enumerate(pdf_reader.pages):
+                        text = page.extract_text()
+                        ficha_match = re.search(r'Ficha Cadastral', text)
+
+
+                        if ficha_match is not None:
+                            folhas_ficha = page_num + 1  # Número da página onde foi encontrada a correspondência
+                            self.caixaficha.insert("2.7", folhas_ficha, "red")  # Adiciona a tag "red" ao novo valor
+                            self.caixaficha.tag_config("red", foreground="red")
+                            ficha_action_pos = text.find("Atividades da Empresa")
+                            ficha_desc_pos = text.find("Objeto Social")
+                            if ficha_desc_pos != -1:
+                                ("achou a ficha")
+                                ficha_extracted_text = text[ficha_desc_pos + len("Objeto Social"):ficha_action_pos].strip()
+                                print(ficha_extracted_text)
+                                ficha_melhora = ficha_extracted_text.replace("\n", "").lower()
+                                if ficha_melhora:
+                                    self.caixaficha.insert("4.18", ficha_melhora, "red")  # Adiciona a tag "red" ao novo valor
+                                    self.caixaficha.tag_config("red", foreground="red")
+                                    result_data_ficha = re.search(r'(\d{2})/(\d{2})/(\d{4})', text)
+                                    if result_data_ficha:
+                                        diaficha = result_data_ficha.group(1)
+                                        mesficha = result_data_ficha.group(2)
+                                        anoficha = result_data_ficha.group(3)
+
+                                        if mesficha == '01':
+                                            mes_escritof = "janeiro"
+                                        elif mesficha == '02':
+                                            mes_escritof = "fevereiro"
+                                        elif mesficha == '03':
+                                            mes_escritof = "março"
+                                        elif mesficha == '04':
+                                            mes_escritof = "abril"
+                                        elif mesficha == '05':
+                                            mes_escritof = "maio"
+                                        elif mesficha == '06':
+                                            mes_escritof = "junho"
+                                        elif mesficha == '07':
+                                            mes_escritof = "julho"
+                                        elif mesficha == '08':
+                                            mes_escritof = "agosto"
+                                        elif mesficha == '09':
+                                            mes_escritof = "setembro"
+                                        elif mesficha == '10':
+                                            mes_escritof = "outubro"
+                                        elif mesficha == '11':
+                                            mes_escritof = "novembro"
+                                        elif mesficha == '12':
+                                            mes_escritof = "dezembro"
+                                        data_ficha= f"{diaficha} de {mes_escritof} de {anoficha}"
+                                        self.caixaficha.insert("3.6", data_ficha, "red")  # Adiciona a tag "red" ao novo valor
+                                        self.caixaficha.tag_config("red", foreground="red")
+                                        break
                 if cnpj_page is None:
                     print("nao achou cnpj")
                     for page_num, page in enumerate(pdf_reader.pages):
@@ -1832,6 +2019,7 @@ class App():
                                     cnae_segundo = cnae_segundo[22:-25]
                                     self.caixacnpj.insert("5.17", cnae_segundo,"red")  # Adiciona a tag "red" ao novo valor
                                     self.caixacnpj.tag_config("red", foreground="red")
+                                    break
                             elif inicio_primeira_atividade != -1 and fim_primeira_atividade2 != -1 :
                                 resultado_cnae_primeiro = text[inicio_primeira_atividade + len("PRINCIPAL"):fim_primeira_atividade2].strip()
                                 cnae_primeiro = resultado_cnae_primeiro.replace("\n", "")
@@ -1965,6 +2153,7 @@ class App():
             tk.messagebox.showinfo("Sistema confea","Finalizado")
 
             self.valBarra(1)
+
 ##########################################################################################################
 #           CREAS GO
 ##########################################################################################################
@@ -2099,17 +2288,17 @@ class App():
                 pdf_reader = PdfReader(pdf_file)
                 page = pdf_reader.pages[folhas_ai - 1]
                 text = page.extract_text()
-                print(text)
-                """Extrai o NUMERO DO AUTO"""
-                nauto = re.search(r'PROCESSO N[°º](.+)', text)
 
-                print(nauto)
+                """Extrai o NUMERO DO AUTO"""
+                nauto = re.search(r'PROCESSO N[°º°](.+)', text)
+
+
                 """Extrai o NOME DO AUTUADO"""
                 autuado = re.search(r'NOME/RAZ[ÃA]O SOCIAL:(.+)', text)
-                print("o autuado", autuado)
+
                 """Extrai o CNPJ"""
                 cnpj = re.search(r'CPF/CNPJ:(.+)', text)
-                print("to sim")
+
                 """Extrai o motivo do AUTO"""
                 desc_pos2 = text.find("ATIVIDADES:")
                 action_pos2 = text.find("IDENTIFICAÇÃO")
@@ -2135,10 +2324,10 @@ class App():
                 self.valBarra(0.25)
                 if melhora_motivo:
                     motivo_ai = melhora_motivo.lower()
-                    self.caixaai.insert("10.10", motivo_ai, "red")
+                    self.caixaai.insert("10.10", str(motivo_ai), "red")
                     self.caixaai.tag_config("red", foreground="red")
 
-                print(cnpj)
+
                 if cnpj:
                     cnpj_cpf_ai = cnpj.group(1)
                     print(cnpj_cpf_ai)
@@ -2149,7 +2338,7 @@ class App():
                     cnpj2 = re.search(r'CNPJ (.*), ', text)
                     if cnpj2:
                         cnpj_cpf_ai = cnpj2.group(1)
-                        print(cnpj_cpf_ai)
+
                         cnpj_cpf_ai = cnpj_cpf_ai[4:-9]
                         self.caixaai.insert("5.6", f"***{cnpj_cpf_ai}***", "red")
                         self.caixaai.tag_config("red", foreground="red")
@@ -2157,7 +2346,7 @@ class App():
                         cnpj3 = re.search(r'(\d{2}).(\d{3}).(\d{3})/(\d{4})-(\d{2})', text)
                         if cnpj3:
                             cnpj_cpf_ai = cnpj3.group()
-                            print(cnpj_cpf_ai)
+
                             cnpj_cpf_ai = cnpj_cpf_ai[4:-8]
                             self.caixaai.insert("5.6", f"***{cnpj_cpf_ai}***", "red")
                             self.caixaai.tag_config("red", foreground="red")
@@ -2165,7 +2354,7 @@ class App():
                             cnpj4 = re.search(r'CNPJ (.+)/', text)
                             if cnpj4:
                                 cnpj_cpf_ai = cnpj4.group(1)
-                                print(cnpj_cpf_ai)
+
                                 cnpj_cpf_ai = cnpj_cpf_ai[3:]
                                 self.caixaai.insert("5.6", f"***{cnpj_cpf_ai}***", "red")
                                 self.caixaai.tag_config("red", foreground="red")
@@ -2177,18 +2366,21 @@ class App():
                 if multa:
                     multa = multa.group(1)
                     multa_ai = multa[3:]
-                    self.caixaai.insert("8.7", multa_ai, "red")  # Adiciona a tag "red" ao novo valor
+                    self.caixaai.insert("8.7", str(multa_ai), "red")  # Adiciona a tag "red" ao novo valor
                     self.caixaai.tag_config("red", foreground="red")
                 if artigo:
                     # artigo = artigo[:-50]
                     artigo_ai = artigo.group(1).lower()
-                    self.caixaai.insert("3.8", artigo_ai, "red")  # Adiciona a tag "red" ao novo valor
+                    self.caixaai.insert("3.8", str(artigo_ai), "red")  # Adiciona a tag "red" ao novo valor
                     self.caixaai.tag_config("red", foreground="red")
                 if nauto:
                     print("n1")
                     result_nauto_entry = nauto.group(1)
-                    nauto_ai = result_nauto_entry[2:-40]
-                    self.caixaai.insert("7.10", nauto_ai, "red")  # Adiciona a tag "red" ao novo valor
+                    print(result_nauto_entry)
+                    result_nauto_entry = re.search(r'\d{1,10}-\d', result_nauto_entry)
+                    nauto_ai = result_nauto_entry.group()
+                    print(nauto_ai)
+                    self.caixaai.insert("7.10", str(nauto_ai), "red")  # Adiciona a tag "red" ao novo valor
                     self.caixaai.tag_config("red", foreground="red")
                 elif nauto is None:
                     nauto2 = re.search(r'N°(.*)/(\d{4})', text)
@@ -2199,25 +2391,25 @@ class App():
                         print("n2")
                         result_nauto2 = nauto2.group()
                         nauto_ai = result_nauto2[3:]
-                        self.caixaai.insert("7.10", nauto_ai, "red")  # Adiciona a tag "red" ao novo valor
+                        self.caixaai.insert("7.10", str(nauto_ai), "red")  # Adiciona a tag "red" ao novo valor
                         self.caixaai.tag_config("red", foreground="red")
                     elif nauto3:
                         result_nauto_entry = nauto3.group()
                         print("n3")
                         nauto_ai = result_nauto_entry[8:]
-                        self.caixaai.insert("7.10", nauto_ai, "red")  # Adiciona a tag "red" ao novo valor
+                        self.caixaai.insert("7.10", str(nauto_ai), "red")  # Adiciona a tag "red" ao novo valor
                         self.caixaai.tag_config("red", foreground="red")
                     elif nauto4:
                         print("n4")
                         result_nauto4 = nauto4.group()
                         nauto_ai = result_nauto4[3:]
-                        self.caixaai.insert("7.10", nauto_ai, "red")  # Adiciona a tag "red" ao novo valor
+                        self.caixaai.insert("7.10", str(nauto_ai), "red")  # Adiciona a tag "red" ao novo valor
                         self.caixaai.tag_config("red", foreground="red")
                     elif nauto5:
                         print("n5")
                         result_nauto5 = nauto5.group()
                         nauto_ai = result_nauto5[17:]
-                        self.caixaai.insert("7.10", nauto_ai, "red")  # Adiciona a tag "red" ao novo valor
+                        self.caixaai.insert("7.10", str(nauto_ai), "red")  # Adiciona a tag "red" ao novo valor
                         self.caixaai.tag_config("red", foreground="red")
                 if data4:
                     print("data")
@@ -2527,7 +2719,7 @@ class App():
                 self.caixaai.insert("9.6", data_ai, "red")  # Adiciona a tag "red" ao novo valor
                 self.caixaai.tag_config("red", foreground="red")
             ce(pdf_reader, folhas_ai, crea_entry, pdf_file, num_pages)
-        #def pagedopl(folhas_pl, pdf_file):
+
 
 ##########################################################################################################
 #           CREAS SP
@@ -2797,7 +2989,6 @@ class App():
                     # folhas_entry)
                     pagedoautopr(folhas_ai, pdf_file, num_pages, crea_entry)
                     break
-
         """EXTRAINDO DADOS DO AUTO DE INFRAÇÃO"""
         def pagedoautopr(folhas_ai, pdf_file, num_pages, crea_entry):
             global nauto_ai
@@ -2962,8 +3153,6 @@ class App():
                                 self.caixaai.insert("9.6", str(data_ai),"red")  # Adiciona a tag "red" ao novo valor
                                 self.caixaai.tag_config("red", foreground="red")
             ce(pdf_reader, folhas_ai, crea_entry, pdf_file, num_pages)
-
-
 ##########################################################################################################
 #           CREAS MS
 ##########################################################################################################
@@ -2991,7 +3180,6 @@ class App():
 
                             pagedoautoms(folhas_ai, pdf_file, num_pages, crea_entry)
                             break
-
         """EXTRAINDO DADOS DO AUTO DE INFRAÇÃO"""
         def pagedoautoms(folhas_ai, pdf_file, num_pages, crea_entry):
                     global nauto_ai
@@ -3104,7 +3292,6 @@ class App():
                         self.caixaai.insert("9.6", str(data_ai), "red")  # Adiciona a tag "red" ao novo valor
                         self.caixaai.tag_config("red", foreground="red")
                     ce(pdf_reader, folhas_ai, crea_entry, pdf_file, num_pages)
-
 ##########################################################################################################
 #           CREAS RO
 ##########################################################################################################
@@ -3413,9 +3600,7 @@ class App():
 
             self.canvas.configure(xscrollcommand=x_scrollbar.set)
             x_scrollbar.configure(command=self.canvas.xview, fg_color='red')
-              # Usando place para a barra deslizante
-        #tela_historico()
-        #self.conteudo()
+
         def tela_texto():
 
             self.caixaai.pack_forget()
@@ -3808,7 +3993,7 @@ class App():
                             Observação: o “conforme estabelecido pelo Regional” deve ser utilizado somente nos casos em que o valor da multa do Crea divergir do valor correto da resolução.""")
                     cores()
             elif ("59" in artigo_ai):
-
+                        print("artigo 59")
                         self.texto_padrao = ctk.CTkTextbox(self.root, text_color='black', fg_color='white', font=('Lato Regular', 18))
                         self.texto_padrao.tag_config("red", foreground="red")
                         self.texto_padrao.insert(tk.INSERT,
