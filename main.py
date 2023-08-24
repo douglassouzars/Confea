@@ -616,10 +616,10 @@ class App():
                 pagdecisaocamaramg = re.search(r"A Câmara Especializada [Dd]e (.*) deste", text2)
                 pagdecisaocamararo = re.search(r"Câmara Especializada de (.*) do ", text2)
                 complemento_pagdecisaocamararj = re.search(r"Decisão da(.*) - ",text2)
-                complemento_pagdecisaocamaramg = re.search(r"CE\w+/MG[/ ]n[O^°ºººo]\s?(\d+/\s?\d+)", text2)
+                complemento_pagdecisaocamaramg = re.search(r"CE\w+/MG[/ ]n[O^°ººoºo]\s?(\d+/\s?\d+)", text2)
 
                 self.valBarra(0.35)
-                if (pagdecisaocamaramg or pagdecisaocamarago) and complemento_pagdecisaocamaramg :
+                if (pagdecisaocamaramg or pagdecisaocamarago or pagdecisaocamararo) and complemento_pagdecisaocamaramg :
                     print("8 passo: Achei a pagina da DECISAO DA CAMARA ESPECIALIZADA")
                     print("9.0 passo: Procura os dados da DECISAO DA CAMARA ESPECIALIZADA")
 
@@ -628,6 +628,8 @@ class App():
                         especialidade_ce = pagdecisaocamaramg.group(1)
                     elif pagdecisaocamarago:
                         especialidade_ce = pagdecisaocamarago.group(1)
+                    elif pagdecisaocamararo:
+                        especialidade_ce = pagdecisaocamararo.group(1)
                     self.caixace.insert("4.15", especialidade_ce, "red")  # Adiciona a tag "red" ao novo valor
                     self.caixace.tag_config("red", foreground="red")  # Configura a cor vermelha para a tag "red"
                     folhas_ce = page_num + 1
@@ -2290,8 +2292,8 @@ class App():
                 text = page.extract_text()
 
                 """Extrai o NUMERO DO AUTO"""
-                nauto = re.search(r'PROCESSO N[°º°](.+)', text)
-
+                nsei = re.search(r'PROCESSO N[°º°](.+)', text)
+                nauto = re.search(r'AIN\s?N[°®º]:(.*)\s?', text)
 
                 """Extrai o NOME DO AUTUADO"""
                 autuado = re.search(r'NOME/RAZ[ÃA]O SOCIAL:(.+)', text)
@@ -2326,8 +2328,10 @@ class App():
                     motivo_ai = melhora_motivo.lower()
                     self.caixaai.insert("10.10", str(motivo_ai), "red")
                     self.caixaai.tag_config("red", foreground="red")
-
-
+                if nauto:
+                    nauto_ai = nauto.group(1)
+                    self.caixaai.insert("7.10", str(nauto_ai), "red")
+                    self.caixaai.tag_config("red", foreground="red")
                 if cnpj:
                     cnpj_cpf_ai = cnpj.group(1)
                     print(cnpj_cpf_ai)
@@ -2373,14 +2377,14 @@ class App():
                     artigo_ai = artigo.group(1).lower()
                     self.caixaai.insert("3.8", str(artigo_ai), "red")  # Adiciona a tag "red" ao novo valor
                     self.caixaai.tag_config("red", foreground="red")
-                if nauto:
+                if nsei:
                     print("n1")
-                    result_nauto_entry = nauto.group(1)
-                    print(result_nauto_entry)
-                    result_nauto_entry = re.search(r'\d{1,10}-\d', result_nauto_entry)
-                    nauto_ai = result_nauto_entry.group()
-                    print(nauto_ai)
-                    self.caixaai.insert("7.10", str(nauto_ai), "red")  # Adiciona a tag "red" ao novo valor
+                    result_nsei_entry = nsei.group(1)
+                    print(result_nsei_entry)
+                    result_nsei_entry = re.search(r'\d{1,10}-\d', result_nsei_entry)
+                    nsei_ai = result_nsei_entry.group()
+                    print(nsei_ai)
+                    self.caixaai.insert("2.18", str(nsei_ai), "red")  # Adiciona a tag "red" ao novo valor
                     self.caixaai.tag_config("red", foreground="red")
                 elif nauto is None:
                     nauto2 = re.search(r'N°(.*)/(\d{4})', text)
